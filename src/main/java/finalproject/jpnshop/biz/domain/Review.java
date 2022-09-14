@@ -5,13 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 //TODO
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review extends Article {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
@@ -24,4 +25,13 @@ public class Review extends Article {
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product product;
+
+    private String title;
+
+    @Lob
+    private String content;
+
+    private LocalDateTime createdDate;
+
+
 }

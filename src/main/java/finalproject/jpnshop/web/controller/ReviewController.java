@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/customers/reviews")
@@ -22,19 +21,16 @@ public class ReviewController {
     }
 
     //리뷰 단건 조회
-    @GetMapping
-    public String getReview(){
-        return "";
+    @GetMapping("/{reviewId}")
+    public Review getReview(@PathVariable long reviewId){
+        return reviewService.getReview(reviewId);
     }
-
 
     //상품별 리뷰 조회
-    @GetMapping
-    public Review getReviewByProduct(@RequestBody Map<String,Long> map) {
-        return reviewService.getReviewByProduct(map.get("productId"));
+    @GetMapping("/{productId}")
+    public Review getReviewByProduct(@PathVariable long productId) {
+        return reviewService.getReviewByProduct(productId);
     }
-
-
 
     //리뷰 등록
     @PostMapping

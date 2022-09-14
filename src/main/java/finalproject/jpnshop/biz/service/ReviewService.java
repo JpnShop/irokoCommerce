@@ -29,4 +29,7 @@ public class ReviewService {
     }
 
 
+    public Review getReview(long reviewId) {
+        return reviewRepository.findById(reviewId).orElse(null);
+    }
 }

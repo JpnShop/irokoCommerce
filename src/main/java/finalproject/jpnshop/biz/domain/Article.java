@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class CustomerSupport extends BaseTime{
+public abstract class Article extends BaseTime{
 
     private String title;
 
@@ -18,5 +18,4 @@ public abstract class CustomerSupport extends BaseTime{
 
     private LocalDateTime createdDate;
 
-    private String author;
 }

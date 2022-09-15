@@ -30,7 +30,6 @@ public class Order extends BaseTime{
     private LocalDateTime applyDate;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private final List<OrderItem> orderItems = new ArrayList<>();
 
     @ManyToOne

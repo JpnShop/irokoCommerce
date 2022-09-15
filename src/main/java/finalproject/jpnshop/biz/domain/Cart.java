@@ -25,7 +25,6 @@ public class Cart extends BaseTime{
     private Member member;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private final List<CartItem> cartItems = new ArrayList<>();
 
     @Builder

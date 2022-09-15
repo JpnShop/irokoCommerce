@@ -15,10 +15,12 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
@@ -52,7 +54,8 @@ public class ReviewService {
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND)));
     }
 
-    //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장
+    //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장, 로그인한 회원으로 멤버 저장
+    @Transactional
     public void insertReview(ReqReview reviewForm, Long productId) {
         reviewForm.setMember(memberRepository.findById(1L).orElseThrow(
         () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
@@ -62,6 +65,7 @@ public class ReviewService {
         reviewRepository.save(review);
     }
 
+    @Transactional
     public void updateReview(ReqReview reviewForm, Long reviewId) {
         Review review = reviewRepository.findById(reviewId).orElseThrow(
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND));
@@ -70,6 +74,7 @@ public class ReviewService {
         reviewRepository.save(review); //todo: 왜 save를 해야 수정이 반영되는지?
     }
 
+    @Transactional
     public void deleteReview(Long reviewId) {
         Review review = reviewRepository.findById(reviewId).orElseThrow(
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND));

@@ -4,12 +4,9 @@ import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
 import java.time.LocalDateTime;
-import lombok.Data;
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class ReqReview {
 
     private Long id;
@@ -29,5 +26,17 @@ public class ReqReview {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "ReqReview{" +
+            "id=" + id +
+            ", member=" + member +
+            ", product=" + product +
+            ", title='" + title + '\'' +
+            ", content='" + content + '\'' +
+            ", createdDate=" + createdDate +
+            '}';
     }
 }

@@ -3,12 +3,12 @@ package finalproject.jpnshop.web.dto;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
-import lombok.Data;
-
 import java.time.LocalDateTime;
+import lombok.Data;
 
 @Data
 public class ReqReview {
+
     private Long id;
     private Member member;
     private Product product;
@@ -16,7 +16,7 @@ public class ReqReview {
     private String content;
     private LocalDateTime createdDate;
 
-    public Review toEntity(){
+    public Review toEntity() {
         return new Review(null, member, product, title, content, createdDate);
     }
 }

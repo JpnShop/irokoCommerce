@@ -2,17 +2,21 @@ package finalproject.jpnshop.biz.domain;
 
 import finalproject.jpnshop.biz.domain.properties.Coupon;
 import finalproject.jpnshop.biz.domain.properties.PayMethod;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payment extends BaseTime{
+public class Payment extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

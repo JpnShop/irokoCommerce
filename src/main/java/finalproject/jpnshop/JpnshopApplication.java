@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JpnshopApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JpnshopApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(JpnshopApplication.class, args);
+    }
 
 }

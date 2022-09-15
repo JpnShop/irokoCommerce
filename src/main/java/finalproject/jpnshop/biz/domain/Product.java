@@ -1,22 +1,28 @@
 package finalproject.jpnshop.biz.domain;
 
+import static javax.persistence.CascadeType.ALL;
+
 import finalproject.jpnshop.biz.domain.properties.Brand;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product extends BaseTime{
+public class Product extends BaseTime {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -33,32 +39,32 @@ public class Product extends BaseTime{
 
     private String category;
 
-    @OneToMany(mappedBy = "product",cascade = ALL)
+    @OneToMany(mappedBy = "product", cascade = ALL)
     private List<CartItem> cartItems = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product",cascade = ALL)
+    @OneToMany(mappedBy = "product", cascade = ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product",cascade = ALL)
+    @OneToMany(mappedBy = "product", cascade = ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    public void addCartItem(CartItem cartItem){
+    public void addCartItem(CartItem cartItem) {
         this.cartItems.add(cartItem);
-        if(cartItem.getProduct()!=this){
+        if (cartItem.getProduct() != this) {
             cartItem.setProduct(this);
         }
     }
 
-    public void addFavoriteItem(FavoriteItem favoriteItem){
+    public void addFavoriteItem(FavoriteItem favoriteItem) {
         this.favoriteItems.add(favoriteItem);
-        if(favoriteItem.getProduct()!=this){
+        if (favoriteItem.getProduct() != this) {
             favoriteItem.setProduct(this);
         }
     }
 
-    public void addOrderItem(OrderItem orderItem){
+    public void addOrderItem(OrderItem orderItem) {
         this.orderItems.add(orderItem);
-        if(orderItem.getProduct()!=this){
+        if (orderItem.getProduct() != this) {
             orderItem.setProduct(this);
         }
     }

@@ -1,8 +1,7 @@
 package finalproject.jpnshop.biz.domain;
 
-import lombok.Getter;
-
 import javax.persistence.Embeddable;
+import lombok.Getter;
 
 @Embeddable
 @Getter

@@ -3,12 +3,11 @@ package finalproject.jpnshop.web.dto;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 public class ResReview {
 
@@ -17,6 +16,7 @@ public class ResReview {
     @NoArgsConstructor
     @Builder
     public static class Response {
+
         private Member member;
         private Product product;
         private String title;
@@ -25,12 +25,12 @@ public class ResReview {
 
         public static Response of(Review review) {
             return Response.builder()
-                    .member(review.getMember())
-                    .product(review.getProduct())
-                    .title(review.getTitle())
-                    .content(review.getContent())
-                    .createdDate(review.getCreatedDate())
-                    .build();
+                .member(review.getMember())
+                .product(review.getProduct())
+                .title(review.getTitle())
+                .content(review.getContent())
+                .createdDate(review.getCreatedDate())
+                .build();
         }
     }
 }

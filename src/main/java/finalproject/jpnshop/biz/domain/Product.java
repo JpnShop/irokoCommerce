@@ -13,14 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Product extends BaseTime {
 
     @Id
@@ -38,15 +34,28 @@ public class Product extends BaseTime {
     private int count;
 
     private String category;
-
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<CartItem> cartItems = new ArrayList<>();
-
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
-
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    protected Product() {
+    }
+
+    public Product(Long id, String productName, int price, Brand brand, int count, String category,
+        List<CartItem> cartItems, List<FavoriteItem> favoriteItems, List<OrderItem> orderItems) {
+        this.id = id;
+        this.productName = productName;
+        this.price = price;
+        this.brand = brand;
+        this.count = count;
+        this.category = category;
+        this.cartItems = cartItems;
+        this.favoriteItems = favoriteItems;
+        this.orderItems = orderItems;
+    }
 
     public void addCartItem(CartItem cartItem) {
         this.cartItems.add(cartItem);

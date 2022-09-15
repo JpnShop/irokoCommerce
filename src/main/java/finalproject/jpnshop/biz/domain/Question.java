@@ -9,15 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 //TODO
 @Entity
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Question {
 
     @Id
@@ -40,4 +36,16 @@ public class Question {
 
     private LocalDateTime createdDate;
 
+    protected Question() {
+    }
+
+    public Question(Long id, Member member, Product product, String title, String content,
+        LocalDateTime createdDate) {
+        this.id = id;
+        this.member = member;
+        this.product = product;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+    }
 }

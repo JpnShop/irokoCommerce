@@ -23,7 +23,6 @@ public class ReviewService {
     private final MemberRepository memberRepository;
 
 
-    //리뷰 전체조회
     public List<ResReview.Response> getReviews() {
         List<Review> reviews = reviewRepository.findAll();
         List<ResReview.Response> responseList = new ArrayList<>();
@@ -33,7 +32,6 @@ public class ReviewService {
         return responseList;
     }
 
-    //상품별 리뷰 조회
     public Review getReviewByProduct(Long productId) {
         Product product = productRepository.findById(productId).orElse(null);
         return reviewRepository.findByProduct(product);

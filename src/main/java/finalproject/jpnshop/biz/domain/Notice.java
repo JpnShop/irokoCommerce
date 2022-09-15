@@ -8,11 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 //TODO
 @Entity
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Notice {
 
     @Id
@@ -30,14 +34,18 @@ public class Notice {
 
     private LocalDateTime createdDate;
 
-    protected Notice() {
-    }
-
-    public Notice(Long id, Member member, String title, String content, LocalDateTime createdDate) {
-        this.id = id;
+    public Notice(Member member, String title, String content, LocalDateTime createdDate) {
         this.member = member;
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

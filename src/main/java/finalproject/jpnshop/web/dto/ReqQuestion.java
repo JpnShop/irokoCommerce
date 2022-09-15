@@ -2,12 +2,13 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
+import finalproject.jpnshop.biz.domain.Question;
 import finalproject.jpnshop.biz.domain.Review;
 import java.time.LocalDateTime;
 import lombok.Getter;
 
 @Getter
-public class ReqReview {
+public class ReqQuestion {
 
     private Long id;
     private Member member;
@@ -16,8 +17,10 @@ public class ReqReview {
     private String content;
     private LocalDateTime createdDate;
 
-    public Review toEntity() {
-        return new Review(member, product, title, content, createdDate);
+    private String answer;
+
+    public Question toEntity() {
+        return new Question(member, product, title, content, createdDate);
     }
 
     public void setMember(Member member) {
@@ -28,15 +31,20 @@ public class ReqReview {
         this.product = product;
     }
 
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
     @Override
     public String toString() {
-        return "ReqReview{" +
+        return "ReqQuestion{" +
             "id=" + id +
             ", member=" + member +
             ", product=" + product +
             ", title='" + title + '\'' +
             ", content='" + content + '\'' +
             ", createdDate=" + createdDate +
+            ", answer='" + answer + '\'' +
             '}';
     }
 }

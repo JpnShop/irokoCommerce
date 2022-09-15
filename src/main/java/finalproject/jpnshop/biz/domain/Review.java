@@ -9,7 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 //TODO
 @Entity
@@ -20,28 +23,38 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
     private String title;
+
     @Lob
     private String content;
+
     private LocalDateTime createdDate;
 
-    protected Review() {
-    }
-
-    public Review(Long id, Member member, Product product, String title, String content,
-        LocalDateTime createdDate) {
-        this.id = id;
-        this.member = member;
-        this.product = product;
+    public void setTitle(String title) {
         this.title = title;
-        this.content = content;
-        this.createdDate = createdDate;
     }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Review() {
+    }
+
+    public Review(Member member, Product product, String title, String content, LocalDateTime createdDate) {
+        this.member=member;
+        this.product=product;
+        this.title=title;
+        this.content=content;
+        this.createdDate=createdDate;
+    }
 }

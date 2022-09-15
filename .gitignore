@@ -150,3 +150,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### my ignore ###
+src/main/resources/application.yml

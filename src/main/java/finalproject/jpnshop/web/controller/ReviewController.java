@@ -1,9 +1,9 @@
 package finalproject.jpnshop.web.controller;
 
-import finalproject.jpnshop.biz.domain.Review;
 import finalproject.jpnshop.biz.service.ReviewService;
 import finalproject.jpnshop.web.dto.ReqReview;
 import finalproject.jpnshop.web.dto.ResReview;
+import finalproject.jpnshop.web.dto.ResReview.Response;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,13 +26,13 @@ public class ReviewController {
     }
 
     @GetMapping("/customers/reviews/{reviewId}")
-    public Review getReview(@PathVariable long reviewId) {
+    public Response getReview(@PathVariable long reviewId) {
         return reviewService.getReview(reviewId);
     }
 
     //todo : ProductController로 기능 이동 필요
     @GetMapping("/products/{productId}/reviews")
-    public Review getReviewByProduct(@PathVariable long productId) {
+    public ResReview.Response getReviewByProduct(@PathVariable long productId) {
         return reviewService.getReviewByProduct(productId);
     }
 
@@ -40,7 +40,7 @@ public class ReviewController {
     public String insertReview(@RequestBody ReqReview review,
         @PathVariable Long productId) {
         reviewService.insertReview(review, productId);
-        return "success";
+        return "리뷰가 등록되었습니다.";
     }
 
     @PutMapping("/customers/reviews")

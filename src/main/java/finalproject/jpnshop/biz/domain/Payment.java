@@ -8,14 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Payment extends BaseTime {
 
     @Id
@@ -26,9 +22,18 @@ public class Payment extends BaseTime {
     private Coupon coupon;
 
     private PayMethod payMethod;
-
     //TODO
     @OneToOne
     private Order order;
+
+    protected Payment() {
+    }
+
+    public Payment(Long id, Coupon coupon, PayMethod payMethod, Order order) {
+        this.id = id;
+        this.coupon = coupon;
+        this.payMethod = payMethod;
+        this.order = order;
+    }
 
 }

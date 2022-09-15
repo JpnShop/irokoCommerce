@@ -9,14 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class OrderItem extends BaseTime {
 
     @Id
@@ -25,13 +21,21 @@ public class OrderItem extends BaseTime {
     private Long id;
 
     private int count;
-
     @ManyToOne
     private Order order;
-
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
+
+    protected OrderItem() {
+    }
+
+    protected OrderItem(Long id, int count, Order order, Product product) {
+        this.id = id;
+        this.count = count;
+        this.order = order;
+        this.product = product;
+    }
 
     public void setOrder(Order order) {
         if (this.order != null) {

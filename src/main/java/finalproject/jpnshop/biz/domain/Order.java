@@ -1,7 +1,7 @@
 package finalproject.jpnshop.biz.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import finalproject.jpnshop.biz.domain.properties.Status;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -16,15 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "orders")
 public class Order extends BaseTime {
 
@@ -32,18 +28,23 @@ public class Order extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Long id;
-
     @Enumerated(EnumType.STRING)
     private Status status;
-
-    private LocalDateTime applyDate;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private final List<OrderItem> orderItems = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private final List<OrderItem> orderItems = new ArrayList<>();
+
+    protected Order() {
+    }
+
+    public Order(Long id, Status status, Member member) {
+        this.id = id;
+        this.status = status;
+        this.member = member;
+    }
 
     @Builder
     public Order(Member member) {

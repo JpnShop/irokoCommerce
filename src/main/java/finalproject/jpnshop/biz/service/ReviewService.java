@@ -35,10 +35,15 @@ public class ReviewService {
         return responseList;
     }
 
-    public ResReview.Response getReviewByProduct(Long productId) {
+    public List<ResReview.Response>  getReviewByProduct(Long productId) {
         Product product = productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
-        return Response.of(reviewRepository.findByProduct(product));
+        List<Review> reviewList = reviewRepository.findAllByProduct(product);
+        List<ResReview.Response> responseList = new ArrayList<>();
+        for (Review review : reviewList) {
+            responseList.add(ResReview.Response.of(review));
+        }
+        return responseList;
     }
 
 

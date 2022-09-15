@@ -32,7 +32,7 @@ public class ReviewController {
 
     //todo : ProductController로 기능 이동 필요
     @GetMapping("/products/{productId}/reviews")
-    public ResReview.Response getReviewByProduct(@PathVariable long productId) {
+    public List<ResReview.Response> getReviewByProduct(@PathVariable long productId) {
         return reviewService.getReviewByProduct(productId);
     }
 

@@ -2,6 +2,7 @@ package finalproject.jpnshop.web.controller;
 
 import finalproject.jpnshop.biz.domain.Review;
 import finalproject.jpnshop.biz.service.ReviewService;
+import finalproject.jpnshop.web.dto.ReqReview;
 import finalproject.jpnshop.web.dto.ResReview;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -34,11 +35,12 @@ public class ReviewController {
     }
 
     //리뷰 등록
-    @PostMapping("/customers/reviews")
-    public String insertReview(){
-        return "";
+    @PostMapping(value="/customers/reviews/{productId}")
+    public String insertReview(@RequestBody ReqReview review,
+                               @PathVariable Long productId){
+        reviewService.insertReview(review, productId);
+        return "success";
     }
-
     //리뷰 수정
     @PutMapping("/customers/reviews")
     public String updateReview(){

@@ -2,6 +2,7 @@ package finalproject.jpnshop.biz.service;
 
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
+import finalproject.jpnshop.biz.exception.NoMemberException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.biz.repository.ReviewRepository;
@@ -45,7 +46,9 @@ public class ReviewService {
 
     //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장
     public void insertReview(ReqReview reviewForm, Long productId) {
-        reviewForm.setMember(memberRepository.findById(1L).orElseThrow(RuntimeException::new));
+        reviewForm.setMember(memberRepository.findById(1L).orElseThrow(
+            () -> new NoMemberException("해당하는 멤버가 없습니다.")
+        ));
         reviewForm.setProduct(productRepository.findById(productId).orElseThrow(RuntimeException::new));
         Review review = reviewForm.toEntity();
         reviewRepository.save(review);

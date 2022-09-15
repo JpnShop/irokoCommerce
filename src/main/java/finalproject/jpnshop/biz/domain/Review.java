@@ -50,6 +50,11 @@ public class Review {
     public Review() {
     }
 
-    public Review(Object o, Member member, Product product, String title, String content, LocalDateTime createdDate) {
+    public Review(Member member, Product product, String title, String content, LocalDateTime createdDate) {
+        this.member=member;
+        this.product=product;
+        this.title=title;
+        this.content=content;
+        this.createdDate=createdDate;
     }
 }

@@ -6,8 +6,10 @@ import finalproject.jpnshop.biz.domain.Review;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class ReqReview {
 
     private Long id;
@@ -18,7 +20,7 @@ public class ReqReview {
     private LocalDateTime createdDate;
 
     public Review toEntity() {
-        return new Review(null, member, product, title, content, createdDate);
+        return new Review(member, product, title, content, createdDate);
     }
 
     public void setMember(Member member) {

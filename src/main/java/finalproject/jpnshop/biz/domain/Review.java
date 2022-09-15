@@ -10,14 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 //TODO
 @Entity
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Review {
 
     @Id
@@ -40,5 +39,17 @@ public class Review {
 
     private LocalDateTime createdDate;
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Review() {
+    }
+
+    public Review(Object o, Member member, Product product, String title, String content, LocalDateTime createdDate) {
+    }
 }

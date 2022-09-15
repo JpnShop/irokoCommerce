@@ -56,4 +56,17 @@ public class ReviewService {
         Review review = reviewForm.toEntity();
         reviewRepository.save(review);
     }
+
+    public void updateReview(ReqReview reviewForm, Long reviewId) {
+        Review review = reviewRepository.findById(reviewId).orElseThrow(
+            () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND));
+        review.setTitle(reviewForm.getTitle());
+        review.setContent(reviewForm.getContent());
+    }
+
+    public void deleteReview(Long reviewId) {
+        Review review = reviewRepository.findById(reviewId).orElseThrow(
+            () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND));
+        reviewRepository.delete(review);
+    }
 }

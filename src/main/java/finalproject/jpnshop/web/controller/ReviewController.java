@@ -43,15 +43,18 @@ public class ReviewController {
         return "리뷰가 등록되었습니다.";
     }
 
-    @PutMapping("/customers/reviews")
-    public String updateReview() {
-        return "";
+    @PutMapping("/customers/reviews/{reviewId}")
+    public String updateReview(@RequestBody ReqReview review,
+        @PathVariable Long reviewId) {
+        reviewService.updateReview(review,reviewId);
+        return "리뷰가 수정되었습니다.";
     }
 
 
-    @DeleteMapping("/customers/reviews")
-    public String deleteReview() {
-        return "";
+    @DeleteMapping("/customers/reviews/{reviewId}")
+    public String deleteReview(@PathVariable Long reviewId) {
+        reviewService.deleteReview(reviewId);
+        return "리뷰가 삭제되었습니다.";
     }
 
 }

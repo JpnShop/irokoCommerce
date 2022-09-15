@@ -4,7 +4,6 @@ import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
 import java.time.LocalDateTime;
-import lombok.Data;
 
 public class ReqReview {
 

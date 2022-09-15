@@ -38,6 +38,28 @@ public class Question {
     @Lob
     private String content;
 
+    @Lob
+    private String answer;
+
     private LocalDateTime createdDate;
 
+    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate) {
+        this.member=member;
+        this.product=product;
+        this.title=title;
+        this.content=content;
+        this.createdDate=createdDate;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 }

@@ -18,7 +18,7 @@ public class ResProduct {
         private String productName;
         private int price;
         private Brand brand;
-        private int count;
+        private int stock;
         private String category;
 
         public static Response of(Product product) {
@@ -26,7 +26,7 @@ public class ResProduct {
                 .productName(product.getProductName())
                 .price(product.getPrice())
                 .brand(product.getBrand())
-                .count(product.getCount())
+                .stock(product.getStock())
                 .category(product.getCategory())
                 .build();
         }

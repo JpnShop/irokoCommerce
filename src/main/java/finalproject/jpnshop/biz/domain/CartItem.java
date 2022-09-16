@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Getter;
 
 @Entity
@@ -30,12 +31,14 @@ public class CartItem extends BaseTime {
     protected CartItem() {
     }
 
+    @Builder
     public CartItem(Long id, int count, Cart cart, Product product) {
         this.id = id;
         this.count = count;
         this.cart = cart;
         this.product = product;
     }
+
 
     public void setCart(Cart cart) {
         if (this.cart != null) {
@@ -55,5 +58,9 @@ public class CartItem extends BaseTime {
         if (!this.product.getCartItems().contains(this)) {
             this.product.addCartItem(this);
         }
+    }
+
+    public void setCount(int num) {
+        this.count += num;
     }
 }

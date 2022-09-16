@@ -1,12 +1,7 @@
 package finalproject.jpnshop.web.dto;
 
-import finalproject.jpnshop.biz.domain.Member;
-import finalproject.jpnshop.biz.domain.Notice;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.properties.Brand;
-import java.time.LocalDateTime;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

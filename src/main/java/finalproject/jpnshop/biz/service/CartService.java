@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Getter
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class CartService {
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
@@ -41,7 +42,7 @@ public class CartService {
     }
 
     @Transactional
-    public ResProduct.Response insertCart(long memberId, long productId, int num) {
+    public void insertCart(long memberId, long productId, int num) {
         Member member = memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
         Cart cart = cartRepository.findByMember(Optional.ofNullable(member));
@@ -61,7 +62,7 @@ public class CartService {
         cart.addCartItem(cartItem);
         product.addCartItem(cartItem);
         cartItemRepository.save(cartItem);
-        return ResProduct.Response.of(product);
+        ResProduct.Response.of(product);
     }
     @Transactional
     public void deleteAllCart(long memberId) {

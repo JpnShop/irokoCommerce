@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Getter;
 
 @Entity
@@ -28,6 +29,7 @@ public class FavoriteItem extends BaseTime {
     protected FavoriteItem() {
     }
 
+    @Builder
     public FavoriteItem(Long id, Favorite favorite, Product product) {
         this.id = id;
         this.favorite = favorite;

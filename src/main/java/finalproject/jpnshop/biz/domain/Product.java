@@ -31,7 +31,7 @@ public class Product extends BaseTime {
     @Enumerated(EnumType.STRING)
     private Brand brand;
 
-    private int count;
+    private int stock;
 
     private String category;
     @OneToMany(mappedBy = "product", cascade = ALL)
@@ -44,13 +44,13 @@ public class Product extends BaseTime {
     protected Product() {
     }
 
-    public Product(Long id, String productName, int price, Brand brand, int count, String category,
+    public Product(Long id, String productName, int price, Brand brand, int stock, String category,
         List<CartItem> cartItems, List<FavoriteItem> favoriteItems, List<OrderItem> orderItems) {
         this.id = id;
         this.productName = productName;
         this.price = price;
         this.brand = brand;
-        this.count = count;
+        this.stock = stock;
         this.category = category;
         this.cartItems = cartItems;
         this.favoriteItems = favoriteItems;

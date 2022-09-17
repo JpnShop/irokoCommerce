@@ -1,6 +1,8 @@
 package finalproject.jpnshop.config;
 
 import finalproject.jpnshop.biz.repository.MemberRepository;
+import finalproject.jpnshop.config.auth.jwt.JwtAuthenticationFilter;
+import finalproject.jpnshop.config.auth.jwt.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +30,8 @@ public class SecurityConfig {
             .and()
             .formLogin().disable()
             .httpBasic().disable()
+            .apply(new MyCustomDsl())
+            .and()
             .authorizeRequests()
             .antMatchers("/api/v1/user/**")
             .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
@@ -40,5 +44,17 @@ public class SecurityConfig {
     return http.build();
     }
 
+    public class MyCustomDsl extends AbstractHttpConfigurer<MyCustomDsl, HttpSecurity> {
+
+        @Override
+        public void configure(HttpSecurity http) throws Exception {
+            AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
+            http
+                .addFilter(corsFilter)
+                .addFilter(new JwtAuthenticationFilter(authenticationManager))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager, memberRepository));
+
+        }
+    }
 
 }

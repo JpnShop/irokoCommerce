@@ -2,7 +2,10 @@ package finalproject.jpnshop.biz.domain;
 
 import finalproject.jpnshop.biz.domain.properties.Gender;
 import finalproject.jpnshop.biz.domain.properties.Role;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,14 +37,13 @@ public class Member extends BaseTime {
     //TODO
     private Date birthInfo;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private String role;
 
     protected Member() {
     }
 
     public Member(Long id, String username, String password, String email, Gender gender,
-        Date birthInfo, Role role) {
+        Date birthInfo, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -49,5 +51,12 @@ public class Member extends BaseTime {
         this.gender = gender;
         this.birthInfo = birthInfo;
         this.role = role;
+    }
+
+    public List<String> getRoleList() {
+        if(this.role.length() > 0) {
+            return Arrays.asList(this.role.split(","));
+        }
+        return new ArrayList<>();
     }
 }

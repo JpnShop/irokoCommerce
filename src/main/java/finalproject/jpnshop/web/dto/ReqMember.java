@@ -4,6 +4,7 @@ import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.properties.Gender;
 import java.util.Date;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 public class ReqMember {
@@ -17,6 +18,14 @@ public class ReqMember {
 
     public Member toEntity() {
         return new Member(id, username, password, email, gender, birthInfo, role);
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

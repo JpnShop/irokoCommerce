@@ -21,6 +21,13 @@ public class ReqMember {
 
     @Override
     public String toString() {
-        return "ReqMember{" + "id=" + id +", username= " + username + ", password= " + password + ", email= " + email + ", gender= " + gender + ", birthInfo= " + birthInfo + ", role= " + role + '}';
+        return "ReqMember{" +
+            "id=" + id +
+            ", username= " + username +
+            ", password= " + password +
+            ", email= " + email +
+            ", gender= " + gender +
+            ", birthInfo= " + birthInfo +
+            ", role= " + role + '}';
     }
 }

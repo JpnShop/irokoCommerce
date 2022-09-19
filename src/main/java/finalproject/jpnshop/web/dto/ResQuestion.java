@@ -1,5 +1,6 @@
 package finalproject.jpnshop.web.dto;
 
+import finalproject.jpnshop.biz.domain.Answer;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
@@ -22,7 +23,10 @@ public class ResQuestion {
         private Product product;
         private String title;
         private String content;
-        private String answer;
+        private Answer answer;
+        private String privateYn;
+        private String answerYn;
+        private String password;
         private LocalDateTime createdDate;
 
         public static Response of(Question question) {
@@ -32,6 +36,9 @@ public class ResQuestion {
                 .title(question.getTitle())
                 .content(question.getContent())
                 .answer(question.getAnswer())
+                .answerYn(question.getAnswerYn())
+                .privateYn(question.getPrivateYn())
+                .password(question.getPassword())
                 .createdDate(question.getCreatedDate())
                 .build();
         }

@@ -34,7 +34,6 @@ public class Order extends BaseTime {
     @JoinColumn(name = "member_id")
     private Member member;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    @JsonManagedReference
     private final List<OrderItem> orderItems = new ArrayList<>();
 
     protected Order() {

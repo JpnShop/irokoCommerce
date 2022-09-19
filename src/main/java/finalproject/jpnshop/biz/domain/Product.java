@@ -32,7 +32,7 @@ public class Product extends BaseTime {
 
     private String productName;
 
-    private String option;
+    private String productOption;
 
     private int price;
 

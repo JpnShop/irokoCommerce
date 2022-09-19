@@ -12,7 +12,8 @@ public enum ErrorCode {
     INTERNAL_SERVER_ERROR(500, "서버 에러가 발생했습니다. 고객센터로 문의 바랍니다."),
     NOTICE_NOT_FOUND(404, "공지글을 찾을 수 없습니다."),
     QUESTION_NOT_FOUND(404, "문의글을 찾을 수 없습니다."),
-    PRODUCT_EXIST(500, "이미 추가된 상품입니다." );
+    PRODUCT_EXIST(500, "이미 추가된 상품입니다." ),
+    ANSWER_NOT_FOUND(404, "답변을 찾을 수 없습니다." );
 
     private final int status;
     private final String msg;

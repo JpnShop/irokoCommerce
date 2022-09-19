@@ -10,9 +10,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://backserver.czw5l09fympo.ap-northeast-2.rds.amazonaws.com:3306/iroko?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/iroko?serverTimezone=Asia/Seoul
     username: root
-    password: root1234
+    password: joon1234
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -21,7 +21,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl

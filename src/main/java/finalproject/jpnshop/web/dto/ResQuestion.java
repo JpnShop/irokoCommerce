@@ -4,7 +4,6 @@ import finalproject.jpnshop.biz.domain.Answer;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
-import finalproject.jpnshop.biz.domain.Review;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,7 +35,7 @@ public class ResQuestion {
                 .title(question.getTitle())
                 .content(question.getContent())
                 .answer(question.getAnswer())
-                .answerYn(question.getAnswerYn())
+                .answerYn(question.getAnswerStatus())
                 .privateYn(question.getPrivateYn())
                 .password(question.getPassword())
                 .createdDate(question.getCreatedDate())

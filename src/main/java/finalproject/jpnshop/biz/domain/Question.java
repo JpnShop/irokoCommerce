@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 //TODO
 @Entity
@@ -38,17 +40,27 @@ public class Question {
     @Lob
     private String content;
 
-    @Lob
-    private String answer;
+    @OneToOne(mappedBy = "question")
+    private Answer answer;
 
+    @Column(name = "createdAt")
+    @CreatedDate
     private LocalDateTime createdDate;
 
-    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate) {
+    private String answerYn;
+    private String privateYn;
+
+    private String password;
+
+    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, String password) {
         this.member=member;
         this.product=product;
         this.title=title;
         this.content=content;
         this.createdDate=createdDate;
+        this.answerYn="미답변";
+        this.privateYn=privateYn;
+        this.password=password;
     }
 
     public void setTitle(String title) {
@@ -59,7 +71,7 @@ public class Question {
         this.content = content;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(Answer answer) {
         this.answer = answer;
     }
 }

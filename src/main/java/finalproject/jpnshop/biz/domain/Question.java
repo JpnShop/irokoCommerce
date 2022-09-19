@@ -40,14 +40,14 @@ public class Question {
     @Lob
     private String content;
 
-    @OneToOne(mappedBy = "question")
+    @OneToOne
     private Answer answer;
 
     @Column(name = "createdAt")
     @CreatedDate
     private LocalDateTime createdDate;
 
-    private String answerYn;
+    private String answerStatus;
     private String privateYn;
 
     private String password;
@@ -58,7 +58,7 @@ public class Question {
         this.title=title;
         this.content=content;
         this.createdDate=createdDate;
-        this.answerYn="미답변";
+        this.answerStatus ="미답변";
         this.privateYn=privateYn;
         this.password=password;
     }
@@ -73,5 +73,9 @@ public class Question {
 
     public void setAnswer(Answer answer) {
         this.answer = answer;
+    }
+
+    public void setAnswerStatus(String status) {
+        this.answerStatus =status;
     }
 }

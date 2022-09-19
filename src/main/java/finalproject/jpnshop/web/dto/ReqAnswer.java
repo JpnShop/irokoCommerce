@@ -5,6 +5,7 @@ import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
 import finalproject.jpnshop.biz.domain.Review;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.Getter;
 
@@ -15,10 +16,10 @@ public class ReqAnswer {
     private Member member;
     private Question question;
     private String content;
-    private LocalDateTime createdDate;
+    private LocalDate createdDate;
 
     public Answer toEntity() {
-        return new Answer(member, question, content, createdDate);
+        return new Answer(member, content, createdDate);
     }
 
     public void setMember(Member member) {

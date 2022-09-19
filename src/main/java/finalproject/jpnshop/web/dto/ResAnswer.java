@@ -2,10 +2,8 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Answer;
 import finalproject.jpnshop.biz.domain.Member;
-import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +18,6 @@ public class ResAnswer {
     public static class Response {
 
         private Member member;
-        private Question question;
         private String content;
         private LocalDate createdDate;
 
@@ -28,7 +25,6 @@ public class ResAnswer {
             return Response.builder()
                 .member(answer.getMember())
                 .content(answer.getContent())
-                .question(answer.getQuestion())
                 .createdDate(answer.getCreatedDate())
                 .build();
         }

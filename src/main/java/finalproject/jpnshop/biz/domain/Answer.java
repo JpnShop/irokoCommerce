@@ -25,9 +25,6 @@ public class Answer {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToOne
-    private Question question;
-
     @Lob
     private String content;
 
@@ -35,11 +32,25 @@ public class Answer {
     @CreatedDate
     private LocalDate createdDate;
 
-    public Answer(Member member, Question question, String content, LocalDateTime createdDate) {
+    public Answer(Member member, String content, LocalDate createdDate) {
+        this.member=member;
+        this.content=content;
+        this.createdDate=createdDate;
+
     }
 
     public Answer() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+            "id=" + id +
+            ", member=" + member +
+            ", content='" + content + '\'' +
+            ", createdDate=" + createdDate +
+            '}';
     }
 
     public void setContent(String content) {

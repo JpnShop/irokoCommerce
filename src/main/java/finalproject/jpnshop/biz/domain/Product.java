@@ -3,6 +3,7 @@ package finalproject.jpnshop.biz.domain;
 import static javax.persistence.CascadeType.ALL;
 
 import finalproject.jpnshop.biz.domain.properties.Brand;
+import finalproject.jpnshop.biz.domain.properties.Status;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ public class Product extends BaseTime {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private Enum sellStatus;
+    private Status sellStatus;
 
     private String summary;
 

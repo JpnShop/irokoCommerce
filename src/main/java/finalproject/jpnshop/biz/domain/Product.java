@@ -24,9 +24,18 @@ public class Product extends BaseTime {
     @Column(name = "product_id")
     private Long id;
 
+    @Enumerated(EnumType.STRING)
+    private Enum sellStatus;
+
+    private String summary;
+
     private String productName;
 
+    private String option;
+
     private int price;
+
+    private int point;
 
     @Enumerated(EnumType.STRING)
     private Brand brand;
@@ -34,6 +43,15 @@ public class Product extends BaseTime {
     private int stock;
 
     private String category;
+
+    private String detailImage;
+
+    private String listImage;
+
+    private String smallListImage;
+
+    private String iconImage;
+
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<CartItem> cartItems = new ArrayList<>();
     @OneToMany(mappedBy = "product", cascade = ALL)

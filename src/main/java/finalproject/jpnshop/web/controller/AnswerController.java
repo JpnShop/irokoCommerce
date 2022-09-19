@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/customers/questions/answer")
+@RequestMapping("/customers/questions/answers")
 public class AnswerController {
     private final AnswerService answerService;
 
@@ -32,7 +32,7 @@ public class AnswerController {
         return answerService.getAnswer(id);
     }
 
-    @PostMapping("/product_id={id}")
+    @PostMapping("/question_id={id}")
     public String insertAnswer(@RequestBody ReqAnswer answerForm,
         @PathVariable long id){
         answerService.insertAnswer(answerForm,id);

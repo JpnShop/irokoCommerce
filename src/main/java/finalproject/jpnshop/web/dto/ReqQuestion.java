@@ -1,5 +1,6 @@
 package finalproject.jpnshop.web.dto;
 
+import finalproject.jpnshop.biz.domain.Answer;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
@@ -17,10 +18,14 @@ public class ReqQuestion {
     private String content;
     private LocalDateTime createdDate;
 
-    private String answer;
+    private String answerYn;
+    private String privateYn;
+    private Answer answer;
+
+    private String password;
 
     public Question toEntity() {
-        return new Question(member, product, title, content, createdDate);
+        return new Question(member, product, title, content, createdDate, privateYn, password);
     }
 
     public void setMember(Member member) {
@@ -31,9 +36,10 @@ public class ReqQuestion {
         this.product = product;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(Answer answer) {
         this.answer = answer;
     }
+
 
     @Override
     public String toString() {
@@ -44,7 +50,10 @@ public class ReqQuestion {
             ", title='" + title + '\'' +
             ", content='" + content + '\'' +
             ", createdDate=" + createdDate +
-            ", answer='" + answer + '\'' +
+            ", answerYn='" + answerYn + '\'' +
+            ", privateYn='" + privateYn + '\'' +
+            ", answer=" + answer +
+            ", password='" + password + '\'' +
             '}';
     }
 }

@@ -13,10 +13,10 @@ cache:
 
 script: "./gradlew clean build"
 
-#before_deploy:
-#  - zip -r irokocommerce *
-#  - mkdir -p deploy
-#  - mv irokocommerce.zip deploy/irokocommerce.zip
+before_deploy:
+  - zip -r irokocommerce *
+  - mkdir -p deploy
+  - mv irokocommerce.zip deploy/irokocommerce.zip
 
 #deploy:
 #  - provider: s3

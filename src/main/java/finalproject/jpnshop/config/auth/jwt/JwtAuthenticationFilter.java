@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.config.auth.PrincipalDetails;
+import finalproject.jpnshop.web.dto.LoginRequestDto;
 import java.io.IOException;
 import java.util.Date;
 import javax.servlet.FilterChain;
@@ -26,21 +27,21 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request,
         HttpServletResponse response) throws AuthenticationException {
 
-        try {
             ObjectMapper om = new ObjectMapper();
-            Member member = om.readValue(request.getInputStream(), Member.class);
+        LoginRequestDto loginRequestDto = null;
 
-            UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(member.getUsername(), member.getPassword());
-
-            Authentication authentication = authenticationManager.authenticate(authenticationToken);
-            PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-
-            return authentication;
+        try {
+            loginRequestDto = om.readValue(request.getInputStream(), LoginRequestDto.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
+        UsernamePasswordAuthenticationToken authenticationToken =
+            new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(), loginRequestDto.getPassword());
+
+        Authentication authentication = authenticationManager.authenticate(authenticationToken);
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        return authentication;
     }
 
     @Override

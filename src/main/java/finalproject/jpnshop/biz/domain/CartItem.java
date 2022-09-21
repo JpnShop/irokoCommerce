@@ -60,7 +60,20 @@ public class CartItem extends BaseTime {
         }
     }
 
-    public void setCount(int num) {
+    public void addCount(int num) {
         this.count += num;
+    }
+
+    public void setCount(int num){
+        this.count = num;
+    }
+    @Override
+    public String toString() {
+        return "CartItem{" +
+            "id=" + id +
+            ", count=" + count +
+            ", cart=" + cart +
+            ", product=" + product +
+            '}';
     }
 }

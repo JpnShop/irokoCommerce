@@ -97,4 +97,26 @@ public class Product extends BaseTime {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+            "id=" + id +
+            ", sellStatus=" + sellStatus +
+            ", summary='" + summary + '\'' +
+            ", productName='" + productName + '\'' +
+            ", productOption='" + productOption + '\'' +
+            ", price=" + price +
+            ", point=" + point +
+            ", brand=" + brand +
+            ", stock=" + stock +
+            ", category='" + category + '\'' +
+            ", detailImage='" + detailImage + '\'' +
+            ", listImage='" + listImage + '\'' +
+            ", smallListImage='" + smallListImage + '\'' +
+            ", iconImage='" + iconImage + '\'' +
+//            ", cartItems=" + cartItems +
+//            ", favoriteItems=" + favoriteItems +
+//            ", orderItems=" + orderItems +
+            '}';
+    }
 }

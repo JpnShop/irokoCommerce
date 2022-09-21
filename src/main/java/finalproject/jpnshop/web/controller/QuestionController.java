@@ -4,6 +4,7 @@ import finalproject.jpnshop.biz.service.QuestionService;
 import finalproject.jpnshop.web.dto.ReqQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion.Response;
 import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,16 @@ public class QuestionController {
         return questionService.getQuestionsByProduct(productId);
     }
 
+    @GetMapping("/my")
+    public List<Response> getQuestionsByMember(@RequestBody Map<String,Long> map){
+        long memberId = map.get("member_id");
+        return questionService.getQuestionsByMember(memberId);
+    }
+
     @GetMapping("/{id}")
-    public Response getQuestion(@PathVariable long id){
-        return questionService.getQuestion(id);
+    public Response getQuestion(@PathVariable long id, @RequestBody Map<String,Integer> map){
+        int password = map.get("password");
+        return questionService.getQuestion(id,password);
     }
 
     @PostMapping("/product_id={id}")

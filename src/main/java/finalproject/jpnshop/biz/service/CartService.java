@@ -10,12 +10,13 @@ import finalproject.jpnshop.biz.repository.CartItemRepository;
 import finalproject.jpnshop.biz.repository.CartRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
-import finalproject.jpnshop.web.dto.ResProduct;
+import finalproject.jpnshop.web.dto.ResCartItem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,64 +24,77 @@ import org.springframework.transaction.annotation.Transactional;
 @Getter
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 public class CartService {
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
     private final MemberRepository memberRepository;
     private final ProductRepository productRepository;
 
-    public List<ResProduct.Response> getCarts(long memberId) {
-        Member member = memberRepository.findById(memberId).orElseThrow(
-            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
-        Cart cart = cartRepository.findByMember(Optional.ofNullable(member));
+    public List<ResCartItem.Response> getCarts(long memberId) {
+        Cart cart = getCart(memberId);
         List<CartItem> cartItems = cartItemRepository.findAllByCart(cart);
-        List<ResProduct.Response> cartItemList = new ArrayList<>();
+        List<ResCartItem.Response> cartItemList = new ArrayList<>();
         for (CartItem cartItem : cartItems){
-            cartItemList.add(ResProduct.Response.of(cartItem.getProduct()));
+            cartItemList.add(ResCartItem.Response.of(cartItem));
         }
         return cartItemList;
     }
 
     @Transactional
     public void insertCart(long memberId, long productId, int num) {
-        Member member = memberRepository.findById(memberId).orElseThrow(
-            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
-        Cart cart = cartRepository.findByMember(Optional.ofNullable(member));
-        Product product = productRepository.findById(productId).orElseThrow(
-            () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
+        Cart cart = getCart(memberId);
+        Product product = getProduct(productId);
+
         CartItem cartItem = CartItem.builder()
             .cart(cart)
             .product(product)
             .count(num)
             .build();
-        cart.getCartItems().forEach(cartItem1 -> {
-            if(cartItem1.getProduct().equals(product)){
-                cartItem.setCount(cartItem1.getCount());
-            }
-        });
 
+        for(int i=0; i<cart.getCartItems().size(); i++){
+            CartItem target = cart.getCartItems().get(i);
+            if(cartItem.getProduct().equals(target.getProduct())){
+                target.addCount(cartItem.getCount());
+                return;
+            }
+        }
         cart.addCartItem(cartItem);
         product.addCartItem(cartItem);
         cartItemRepository.save(cartItem);
-        ResProduct.Response.of(product);
     }
+
+
+    @Transactional
+    public void updateCount(long memberId, long productId, int num){
+        Cart cart = getCart(memberId);
+        Product product = getProduct(productId);
+        CartItem cartItem = cartItemRepository.findByProductAndCart(product, cart);
+        cartItem.setCount(num);
+    }
+
     @Transactional
     public void deleteAllCart(long memberId) {
-        Member member = memberRepository.findById(memberId).orElseThrow(
-            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
-        Cart cart = cartRepository.findByMember(Optional.ofNullable(member));
+        Cart cart = getCart(memberId);
         cartItemRepository.deleteAllByCart(cart);
     }
 
     @Transactional
     public void deleteCartItem(long memberId, long productId) {
-        Member member = memberRepository.findById(memberId).orElseThrow(
-            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
-        Cart cart = cartRepository.findByMember(Optional.ofNullable(member));
-        Product product = productRepository.findById(productId).orElseThrow(
-            () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
-        List<CartItem> cartItems = cartItemRepository.findAllByProductAndCart(product,cart);
-        cartItemRepository.deleteAll(cartItems);
+        Cart cart = getCart(memberId);
+        Product product = getProduct(productId);
+        CartItem cartItems = cartItemRepository.findByProductAndCart(product,cart);
+        cartItemRepository.delete(cartItems);
     }
 
+    private Cart getCart(long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        return cartRepository.findByMember(Optional.ofNullable(member));
+    }
+
+    private Product getProduct(long productId) {
+        return productRepository.findById(productId).orElseThrow(
+            () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
+    }
 }

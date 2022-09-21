@@ -1,6 +1,5 @@
 package finalproject.jpnshop.biz.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -49,4 +48,12 @@ public class Cart extends BaseTime {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Cart{" +
+            "id=" + id +
+            ", member=" + member +
+            ", cartItems=" + cartItems +
+            '}';
+    }
 }

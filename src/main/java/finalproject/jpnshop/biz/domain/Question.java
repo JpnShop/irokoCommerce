@@ -50,9 +50,9 @@ public class Question {
     private String answerStatus;
     private String privateYn;
 
-    private String password;
+    private int password;
 
-    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, String password) {
+    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, int password) {
         this.member=member;
         this.product=product;
         this.title=title;
@@ -62,6 +62,7 @@ public class Question {
         this.privateYn=privateYn;
         this.password=password;
     }
+
 
     public void setTitle(String title) {
         this.title = title;

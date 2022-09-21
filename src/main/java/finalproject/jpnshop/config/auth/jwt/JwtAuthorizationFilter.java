@@ -30,21 +30,21 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         String jwtHeader = request.getHeader(JwtProperties.HEADER_STRING);
 
-        if(jwtHeader == null || !jwtHeader.startsWith("Bearer")) {
+        if(jwtHeader == null || !jwtHeader.startsWith(JwtProperties.TOKEN_PREFIX)) {
             chain.doFilter(request,response);
             return;
         }
 
-        String jwtToken = request.getHeader(JwtProperties.HEADER_STRING).replace(JwtProperties.TOKEN_PREFIX, "");
+        String token = request.getHeader(JwtProperties.HEADER_STRING).replace(JwtProperties.TOKEN_PREFIX, "");
 
-        String username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken).getClaim("username").asString();
+        String username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(token).getClaim("username").asString();
 
         if(username != null) {
-            Member memberEntity = memberRepository.findByUsername(username);
+            Member member = memberRepository.findByUsername(username);
 
-            PrincipalDetails principalDetails = new PrincipalDetails(memberEntity);
+            PrincipalDetails principalDetails = new PrincipalDetails(member);
 
-            Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails,
+            Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails,null,
                 principalDetails.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -25,7 +25,7 @@ public class ResQuestion {
         private Answer answer;
         private String privateYn;
         private String answerYn;
-        private String password;
+        private int password;
         private LocalDateTime createdDate;
 
         public static Response of(Question question) {

@@ -22,7 +22,7 @@ public class ReqQuestion {
     private String privateYn;
     private Answer answer;
 
-    private String password;
+    private int password;
 
     public Question toEntity() {
         return new Question(member, product, title, content, createdDate, privateYn, password);

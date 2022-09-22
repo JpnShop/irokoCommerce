@@ -9,10 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class OrderItem extends BaseTime {
 
     @Id
@@ -20,22 +25,13 @@ public class OrderItem extends BaseTime {
     @Column(name = "order_item_id")
     private Long id;
 
-    private int count;
+    private int orderPrice;
+    private int orderCount;
     @ManyToOne
     private Order order;
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
-
-    protected OrderItem() {
-    }
-
-    protected OrderItem(Long id, int count, Order order, Product product) {
-        this.id = id;
-        this.count = count;
-        this.order = order;
-        this.product = product;
-    }
 
     public void setOrder(Order order) {
         if (this.order != null) {
@@ -55,5 +51,29 @@ public class OrderItem extends BaseTime {
         if (!this.product.getOrderItems().contains(this)) {
             this.product.addOrderItem(this);
         }
+    }
+
+    private void setOrderPrice(int orderPrice) {
+    }
+
+    private void setOrderCount(int orderCount) {
+    }
+
+    public static OrderItem createOrderItem(Product product, int orderPrice, int orderCount) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProduct(product);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setOrderCount(orderCount);
+
+        product.removeStock(orderCount);
+        return orderItem;
+    }
+
+    public void cancel() {
+        getProduct().addStock(orderCount);
+    }
+
+    public int getTotalPrice() {
+        return getOrderPrice() * getOrderCount();
     }
 }

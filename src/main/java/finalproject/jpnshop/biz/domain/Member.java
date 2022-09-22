@@ -44,11 +44,18 @@ public class Member extends BaseTime {
 
     private String role;
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public List<String> getRoleList() {
         if(this.role.length() > 0) {
             return Arrays.asList(this.role.split(","));
         }
         return new ArrayList<>();
     }
-
 }

@@ -30,6 +30,11 @@ public class ReviewController {
         return reviewService.getReview(reviewId);
     }
 
+    @GetMapping("/customers/reviews/my")
+    public List<ResReview.Response> getReviewsByMember(long memberId){
+        return reviewService.getReviewsByMember(memberId);
+
+    }
     //todo : ProductController로 기능 이동 필요
     @GetMapping("/products/{productId}/reviews")
     public List<ResReview.Response> getReviewByProduct(@PathVariable long productId) {

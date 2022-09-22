@@ -34,11 +34,11 @@ public class FavoriteService {
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
         Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
         List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByFavorite(favorite);
-        List<ResProduct.Response> cartItemList = new ArrayList<>();
+        List<ResProduct.Response> favoriteItemList = new ArrayList<>();
         for (FavoriteItem favoriteItem : favoriteItems){
-            cartItemList.add(ResProduct.Response.of(favoriteItem.getProduct()));
+            favoriteItemList.add(ResProduct.Response.of(favoriteItem.getProduct()));
         }
-        return cartItemList;
+        return favoriteItemList;
     }
 
     @Transactional

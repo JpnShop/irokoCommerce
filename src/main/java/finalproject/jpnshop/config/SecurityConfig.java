@@ -1,8 +1,9 @@
 package finalproject.jpnshop.config;
 
 import finalproject.jpnshop.biz.repository.MemberRepository;
-import finalproject.jpnshop.config.auth.jwt.JwtAuthenticationFilter;
-import finalproject.jpnshop.config.auth.jwt.JwtAuthorizationFilter;
+import finalproject.jpnshop.jwt.JwtAccessDeniedHandler;
+import finalproject.jpnshop.jwt.JwtAuthenticationEntryPoint;
+import finalproject.jpnshop.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,10 +12,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
@@ -24,19 +27,43 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig {
 
     private final MemberRepository memberRepository;
-    private final CorsFilter corsFilter;
+    private final TokenProvider tokenProvider;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+
+    private String[] swaggerList = {
+/* swagger v2 */
+        "/v2/api-docs",
+        "/v2/**",
+        "/swagger-resources",
+        "/swagger-resources/**",
+        "/configuration/ui",
+        "/configuration/security",
+        "/swagger-ui.html",
+        "/webjars/**",
+        /* swagger v3 */
+        "/v3/api-docs/**",
+        "/swagger-ui/**"
+    };
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http.csrf().disable();
         http
+            .exceptionHandling()
+            .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+            .accessDeniedHandler(jwtAccessDeniedHandler)
+            .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .formLogin().disable()
-            .httpBasic().disable()
-            .apply(new MyCustomDsl())
-            .and()
             .authorizeRequests()
+            .antMatchers(swaggerList).permitAll()
             .antMatchers(HttpMethod.GET, "/members").hasRole("USER")
             .antMatchers(HttpMethod.PUT, "/members").hasRole("USER")
             .antMatchers("/mypage/**")
@@ -49,36 +76,21 @@ public class SecurityConfig {
             .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
             .antMatchers(HttpMethod.DELETE, "/customers/reviews/**")
             .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-
             .antMatchers(HttpMethod.POST, "/customers/questions/**").hasRole("USER")
             .antMatchers(HttpMethod.PUT, "/customers/questions/**").hasRole("USER")
             .antMatchers(HttpMethod.DELETE, "/customers/questions/**")
             .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-
             .antMatchers(HttpMethod.POST, "/customers/answers/**").hasRole("ADMIN")
             .antMatchers(HttpMethod.PUT, "/customers/answers/**").hasRole("ADMIN")
             .antMatchers(HttpMethod.DELETE, "/customers/answers/**").hasRole("ADMIN")
-
             .antMatchers("/favorites/**").access("hasRole('USER')")
+            .and()
+            .authorizeRequests()
+            .anyRequest().permitAll()
+            .and()
+            .apply(new JwtSecurityConfig(tokenProvider));
 
-            .antMatchers("/api/v1/admin/**")
-            .access("hasRole('ROLE_ADMIN')")
-            .anyRequest().permitAll();
-
-    return http.build();
-    }
-
-    public class MyCustomDsl extends AbstractHttpConfigurer<MyCustomDsl, HttpSecurity> {
-
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
-            http
-                .addFilter(corsFilter)
-                .addFilter(new JwtAuthenticationFilter(authenticationManager))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager, memberRepository));
-
-        }
+        return http.build();
     }
 
 }

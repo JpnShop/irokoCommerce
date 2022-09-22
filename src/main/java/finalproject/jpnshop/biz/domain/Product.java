@@ -62,6 +62,8 @@ public class Product extends BaseTime {
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
+    @OneToMany(mappedBy = "product", cascade = ALL)
+    private List<MagazineItem> magazineItems = new ArrayList<>();
 
     public void setProductName(String productName) {
     }
@@ -102,6 +104,13 @@ public class Product extends BaseTime {
         this.orderItems.add(orderItem);
         if (orderItem.getProduct() != this) {
             orderItem.setProduct(this);
+        }
+    }
+
+    public void addMagazineItem(MagazineItem magazineItem) {
+        this.magazineItems.add(magazineItem);
+        if (magazineItem.getProduct() != this) {
+            magazineItem.setProduct(this);
         }
     }
 

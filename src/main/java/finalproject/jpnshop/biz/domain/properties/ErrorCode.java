@@ -13,7 +13,11 @@ public enum ErrorCode {
     NOTICE_NOT_FOUND(404, "공지글을 찾을 수 없습니다."),
     QUESTION_NOT_FOUND(404, "문의글을 찾을 수 없습니다."),
     PRODUCT_EXIST(500, "이미 추가된 상품입니다." ),
-    ANSWER_NOT_FOUND(404, "답변을 찾을 수 없습니다." );
+    ANSWER_NOT_FOUND(404, "답변을 찾을 수 없습니다." ),
+    ORDER_NOT_FOUND(404, "주문 정보를 찾을 수 없습니다"),
+    DELIVERY_NOT_FOUND(404, "배송 정보를 찾을 수 없습니다"),
+    STOCK_EMPTY(500, "재고가 모두 소진 되었습니다."),
+    ORDER_COMP_ERROR(500, "배송이 완료된 상품은 취소할 수 없습니다." );
 
     private final int status;
     private final String msg;

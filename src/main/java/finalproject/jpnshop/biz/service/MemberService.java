@@ -23,7 +23,7 @@ public class MemberService {
 
     @Transactional
     public void updateMember(ReqMember memberForm) {
-        Member member = memberRepository.findById(memberForm.getId()).orElseThrow(
+        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow(
             ()-> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
         member.setPassword(bCryptPasswordEncoder.encode(memberForm.getPassword()));
         member.setEmail(memberForm.getEmail());
@@ -45,4 +45,3 @@ public class MemberService {
 
 
 }
-

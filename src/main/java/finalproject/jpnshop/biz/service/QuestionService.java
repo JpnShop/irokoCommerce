@@ -1,16 +1,13 @@
 package finalproject.jpnshop.biz.service;
 
-import finalproject.jpnshop.biz.domain.Notice;
+import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
-import finalproject.jpnshop.biz.domain.Review;
 import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
-import finalproject.jpnshop.biz.repository.NoticeRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.biz.repository.QuestionRepository;
-import finalproject.jpnshop.web.dto.ReqNotice;
 import finalproject.jpnshop.web.dto.ReqQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion.Response;
@@ -53,13 +50,30 @@ public class QuestionService {
         return questionList;
     }
 
-    public ResQuestion.Response getQuestion(long questionId){
-        return Response.of(questionRepository.findById(questionId).orElseThrow(
-            () -> new CustomException(ErrorCode.QUESTION_NOT_FOUND)));
+    public List<ResQuestion.Response> getQuestionsByMember(Long memberId){
+        Member member = memberRepository.findById(memberId).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        List<Question> questions = questionRepository.findAllByMember(member);
+        List<ResQuestion.Response> questionList = new ArrayList<>();
+        for (Question question : questions){
+            questionList.add(ResQuestion.Response.of(question));
+        }
+        return questionList;
+    }
+    public ResQuestion.Response getQuestion(long questionId, int password){
+        Question question = questionRepository.findById(questionId).orElseThrow(
+            () -> new CustomException(ErrorCode.QUESTION_NOT_FOUND));
+        if(question.getPrivateYn().equals("비공개") && question.getPassword()!=password){
+            throw new CustomException(ErrorCode.PASSWORD_NOT_CORRECT);
+        }
+        return Response.of(question);
     }
 
     @Transactional
     public void insertQuestion(ReqQuestion questionForm, Long productId){
+        if(questionForm.getPrivateYn().equals("비공개") && questionForm.getPassword()==0){
+        throw new CustomException(ErrorCode.PASSWORD_NOT_FOUND);
+    }
         questionForm.setMember(memberRepository.findById(1L).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         questionForm.setProduct(productRepository.findById(productId).orElseThrow(

@@ -1,8 +1,9 @@
 package finalproject.jpnshop.config;
 
 import finalproject.jpnshop.biz.repository.MemberRepository;
-import finalproject.jpnshop.config.auth.jwt.JwtAuthenticationFilter;
-import finalproject.jpnshop.config.auth.jwt.JwtAuthorizationFilter;
+import finalproject.jpnshop.jwt.JwtAccessDeniedHandler;
+import finalproject.jpnshop.jwt.JwtAuthenticationEntryPoint;
+import finalproject.jpnshop.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +14,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
@@ -24,17 +26,24 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig {
 
     private final MemberRepository memberRepository;
-    private final CorsFilter corsFilter;
+    private final TokenProvider tokenProvider;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .exceptionHandling()
+            .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+            .accessDeniedHandler(jwtAccessDeniedHandler)
             .and()
-            .formLogin().disable()
-            .httpBasic().disable()
-            .apply(new MyCustomDsl())
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
             .antMatchers(HttpMethod.GET, "/members").hasRole("USER")
@@ -49,36 +58,23 @@ public class SecurityConfig {
             .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
             .antMatchers(HttpMethod.DELETE, "/customers/reviews/**")
             .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-
             .antMatchers(HttpMethod.POST, "/customers/questions/**").hasRole("USER")
             .antMatchers(HttpMethod.PUT, "/customers/questions/**").hasRole("USER")
             .antMatchers(HttpMethod.DELETE, "/customers/questions/**")
             .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-
             .antMatchers(HttpMethod.POST, "/customers/answers/**").hasRole("ADMIN")
             .antMatchers(HttpMethod.PUT, "/customers/answers/**").hasRole("ADMIN")
             .antMatchers(HttpMethod.DELETE, "/customers/answers/**").hasRole("ADMIN")
-
             .antMatchers("/favorites/**").access("hasRole('USER')")
-
             .antMatchers("/api/v1/admin/**")
             .access("hasRole('ROLE_ADMIN')")
-            .anyRequest().permitAll();
+            .and()
+            .authorizeRequests()
+            .anyRequest().permitAll()
+            .and()
+            .apply(new JwtSecurityConfig(tokenProvider));
 
-    return http.build();
-    }
-
-    public class MyCustomDsl extends AbstractHttpConfigurer<MyCustomDsl, HttpSecurity> {
-
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
-            http
-                .addFilter(corsFilter)
-                .addFilter(new JwtAuthenticationFilter(authenticationManager))
-                .addFilter(new JwtAuthorizationFilter(authenticationManager, memberRepository));
-
-        }
+        return http.build();
     }
 
 }

@@ -1,5 +1,5 @@
 package finalproject.jpnshop.biz.domain.properties;
 
 public enum Role {
-    USER, ADMIN, MANAGER
+    ROLE_USER, ROLE_ADMIN, ROLE_MANAGER
 }

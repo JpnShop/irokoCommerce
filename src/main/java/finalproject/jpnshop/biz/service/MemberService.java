@@ -30,8 +30,8 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public Response getMember(String username) {
-        return memberRepository.findByUsername(username)
+    public Response getMember() {
+        return memberRepository.findById(SecurityUtil.getCurrentMemberId())
             .map(Response::of)
             .orElseThrow(()-> new RuntimeException("유저 정보가 없습니다."));
     }

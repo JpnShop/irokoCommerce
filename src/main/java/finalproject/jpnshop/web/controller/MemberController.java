@@ -32,7 +32,7 @@ public class MemberController {
     @ApiOperation(value = "멤버 상세 조회", notes = "회원을 조회해서 정보를 가져온다.")
     @ApiImplicitParam(name = "username", value = "회원 아이디", dataType = "String", required = true)
     @GetMapping("/members")
-    public ResponseEntity<Response> getMember(String username) {
-        return ResponseEntity.ok(memberService.getMember(username));
+    public ResponseEntity<Response> getMember() {
+        return ResponseEntity.ok(memberService.getMember());
     }
 }

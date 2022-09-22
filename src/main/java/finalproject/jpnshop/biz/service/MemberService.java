@@ -6,6 +6,7 @@ import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqMember;
+import finalproject.jpnshop.web.dto.ResMember;
 import finalproject.jpnshop.web.dto.ResMember.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,12 +31,13 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public Response getMember() {
-        return memberRepository.findById(SecurityUtil.getCurrentMemberId())
+    public Response getMember(String username) {
+        return memberRepository.findByUsername(username)
             .map(Response::of)
             .orElseThrow(()-> new RuntimeException("유저 정보가 없습니다."));
     }
 
+    // 현재 SecurityContext 에 있는 유저 정보 가져오기
     @Transactional(readOnly = true)
     public Response getMyInfo() {
         return memberRepository.findById(SecurityUtil.getCurrentMemberId())

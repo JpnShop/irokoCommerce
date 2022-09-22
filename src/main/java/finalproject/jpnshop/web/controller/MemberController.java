@@ -3,6 +3,7 @@ package finalproject.jpnshop.web.controller;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.service.MemberService;
 import finalproject.jpnshop.web.dto.ReqMember;
+import finalproject.jpnshop.web.dto.ResMember;
 import finalproject.jpnshop.web.dto.ResMember.Response;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -30,9 +31,14 @@ public class MemberController {
     }
 
     @ApiOperation(value = "멤버 상세 조회", notes = "회원을 조회해서 정보를 가져온다.")
-    @ApiImplicitParam(name = "username", value = "회원 아이디", dataType = "String", required = true)
+    @GetMapping("/members/{username}")
+    public ResponseEntity<Response> getMember(@PathVariable String username) {
+        return ResponseEntity.ok(memberService.getMember(username));
+    }
+
+    // 현재 SecurityContext 에 있는 유저 정보 가져오기
     @GetMapping("/members")
-    public ResponseEntity<Response> getMember() {
-        return ResponseEntity.ok(memberService.getMember());
+    public ResponseEntity<Response> getMyInfo() {
+        return ResponseEntity.ok(memberService.getMyInfo());
     }
 }

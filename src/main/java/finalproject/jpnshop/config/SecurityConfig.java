@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,6 +31,21 @@ public class SecurityConfig {
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
+    private String[] swaggerList = {
+/* swagger v2 */
+        "/v2/api-docs",
+        "/v2/**",
+        "/swagger-resources",
+        "/swagger-resources/**",
+        "/configuration/ui",
+        "/configuration/security",
+        "/swagger-ui.html",
+        "/webjars/**",
+        /* swagger v3 */
+        "/v3/api-docs/**",
+        "/swagger-ui/**"
+    };
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -37,6 +53,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http.csrf().disable();
         http
             .exceptionHandling()
@@ -46,6 +63,7 @@ public class SecurityConfig {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
+            .antMatchers(swaggerList).permitAll()
             .antMatchers(HttpMethod.GET, "/members").hasRole("USER")
             .antMatchers(HttpMethod.PUT, "/members").hasRole("USER")
             .antMatchers("/mypage/**")
@@ -66,8 +84,6 @@ public class SecurityConfig {
             .antMatchers(HttpMethod.PUT, "/customers/answers/**").hasRole("ADMIN")
             .antMatchers(HttpMethod.DELETE, "/customers/answers/**").hasRole("ADMIN")
             .antMatchers("/favorites/**").access("hasRole('USER')")
-            .antMatchers("/api/v1/admin/**")
-            .access("hasRole('ROLE_ADMIN')")
             .and()
             .authorizeRequests()
             .anyRequest().permitAll()

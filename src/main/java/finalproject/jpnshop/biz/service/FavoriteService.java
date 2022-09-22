@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class FavoriteService {
+
     private final FavoriteRepository favoriteRepository;
     private final FavoriteItemRepository favoriteItemRepository;
     private final MemberRepository memberRepository;
@@ -35,7 +36,7 @@ public class FavoriteService {
         Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
         List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByFavorite(favorite);
         List<ResProduct.Response> favoriteItemList = new ArrayList<>();
-        for (FavoriteItem favoriteItem : favoriteItems){
+        for (FavoriteItem favoriteItem : favoriteItems) {
             favoriteItemList.add(ResProduct.Response.of(favoriteItem.getProduct()));
         }
         return favoriteItemList;

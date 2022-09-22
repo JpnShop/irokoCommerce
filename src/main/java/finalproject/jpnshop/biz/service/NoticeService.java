@@ -30,7 +30,7 @@ public class NoticeService {
     public List<ResNotice.Response> getNotices() {
         List<Notice> notices = noticeRepository.findAll();
         List<ResNotice.Response> noticeList = new ArrayList<>();
-        for (Notice notice : notices){
+        for (Notice notice : notices) {
             noticeList.add(ResNotice.Response.of(notice));
         }
         return noticeList;
@@ -43,7 +43,7 @@ public class NoticeService {
 
     //todo : 로그인한 회원으로 멤버 저장
     @Transactional
-    public void insertNotice(ReqNotice noticeForm){
+    public void insertNotice(ReqNotice noticeForm) {
         noticeForm.setMember(memberRepository.findById(1L).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         Notice notice = noticeForm.toEntity();
@@ -59,6 +59,7 @@ public class NoticeService {
         noticeRepository.save(notice);
 
     }
+
     @Transactional
     public void deleteNotice(Long id) {
         Notice notice = noticeRepository.findById(id).orElseThrow(

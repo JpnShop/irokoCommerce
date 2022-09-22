@@ -52,17 +52,18 @@ public class Question {
 
     private int password;
 
-    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, int password) {
-        this.member=member;
-        this.product=product;
-        this.title=title;
-        this.content=content;
-        this.createdDate=createdDate;
-        this.answerStatus ="미답변";
-        this.privateYn=privateYn;
-        this.password=password;
-    }
 
+
+    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, int password) {
+        this.member = member;
+        this.product = product;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.answerStatus = "미답변";
+        this.privateYn = privateYn;
+        this.password = password;
+    }
 
     public void setTitle(String title) {
         this.title = title;

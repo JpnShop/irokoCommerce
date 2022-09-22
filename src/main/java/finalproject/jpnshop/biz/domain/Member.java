@@ -11,11 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTime {
 
     @Id
@@ -38,8 +41,6 @@ public class Member extends BaseTime {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    protected Member() {
-    }
 
     @Builder
     public Member(Long id, String username, String password, String email, Gender gender,

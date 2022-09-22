@@ -3,7 +3,8 @@ package finalproject.jpnshop.biz.domain;
 import static javax.persistence.CascadeType.ALL;
 
 import finalproject.jpnshop.biz.domain.properties.Brand;
-import finalproject.jpnshop.biz.domain.properties.Status;
+import finalproject.jpnshop.biz.domain.properties.ErrorCode;
+import finalproject.jpnshop.biz.exception.CustomException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -14,19 +15,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Product extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long id;
-
-    @Enumerated(EnumType.STRING)
-    private Status sellStatus;
 
     private String summary;
 
@@ -41,7 +44,7 @@ public class Product extends BaseTime {
     @Enumerated(EnumType.STRING)
     private Brand brand;
 
-    private int stock;
+    private int stock; //재고
 
     private String category;
 
@@ -60,20 +63,25 @@ public class Product extends BaseTime {
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    protected Product() {
+    public void setProductName(String productName) {
     }
 
-    public Product(Long id, String productName, int price, Brand brand, int stock, String category,
-        List<CartItem> cartItems, List<FavoriteItem> favoriteItems, List<OrderItem> orderItems) {
-        this.id = id;
-        this.productName = productName;
-        this.price = price;
-        this.brand = brand;
-        this.stock = stock;
-        this.category = category;
-        this.cartItems = cartItems;
-        this.favoriteItems = favoriteItems;
-        this.orderItems = orderItems;
+    public void setPrice(int price) {
+    }
+
+    public void setStock(int stock) {
+    }
+
+    public void addStock(int stock) {
+        this.stock += stock;
+    }
+
+    public void removeStock(int stock) {
+        int restStock = this.stock - stock;
+        if (restStock < 0) {
+            throw new CustomException(ErrorCode.STOCK_EMPTY);
+        }
+        this.stock = restStock;
     }
 
     public void addCartItem(CartItem cartItem) {

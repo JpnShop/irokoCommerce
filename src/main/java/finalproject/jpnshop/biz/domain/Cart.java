@@ -12,12 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @Table(name = "CART")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Cart extends BaseTime {
 
     @Id
@@ -26,13 +31,6 @@ public class Cart extends BaseTime {
     private Long id;
     @OneToOne
     private Member member;
-    protected Cart() {
-    }
-
-    public Cart(Long id, Member member) {
-        this.id = id;
-        this.member = member;
-    }
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private final List<CartItem> cartItems = new ArrayList<>();

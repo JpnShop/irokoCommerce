@@ -10,11 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Favorite extends BaseTime {
 
     @Id
@@ -25,15 +30,6 @@ public class Favorite extends BaseTime {
     private Member member;
     @OneToMany(mappedBy = "favorite", cascade = CascadeType.ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();
-
-    protected Favorite() {
-    }
-
-    public Favorite(Long id, Member member, List<FavoriteItem> favoriteItems) {
-        this.id = id;
-        this.member = member;
-        this.favoriteItems = favoriteItems;
-    }
 
     @Builder
     public Favorite(Member member) {

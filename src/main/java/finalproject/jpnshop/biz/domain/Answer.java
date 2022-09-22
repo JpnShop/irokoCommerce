@@ -1,7 +1,6 @@
 package finalproject.jpnshop.biz.domain;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,12 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Answer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,17 +34,6 @@ public class Answer {
     @Column(name = "createdAt")
     @CreatedDate
     private LocalDate createdDate;
-
-    public Answer(Member member, String content, LocalDate createdDate) {
-        this.member=member;
-        this.content=content;
-        this.createdDate=createdDate;
-
-    }
-
-    public Answer() {
-
-    }
 
     @Override
     public String toString() {

@@ -9,14 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 //TODO
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Review {
 
     @Id
@@ -47,14 +49,4 @@ public class Review {
         this.content = content;
     }
 
-    public Review() {
-    }
-
-    public Review(Member member, Product product, String title, String content, LocalDateTime createdDate) {
-        this.member=member;
-        this.product=product;
-        this.title=title;
-        this.content=content;
-        this.createdDate=createdDate;
-    }
 }

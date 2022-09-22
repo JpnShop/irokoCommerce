@@ -9,11 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FavoriteItem extends BaseTime {
 
     @Id
@@ -25,9 +29,6 @@ public class FavoriteItem extends BaseTime {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
-
-    protected FavoriteItem() {
-    }
 
     @Builder
     public FavoriteItem(Long id, Favorite favorite, Product product) {

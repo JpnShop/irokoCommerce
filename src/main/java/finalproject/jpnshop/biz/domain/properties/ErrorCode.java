@@ -17,7 +17,9 @@ public enum ErrorCode {
     ORDER_NOT_FOUND(404, "주문 정보를 찾을 수 없습니다"),
     DELIVERY_NOT_FOUND(404, "배송 정보를 찾을 수 없습니다"),
     STOCK_EMPTY(500, "재고가 모두 소진 되었습니다."),
-    ORDER_COMP_ERROR(500, "배송이 완료된 상품은 취소할 수 없습니다." );
+    ORDER_COMP_ERROR(500, "배송이 완료된 상품은 취소할 수 없습니다." ),
+    PASSWORD_NOT_FOUND(500, "비공개 글은 비밀번호를 필수로 입력해야합니다."),
+    PASSWORD_NOT_CORRECT(500, "비밀번호가 올바르지 않습니다.");
 
     private final int status;
     private final String msg;

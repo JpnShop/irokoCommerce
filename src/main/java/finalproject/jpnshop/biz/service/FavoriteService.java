@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class FavoriteService {
+
     private final FavoriteRepository favoriteRepository;
     private final FavoriteItemRepository favoriteItemRepository;
     private final MemberRepository memberRepository;
@@ -35,7 +36,7 @@ public class FavoriteService {
         Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
         List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByFavorite(favorite);
         List<ResProduct.Response> cartItemList = new ArrayList<>();
-        for (FavoriteItem favoriteItem : favoriteItems){
+        for (FavoriteItem favoriteItem : favoriteItems) {
             cartItemList.add(ResProduct.Response.of(favoriteItem.getProduct()));
         }
         return cartItemList;
@@ -53,7 +54,7 @@ public class FavoriteService {
             .product(product)
             .build();
         favorite.getFavoriteItems().forEach(favoriteItem1 -> {
-            if(favoriteItem1.getProduct().equals(product)){
+            if (favoriteItem1.getProduct().equals(product)) {
                 throw new CustomException(ErrorCode.PRODUCT_EXIST);
             }
         });
@@ -63,6 +64,7 @@ public class FavoriteService {
         favoriteItemRepository.save(favoriteItem);
         ResProduct.Response.of(product);
     }
+
     @Transactional
     public void deleteAllFavorite(long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(
@@ -78,7 +80,8 @@ public class FavoriteService {
         Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
         Product product = productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
-        List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByProductAndFavorite(product,favorite);
+        List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByProductAndFavorite(
+            product, favorite);
         favoriteItemRepository.deleteAll(favoriteItems);
     }
 

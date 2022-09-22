@@ -1,5 +1,6 @@
 package finalproject.jpnshop.biz.service;
 
+import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
@@ -30,24 +31,22 @@ public class ReviewService {
 
     public List<ResReview.Response> getReviews() {
         List<Review> reviews = reviewRepository.findAll();
-        List<ResReview.Response> responseList = new ArrayList<>();
-        for (Review review : reviews) {
-            responseList.add(ResReview.Response.of(review));
-        }
-        return responseList;
+        return getResponses(reviews);
     }
 
     public List<ResReview.Response>  getReviewByProduct(Long productId) {
         Product product = productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
         List<Review> reviewList = reviewRepository.findAllByProduct(product);
-        List<ResReview.Response> responseList = new ArrayList<>();
-        for (Review review : reviewList) {
-            responseList.add(ResReview.Response.of(review));
-        }
-        return responseList;
+        return getResponses(reviewList);
     }
 
+    public List<Response> getReviewsByMember(long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        List<Review> reviews = reviewRepository.findByMember(member);
+        return getResponses(reviews);
+    }
 
     public ResReview.Response getReview(long reviewId) {
         return Response.of(reviewRepository.findById(reviewId).orElseThrow(
@@ -79,5 +78,13 @@ public class ReviewService {
         Review review = reviewRepository.findById(reviewId).orElseThrow(
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND));
         reviewRepository.delete(review);
+    }
+
+    private List<Response> getResponses(List<Review> reviews) {
+        List<Response> responseList = new ArrayList<>();
+        for (Review review : reviews) {
+            responseList.add(Response.of(review));
+        }
+        return responseList;
     }
 }

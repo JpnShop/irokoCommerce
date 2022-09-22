@@ -24,6 +24,7 @@ public class ResMember {
         private Date birthInfo;
         private  String role;
 
+
         public static Response of(Member member) {
             return Response.builder()
                 .username(member.getUsername())
@@ -31,7 +32,6 @@ public class ResMember {
                 .email(member.getEmail())
                 .gender(member.getGender())
                 .birthInfo(member.getBirthInfo())
-                .role(member.getRole())
                 .build();
         }
 

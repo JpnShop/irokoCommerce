@@ -52,6 +52,9 @@ public class Question {
 
     private String password;
 
+    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, String password) {
+    }
+
 
     public void setTitle(String title) {
         this.title = title;

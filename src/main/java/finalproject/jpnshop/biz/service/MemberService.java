@@ -6,7 +6,6 @@ import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqMember;
-import finalproject.jpnshop.web.dto.ResMember;
 import finalproject.jpnshop.web.dto.ResMember.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -22,7 +22,7 @@ public class MagazineController {
     }
 
     @GetMapping("/magazine/{id}")
-    public ResMagazine.Response getMagazine(@PathVariable long id){
-        return magazineService.getMagazine(id);
+    public void getMagazine(@PathVariable long id){
+        magazineService.getMagazine(id);
     }
 }

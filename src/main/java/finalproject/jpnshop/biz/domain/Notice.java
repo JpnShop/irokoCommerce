@@ -34,6 +34,10 @@ public class Notice {
     private LocalDateTime createdDate;
 
     public Notice(Member member, String title, String content, LocalDateTime createdDate) {
+        this.member = member;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
     }
 
     public void setTitle(String title) {

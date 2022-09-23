@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 public class Review {
 
     @Id
@@ -40,6 +39,13 @@ public class Review {
     private String content;
 
     private LocalDateTime createdDate;
+
+    public Review(Member member, Product product, String title, String content, LocalDateTime createdDate) {
+        this.member = member;
+        this.product = product;
+        this.title = title;
+        this.createdDate = createdDate;
+    }
 
     public void setTitle(String title) {
         this.title = title;

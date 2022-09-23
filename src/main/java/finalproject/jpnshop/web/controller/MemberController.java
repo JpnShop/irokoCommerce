@@ -5,8 +5,10 @@ import finalproject.jpnshop.biz.service.MemberService;
 import finalproject.jpnshop.web.dto.ReqMember;
 import finalproject.jpnshop.web.dto.ResMember;
 import finalproject.jpnshop.web.dto.ResMember.Response;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = {"Member 정보를 수정/조회 가능한 Controller"})
 @RestController
 @RequiredArgsConstructor
 public class MemberController {

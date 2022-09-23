@@ -118,7 +118,6 @@ public class Product extends BaseTime {
     public String toString() {
         return "Product{" +
             "id=" + id +
-            ", sellStatus=" + sellStatus +
             ", summary='" + summary + '\'' +
             ", productName='" + productName + '\'' +
             ", productOption='" + productOption + '\'' +
@@ -131,9 +130,6 @@ public class Product extends BaseTime {
             ", listImage='" + listImage + '\'' +
             ", smallListImage='" + smallListImage + '\'' +
             ", iconImage='" + iconImage + '\'' +
-//            ", cartItems=" + cartItems +
-//            ", favoriteItems=" + favoriteItems +
-//            ", orderItems=" + orderItems +
             '}';
     }
 }

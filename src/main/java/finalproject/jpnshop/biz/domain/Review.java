@@ -44,6 +44,7 @@ public class Review {
         this.member = member;
         this.product = product;
         this.title = title;
+        this.content = content;
         this.createdDate = createdDate;
     }
 

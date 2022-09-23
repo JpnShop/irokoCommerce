@@ -18,7 +18,6 @@ import org.springframework.data.annotation.CreatedDate;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 public class Answer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +33,12 @@ public class Answer {
     @Column(name = "createdAt")
     @CreatedDate
     private LocalDate createdDate;
+
+    public Answer(Member member, String content, LocalDate createdDate) {
+        this.member = member;
+        this.content = content;
+        this.createdDate = createdDate;
+    }
 
     @Override
     public String toString() {

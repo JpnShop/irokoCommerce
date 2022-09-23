@@ -1,6 +1,5 @@
 package finalproject.jpnshop.web.controller;
 
-import finalproject.jpnshop.biz.service.CartService;
 import finalproject.jpnshop.biz.service.FavoriteService;
 import finalproject.jpnshop.web.dto.ResProduct.Response;
 import java.util.List;

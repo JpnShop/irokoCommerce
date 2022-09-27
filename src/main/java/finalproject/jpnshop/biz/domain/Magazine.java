@@ -45,6 +45,7 @@ public class Magazine {
     public Magazine(Member member, List<MagazineItem> magazineItems, String thumnail, String title, String content, LocalDate createdDate) {
         this.member = member;
         this.magazineItems = magazineItems;
+        this.thumnail = thumnail;
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
@@ -58,4 +59,19 @@ public class Magazine {
         }
     }
 
+    public void setMagazineItems(List<MagazineItem> magazineItems) {
+        this.magazineItems = magazineItems;
+    }
+
+    public void setThumnail(String thumnail) {
+        this.thumnail = thumnail;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

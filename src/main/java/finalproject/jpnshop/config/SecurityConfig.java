@@ -18,6 +18,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
@@ -56,6 +59,8 @@ public class SecurityConfig {
 
         http.csrf().disable();
         http
+            .cors().configurationSource(corsConfigurationSource())
+            .and()
             .exceptionHandling()
             .authenticationEntryPoint(jwtAuthenticationEntryPoint)
             .accessDeniedHandler(jwtAccessDeniedHandler)
@@ -64,6 +69,7 @@ public class SecurityConfig {
             .and()
             .authorizeRequests()
             .antMatchers(swaggerList).permitAll()
+            .antMatchers(HttpMethod.GET, "/members/{username}").hasRole("USER")
             .antMatchers(HttpMethod.GET, "/members").hasRole("USER")
             .antMatchers(HttpMethod.PUT, "/members").hasRole("USER")
             .antMatchers("/mypage/**")
@@ -91,6 +97,19 @@ public class SecurityConfig {
             .apply(new JwtSecurityConfig(tokenProvider));
 
         return http.build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**",config);
+        return source;
     }
 
 }

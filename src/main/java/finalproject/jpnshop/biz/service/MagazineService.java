@@ -41,6 +41,19 @@ public class MagazineService {
         magazineRepository.save(magazine);
     }
 
+    @Transactional
+    public void updateMagazine(ReqMagazine magazineForm){
+        Magazine magazine = magazineRepository.findById(magazineForm.getId()).orElseThrow(
+            () -> new CustomException(ErrorCode.MAGAZINE_NOT_FOUND)
+        );
+        magazine.setThumnail(magazineForm.getThumnail());
+        magazine.setMagazineItems(magazineForm.getMagazineItems());
+        magazine.setTitle(magazineForm.getTitle());
+        magazine.setContent(magazineForm.getContent());
+    }
 
-
+    @Transactional
+    public void deleteMagazine(long id){
+        magazineRepository.deleteById(id);
+    }
 }

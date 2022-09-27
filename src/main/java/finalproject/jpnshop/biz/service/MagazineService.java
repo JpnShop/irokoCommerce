@@ -32,10 +32,15 @@ public class MagazineService {
         return Response.of(magazine);
     }
 
+    @Transactional
     public void insertMagazine(ReqMagazine magazineForm){
+        magazineForm.setMember(memberRepository.findById(1l).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)
+        ));
         Magazine magazine = magazineForm.toEntity();
         magazineRepository.save(magazine);
     }
+
 
 
 }

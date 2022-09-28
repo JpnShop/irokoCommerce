@@ -2,6 +2,7 @@ package finalproject.jpnshop.biz.service;
 
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.RefreshToken;
+import finalproject.jpnshop.biz.domain.properties.Role;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.RefreshTokenRepository;
 import finalproject.jpnshop.jwt.TokenProvider;
@@ -13,9 +14,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+    
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -76,5 +78,27 @@ public class AuthService {
         return tokenDto;
     }
 
+    @Transactional
+    public TokenDto Glogin(OAuth2User oAuth2User) {
+        if (!memberRepository.existsByEmail(oAuth2User.getAttribute("email").toString())) {
+            Member member = Member.builder()
+                .email(oAuth2User.getAttribute("email").toString())
+                .role(Role.ROLE_USER)
+                .build();
+
+            memberRepository.save(member);
+        }
+
+        TokenDto tokenDto = tokenProvider.generateTokenDtoOAuth2(oAuth2User);
+
+        RefreshToken gRefreshToken = RefreshToken.builder()
+            .key(oAuth2User.getAttribute("email").toString())
+            .value(tokenDto.getRefreshToken())
+            .build();
+
+        refreshTokenRepository.save(gRefreshToken);
+
+        return tokenProvider.generateTokenDtoOAuth2(oAuth2User);
+    }
 
 }

@@ -1,5 +1,6 @@
 package finalproject.jpnshop.jwt;
 
+import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.web.dto.TokenDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -22,6 +23,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -32,10 +34,13 @@ public class TokenProvider {
     private static final String BEARER_TYPE = "bearer";
     private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 30;
     private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7;
+    private final MemberRepository memberRepository;
 
     private final Key key;
 
-    public TokenProvider(@Value("${jwt.secret}") String secretKey) {
+    public TokenProvider(@Value("${jwt.secret}") String secretKey,
+        MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
@@ -44,7 +49,7 @@ public class TokenProvider {
 
         String authorities = authentication.getAuthorities().stream()
             .map(GrantedAuthority::getAuthority)
-            .collect(Collectors.joining(","));
+              .collect(Collectors.joining(","));
 
         long now = (new Date()).getTime();
 
@@ -70,7 +75,6 @@ public class TokenProvider {
     }
 
     public Authentication getAuthentication(String accessToken) {
-
         Claims claims = parseClaims(accessToken);
 
         if(claims.get(AUTHORITIES_KEY) == null) {
@@ -94,7 +98,7 @@ public class TokenProvider {
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
             log.info("잘못된 JWT 서명입니다.");
         } catch (ExpiredJwtException e) {
-            log.info("지원되지 않는 JWT  토큰입니다.");
+            log.info("만료된 JWT 토큰입니다.");
         } catch (UnsupportedJwtException e) {
             log.info("지원되지 않는 JWT 토큰입니다.");
         } catch (IllegalArgumentException e) {
@@ -109,6 +113,33 @@ public class TokenProvider {
         } catch (ExpiredJwtException e) {
             return e.getClaims();
         }
+    }
+
+    public TokenDto generateTokenDtoOAuth2(OAuth2User oAuth2User) {
+
+        long now = (new Date()).getTime();
+        Date accessTokenExpireIn = new Date(now + ACCESS_TOKEN_EXPIRE_TIME );
+        Date refreshTokenExpireIn = new Date(now + now + REFRESH_TOKEN_EXPIRE_TIME);
+
+        String accessToken = Jwts.builder()
+            .setSubject(oAuth2User.getAttribute("email").toString())
+            .claim(AUTHORITIES_KEY, memberRepository.findByEmail(oAuth2User.getAttribute("email")).getRole())
+            .setExpiration(accessTokenExpireIn)
+            .signWith(key, SignatureAlgorithm.HS512)
+            .compact();
+
+        String refreshToken = Jwts.builder()
+            .setSubject(oAuth2User.getAttribute("email").toString())
+            .setExpiration(refreshTokenExpireIn)
+            .signWith(key, SignatureAlgorithm.HS512)
+            .compact();
+
+        return TokenDto.builder()
+            .grantType(BEARER_TYPE)
+            .accessToken(accessToken)
+            .refreshToken(refreshToken)
+            .accessTokenExpiresIn(accessTokenExpireIn.getTime())
+            .build();
     }
 
 }

@@ -18,7 +18,7 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   profiles:
-    include: oauth
+    include: auth
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

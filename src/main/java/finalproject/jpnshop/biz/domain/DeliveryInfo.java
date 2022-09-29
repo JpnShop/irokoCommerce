@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +27,12 @@ public class DeliveryInfo {
     private Long id;
     @OneToOne
     private Order order;
+
     @Embedded
     private Address address;
+
     private String phoneNumber;
+
     private String receiverName;
 
     @Enumerated(EnumType.STRING)
@@ -37,6 +41,7 @@ public class DeliveryInfo {
     public void setAddress(Address address) {
         this.address = address;
     }
+
 
 
 }

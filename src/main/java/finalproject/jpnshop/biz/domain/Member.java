@@ -36,8 +36,7 @@ public class Member extends BaseTime {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    //TODO
-    private Date birthInfo;
+    private String birthInfo;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -50,11 +49,12 @@ public class Member extends BaseTime {
     private String phoneNumber;
 
     private String country;
-    private String furigana;
+    private String furiganaFirst;
+    private String furiganaLast;
 
     @Builder
     public Member(Long id, String username, String password, String email, Gender gender,
-        Date birthInfo, Role role, String name, Address address, String phoneNumber, String country, String furigana) {
+        String birthInfo, Role role, String name, Address address, String phoneNumber, String country, String furiganaFirst, String furiganaLast) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -66,7 +66,8 @@ public class Member extends BaseTime {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.country = country;
-        this.furigana = furigana;
+        this.furiganaFirst = furiganaFirst;
+        this.furiganaLast = furiganaLast;
     }
 
     public void setAddress(Address address) {

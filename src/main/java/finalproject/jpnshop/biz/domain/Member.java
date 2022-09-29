@@ -4,6 +4,7 @@ import finalproject.jpnshop.biz.domain.properties.Gender;
 import finalproject.jpnshop.biz.domain.properties.Role;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -41,10 +42,19 @@ public class Member extends BaseTime {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    private String name;
+
+    @Embedded
+    private Address address;
+
+    private String phoneNumber;
+
+    private String country;
+    private String furigana;
 
     @Builder
     public Member(Long id, String username, String password, String email, Gender gender,
-        Date birthInfo, Role role) {
+        Date birthInfo, Role role, String name, Address address, String phoneNumber, String country, String furigana) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -52,6 +62,15 @@ public class Member extends BaseTime {
         this.gender = gender;
         this.birthInfo = birthInfo;
         this.role = role;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.country = country;
+        this.furigana = furigana;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public void setPassword(String password) {

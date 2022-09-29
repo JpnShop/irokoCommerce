@@ -70,7 +70,6 @@ public class ReviewService {
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND));
         review.setTitle(reviewForm.getTitle());
         review.setContent(reviewForm.getContent());
-        reviewRepository.save(review); //todo: 왜 save를 해야 수정이 반영되는지?
     }
 
     @Transactional

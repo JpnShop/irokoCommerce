@@ -22,13 +22,14 @@ public class ResMember {
         private String password;
         private String email;
         private Gender gender;
-        private Date birthInfo;
+        private String birthInfo;
         private String role;
         private String name;
         private String phoneNumber;
         private Address address;
         private String country;
-        private String furigana;
+        private String furiganaFirst;
+        private String furiganaLast;
 
 
         public static Response of(Member member) {
@@ -42,7 +43,8 @@ public class ResMember {
                 .phoneNumber(member.getPhoneNumber())
                 .address(member.getAddress())
                 .country(member.getCountry())
-                .furigana(member.getFurigana())
+                .furiganaFirst(member.getFuriganaFirst())
+                .furiganaLast(member.getFuriganaLast())
                 .build();
         }
 

@@ -21,13 +21,14 @@ public class ReqMember {
     private String password;
     private String email;
     private Gender gender;
-    private Date birthInfo;
+    private String birthInfo;
     private String role;
     private String name;
     private String phoneNumber;
     private Address address;
     private String country;
-    private String furigana;
+    private String furiganaFirst;
+    private String furiganaLast;
 
     public Member toEntity(PasswordEncoder passwordEncoder) {
         return Member.builder()
@@ -41,7 +42,8 @@ public class ReqMember {
             .phoneNumber(phoneNumber)
             .address(address)
             .country(country)
-            .furigana(furigana)
+            .furiganaFirst(furiganaFirst)
+            .furiganaLast(furiganaLast)
             .build();
     }
 
@@ -76,7 +78,8 @@ public class ReqMember {
             ", phoneNumber= " + phoneNumber +
             ", address= " + address +
             ", country= " + country +
-            ", furigana= " + furigana +
+            ", furiganaFirst= " + furiganaFirst +
+            ", furiganaLast= " + furiganaLast +
             '}';
     }
 }

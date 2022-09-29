@@ -1,5 +1,6 @@
 package finalproject.jpnshop.web.dto;
 
+import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.properties.Gender;
 import finalproject.jpnshop.biz.domain.properties.Role;
@@ -22,6 +23,11 @@ public class ReqMember {
     private Gender gender;
     private Date birthInfo;
     private String role;
+    private String name;
+    private String phoneNumber;
+    private Address address;
+    private String country;
+    private String furigana;
 
     public Member toEntity(PasswordEncoder passwordEncoder) {
         return Member.builder()
@@ -31,6 +37,11 @@ public class ReqMember {
             .gender(gender)
             .birthInfo(birthInfo)
             .role(Role.ROLE_USER)
+            .name(name)
+            .phoneNumber(phoneNumber)
+            .address(address)
+            .country(country)
+            .furigana(furigana)
             .build();
     }
 
@@ -46,6 +57,11 @@ public class ReqMember {
         this.role = role;
     }
 
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+
     @Override
     public String toString() {
         return "ReqMember{" +
@@ -55,6 +71,12 @@ public class ReqMember {
             ", email= " + email +
             ", gender= " + gender +
             ", birthInfo= " + birthInfo +
-            ", role= " + role + '}';
+            ", role= " + role +
+            ", name= " + name +
+            ", phoneNumber= " + phoneNumber +
+            ", address= " + address +
+            ", country= " + country +
+            ", furigana= " + furigana +
+            '}';
     }
 }

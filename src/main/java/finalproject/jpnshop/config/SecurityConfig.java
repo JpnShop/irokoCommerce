@@ -3,7 +3,9 @@ package finalproject.jpnshop.config;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.jwt.JwtAccessDeniedHandler;
 import finalproject.jpnshop.jwt.JwtAuthenticationEntryPoint;
+import finalproject.jpnshop.jwt.JwtFilter;
 import finalproject.jpnshop.jwt.TokenProvider;
+import finalproject.jpnshop.oauth2.CustomUserDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -33,6 +36,7 @@ public class SecurityConfig {
     private final TokenProvider tokenProvider;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+    private final CustomUserDetailService customUserDetailService;
 
     private String[] swaggerList = {
 /* swagger v2 */
@@ -59,13 +63,14 @@ public class SecurityConfig {
 
         http.csrf().disable();
         http
+            .httpBasic().disable()
             .cors().configurationSource(corsConfigurationSource())
             .and()
             .exceptionHandling()
             .authenticationEntryPoint(jwtAuthenticationEntryPoint)
             .accessDeniedHandler(jwtAccessDeniedHandler)
             .and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
             .and()
             .authorizeRequests()
             .antMatchers(swaggerList).permitAll()
@@ -94,7 +99,13 @@ public class SecurityConfig {
             .authorizeRequests()
             .anyRequest().permitAll()
             .and()
-            .apply(new JwtSecurityConfig(tokenProvider));
+            .apply(new JwtSecurityConfig(tokenProvider))
+            .and()
+            .oauth2Login()
+            .userInfoEndpoint().userService(customUserDetailService)
+            .and()
+            .defaultSuccessUrl("/auth/Glogin")
+            .failureUrl("/fail");
 
         return http.build();
     }

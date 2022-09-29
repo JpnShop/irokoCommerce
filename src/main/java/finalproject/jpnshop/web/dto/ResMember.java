@@ -1,5 +1,6 @@
 package finalproject.jpnshop.web.dto;
 
+import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.properties.Gender;
 import finalproject.jpnshop.web.dto.ResMember.Response;
@@ -22,7 +23,12 @@ public class ResMember {
         private String email;
         private Gender gender;
         private Date birthInfo;
-        private  String role;
+        private String role;
+        private String name;
+        private String phoneNumber;
+        private Address address;
+        private String country;
+        private String furigana;
 
 
         public static Response of(Member member) {
@@ -32,6 +38,11 @@ public class ResMember {
                 .email(member.getEmail())
                 .gender(member.getGender())
                 .birthInfo(member.getBirthInfo())
+                .name(member.getName())
+                .phoneNumber(member.getPhoneNumber())
+                .address(member.getAddress())
+                .country(member.getCountry())
+                .furigana(member.getFurigana())
                 .build();
         }
 

@@ -7,6 +7,9 @@ import finalproject.jpnshop.web.dto.TokenDto;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +35,10 @@ public class AuthController {
     @PostMapping("/reissue")
     public ResponseEntity<TokenDto> reissue(@RequestBody ReqToken reqToken) {
         return ResponseEntity.ok(authService.reissue(reqToken));
+    }
+
+    @GetMapping("/Glogin")
+    public ResponseEntity<TokenDto> Glogin(@AuthenticationPrincipal OAuth2User oAuth2User) {
+        return ResponseEntity.ok(authService.Glogin(oAuth2User));
     }
 }

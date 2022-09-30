@@ -1,6 +1,8 @@
 package finalproject.jpnshop.jwt;
 
+import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.repository.MemberRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.TokenDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -61,6 +63,9 @@ public class TokenProvider {
             .signWith(key, SignatureAlgorithm.HS512)
             .compact();
 
+        Member member = memberRepository.findById(Long.parseLong(authentication.getName())).orElseThrow(() -> new RuntimeException("조회 불가"));
+        String name = member.getName();
+
         String refreshToken = Jwts.builder()
             .setExpiration(new Date(now + REFRESH_TOKEN_EXPIRE_TIME))
             .signWith(key, SignatureAlgorithm.HS512)
@@ -71,6 +76,7 @@ public class TokenProvider {
             .accessToken(accessToken)
             .accessTokenExpiresIn(accessTokenExpireIn.getTime())
             .refreshToken(refreshToken)
+            .name(name)
             .build();
     }
 

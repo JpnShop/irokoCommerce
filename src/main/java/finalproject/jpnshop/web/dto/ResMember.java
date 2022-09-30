@@ -2,9 +2,6 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.Member;
-import finalproject.jpnshop.biz.domain.properties.Gender;
-import finalproject.jpnshop.web.dto.ResMember.Response;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +18,6 @@ public class ResMember {
         private String username;
         private String password;
         private String email;
-        private Gender gender;
         private String birthInfo;
         private String role;
         private String name;
@@ -37,7 +33,6 @@ public class ResMember {
                 .username(member.getUsername())
                 .password(member.getPassword())
                 .email(member.getEmail())
-                .gender(member.getGender())
                 .birthInfo(member.getBirthInfo())
                 .name(member.getName())
                 .phoneNumber(member.getPhoneNumber())

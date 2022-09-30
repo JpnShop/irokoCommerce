@@ -11,6 +11,10 @@ import finalproject.jpnshop.biz.repository.DeliveryInfoRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.OrderRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
+import finalproject.jpnshop.web.dto.ResOrder;
+import finalproject.jpnshop.web.dto.ResOrder.Response;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +33,7 @@ public class OrderService {
     private final DeliveryInfoRepository deliveryInfoRepository;
 
     @Transactional
-    public Long createOrder(Long memberId, Long productId, Long deliveryInfoId ,int count) {
+    public Long createOrder(Long memberId, Long productId, Long deliveryInfoId, int count) {
 
         Member member = memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
@@ -57,6 +61,15 @@ public class OrderService {
         );
 
         order.cancel();
+    }
+
+    public List<ResOrder.Response> findOrders() {
+        List<Order> orders = orderRepository.findAll();
+        List<ResOrder.Response> orderList = new ArrayList<>();
+        for (Order order : orders) {
+            orderList.add(ResOrder.Response.of(order));
+        }
+        return orderList;
     }
 
 }

@@ -31,8 +31,7 @@ public class AuthService {
     public void signup(ReqMember reqMember) {
         if(memberRepository.existsByUsername(reqMember.getUsername())) {
             throw new RuntimeException("이미 가입되어 있는 유저입니다.");
-        }
-        if(memberRepository.existsByEmail(reqMember.getEmail())) {
+        } else if(memberRepository.existsByEmail(reqMember.getEmail())) {
             throw new RuntimeException("이미 존재하는 이메일입니다.");
         }
         Member member = reqMember.toEntity(passwordEncoder);

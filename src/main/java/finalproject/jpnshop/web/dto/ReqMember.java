@@ -2,13 +2,10 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.Member;
-import finalproject.jpnshop.biz.domain.properties.Gender;
 import finalproject.jpnshop.biz.domain.properties.Role;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,7 +17,6 @@ public class ReqMember {
     private String username;
     private String password;
     private String email;
-    private Gender gender;
     private String birthInfo;
     private String role;
     private String name;
@@ -35,7 +31,6 @@ public class ReqMember {
             .username(username)
             .password(passwordEncoder.encode(password))
             .email(email)
-            .gender(gender)
             .birthInfo(birthInfo)
             .role(Role.ROLE_USER)
             .name(name)
@@ -71,7 +66,6 @@ public class ReqMember {
             ", username= " + username +
             ", password= " + password +
             ", email= " + email +
-            ", gender= " + gender +
             ", birthInfo= " + birthInfo +
             ", role= " + role +
             ", name= " + name +

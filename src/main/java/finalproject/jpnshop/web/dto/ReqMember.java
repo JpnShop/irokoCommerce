@@ -2,13 +2,10 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.Member;
-import finalproject.jpnshop.biz.domain.properties.Gender;
 import finalproject.jpnshop.biz.domain.properties.Role;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,28 +17,28 @@ public class ReqMember {
     private String username;
     private String password;
     private String email;
-    private Gender gender;
-    private Date birthInfo;
+    private String birthInfo;
     private String role;
     private String name;
     private String phoneNumber;
     private Address address;
     private String country;
-    private String furigana;
+    private String furiganaFirst;
+    private String furiganaLast;
 
     public Member toEntity(PasswordEncoder passwordEncoder) {
         return Member.builder()
             .username(username)
             .password(passwordEncoder.encode(password))
             .email(email)
-            .gender(gender)
             .birthInfo(birthInfo)
             .role(Role.ROLE_USER)
             .name(name)
             .phoneNumber(phoneNumber)
             .address(address)
             .country(country)
-            .furigana(furigana)
+            .furiganaFirst(furiganaFirst)
+            .furiganaLast(furiganaLast)
             .build();
     }
 
@@ -69,14 +66,14 @@ public class ReqMember {
             ", username= " + username +
             ", password= " + password +
             ", email= " + email +
-            ", gender= " + gender +
             ", birthInfo= " + birthInfo +
             ", role= " + role +
             ", name= " + name +
             ", phoneNumber= " + phoneNumber +
             ", address= " + address +
             ", country= " + country +
-            ", furigana= " + furigana +
+            ", furiganaFirst= " + furiganaFirst +
+            ", furiganaLast= " + furiganaLast +
             '}';
     }
 }

@@ -2,9 +2,6 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.Member;
-import finalproject.jpnshop.biz.domain.properties.Gender;
-import finalproject.jpnshop.web.dto.ResMember.Response;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,14 +18,14 @@ public class ResMember {
         private String username;
         private String password;
         private String email;
-        private Gender gender;
-        private Date birthInfo;
+        private String birthInfo;
         private String role;
         private String name;
         private String phoneNumber;
         private Address address;
         private String country;
-        private String furigana;
+        private String furiganaFirst;
+        private String furiganaLast;
 
 
         public static Response of(Member member) {
@@ -36,13 +33,13 @@ public class ResMember {
                 .username(member.getUsername())
                 .password(member.getPassword())
                 .email(member.getEmail())
-                .gender(member.getGender())
                 .birthInfo(member.getBirthInfo())
                 .name(member.getName())
                 .phoneNumber(member.getPhoneNumber())
                 .address(member.getAddress())
                 .country(member.getCountry())
-                .furigana(member.getFurigana())
+                .furiganaFirst(member.getFuriganaFirst())
+                .furiganaLast(member.getFuriganaLast())
                 .build();
         }
 

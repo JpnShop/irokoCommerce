@@ -32,12 +32,11 @@ public class Member extends BaseTime {
     @Email
     private String email;
 
-    private String birthInfo;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String name;
+    private String firstName;
+    private String lastName;
 
     @Embedded
     private Address address;
@@ -45,24 +44,24 @@ public class Member extends BaseTime {
     private String phoneNumber;
 
     private String country;
-    private String furiganaFirst;
-    private String furiganaLast;
+    private String firstFurigana;
+    private String lastFurigana;
 
     @Builder
     public Member(Long id, String username, String password, String email,
-        String birthInfo, Role role, String name, Address address, String phoneNumber, String country, String furiganaFirst, String furiganaLast) {
+        String birthInfo, Role role, String firstName, String lastName, Address address, String phoneNumber, String country, String firstFurigana, String lastFurigana) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.birthInfo = birthInfo;
         this.role = role;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.country = country;
-        this.furiganaFirst = furiganaFirst;
-        this.furiganaLast = furiganaLast;
+        this.firstFurigana = firstFurigana;
+        this.lastFurigana = lastFurigana;
     }
 
     public void setAddress(Address address) {

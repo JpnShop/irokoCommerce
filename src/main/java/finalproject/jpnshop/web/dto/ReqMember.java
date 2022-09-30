@@ -17,28 +17,28 @@ public class ReqMember {
     private String username;
     private String password;
     private String email;
-    private String birthInfo;
     private String role;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String phoneNumber;
     private Address address;
     private String country;
-    private String furiganaFirst;
-    private String furiganaLast;
+    private String firstFurigana;
+    private String lastFurigana;
 
     public Member toEntity(PasswordEncoder passwordEncoder) {
         return Member.builder()
             .username(username)
             .password(passwordEncoder.encode(password))
             .email(email)
-            .birthInfo(birthInfo)
             .role(Role.ROLE_USER)
-            .name(name)
+            .firstName(firstName)
+            .lastName(lastName)
             .phoneNumber(phoneNumber)
             .address(address)
             .country(country)
-            .furiganaFirst(furiganaFirst)
-            .furiganaLast(furiganaLast)
+            .firstFurigana(firstFurigana)
+            .lastFurigana(lastFurigana)
             .build();
     }
 
@@ -66,14 +66,14 @@ public class ReqMember {
             ", username= " + username +
             ", password= " + password +
             ", email= " + email +
-            ", birthInfo= " + birthInfo +
             ", role= " + role +
-            ", name= " + name +
+            ", firstName= " + firstName +
+            ", lastName= " + lastName +
             ", phoneNumber= " + phoneNumber +
             ", address= " + address +
             ", country= " + country +
-            ", furiganaFirst= " + furiganaFirst +
-            ", furiganaLast= " + furiganaLast +
+            ", firstFurigana= " + firstFurigana +
+            ", lastFurigana= " + lastFurigana +
             '}';
     }
 }

@@ -1,6 +1,5 @@
 package finalproject.jpnshop.biz.domain;
 
-import finalproject.jpnshop.biz.domain.properties.Gender;
 import finalproject.jpnshop.biz.domain.properties.Role;
 import java.util.Date;
 import javax.persistence.Column;
@@ -33,8 +32,6 @@ public class Member extends BaseTime {
     @Email
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
 
     //TODO
     private Date birthInfo;
@@ -53,13 +50,12 @@ public class Member extends BaseTime {
     private String furigana;
 
     @Builder
-    public Member(Long id, String username, String password, String email, Gender gender,
+    public Member(Long id, String username, String password, String email,
         Date birthInfo, Role role, String name, Address address, String phoneNumber, String country, String furigana) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.gender = gender;
         this.birthInfo = birthInfo;
         this.role = role;
         this.name = name;

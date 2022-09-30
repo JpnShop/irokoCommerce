@@ -39,7 +39,8 @@ public class Member extends BaseTime {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String name;
+    private String firstName;
+    private String lastName;
 
     @Embedded
     private Address address;
@@ -58,9 +59,9 @@ public class Member extends BaseTime {
         this.password = password;
         this.email = email;
         this.gender = gender;
-        this.birthInfo = birthInfo;
         this.role = role;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.country = country;

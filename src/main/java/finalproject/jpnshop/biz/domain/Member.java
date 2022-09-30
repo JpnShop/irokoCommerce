@@ -44,12 +44,12 @@ public class Member extends BaseTime {
     private String phoneNumber;
 
     private String country;
-    private String furiganaFirst;
-    private String furiganaLast;
+    private String firstFurigana;
+    private String lastFurigana;
 
     @Builder
     public Member(Long id, String username, String password, String email,
-        String birthInfo, Role role, String name, Address address, String phoneNumber, String country, String furiganaFirst, String furiganaLast) {
+        String birthInfo, Role role, String firstName, String lastName, Address address, String phoneNumber, String country, String firstFurigana, String lastFurigana) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -60,8 +60,8 @@ public class Member extends BaseTime {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.country = country;
-        this.furiganaFirst = furiganaFirst;
-        this.furiganaLast = furiganaLast;
+        this.firstFurigana = firstFurigana;
+        this.lastFurigana = lastFurigana;
     }
 
     public void setAddress(Address address) {

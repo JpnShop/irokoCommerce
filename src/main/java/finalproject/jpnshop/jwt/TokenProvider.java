@@ -64,7 +64,7 @@ public class TokenProvider {
             .compact();
 
         Member member = memberRepository.findById(Long.parseLong(authentication.getName())).orElseThrow(() -> new RuntimeException("조회 불가"));
-        String name = member.getName();
+        String name = member.getFirstName() + member.getLastName();
 
         String refreshToken = Jwts.builder()
             .setExpiration(new Date(now + REFRESH_TOKEN_EXPIRE_TIME))

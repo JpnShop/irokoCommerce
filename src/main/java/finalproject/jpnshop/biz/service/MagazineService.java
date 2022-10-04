@@ -6,6 +6,7 @@ import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MagazineRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqMagazine;
 import finalproject.jpnshop.web.dto.ResMagazine;
 import finalproject.jpnshop.web.dto.ResMagazine.Response;
@@ -34,7 +35,8 @@ public class MagazineService {
 
     @Transactional
     public void insertMagazine(ReqMagazine magazineForm){
-        magazineForm.setMember(memberRepository.findById(1l).orElseThrow(
+        long memberId = SecurityUtil.getCurrentMemberId();
+        magazineForm.setMember(memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)
         ));
         Magazine magazine = magazineForm.toEntity();

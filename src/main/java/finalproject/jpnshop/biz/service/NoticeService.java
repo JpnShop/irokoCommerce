@@ -5,6 +5,7 @@ import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.NoticeRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqNotice;
 import finalproject.jpnshop.web.dto.ResNotice;
 import finalproject.jpnshop.web.dto.ResNotice.Response;
@@ -44,7 +45,8 @@ public class NoticeService {
     //todo : 로그인한 회원으로 멤버 저장
     @Transactional
     public void insertNotice(ReqNotice noticeForm) {
-        noticeForm.setMember(memberRepository.findById(1L).orElseThrow(
+        long memberId = SecurityUtil.getCurrentMemberId();
+        noticeForm.setMember(memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         Notice notice = noticeForm.toEntity();
         noticeRepository.save(notice);

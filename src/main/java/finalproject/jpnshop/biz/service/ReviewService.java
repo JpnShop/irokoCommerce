@@ -8,6 +8,7 @@ import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.biz.repository.ReviewRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqReview;
 import finalproject.jpnshop.web.dto.ResReview;
 import finalproject.jpnshop.web.dto.ResReview.Response;
@@ -56,7 +57,8 @@ public class ReviewService {
     //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장, 로그인한 회원으로 멤버 저장
     @Transactional
     public void insertReview(ReqReview reviewForm, Long productId) {
-        reviewForm.setMember(memberRepository.findById(1L).orElseThrow(
+        long memberId = SecurityUtil.getCurrentMemberId();
+        reviewForm.setMember(memberRepository.findById(memberId).orElseThrow(
         () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         reviewForm.setProduct(productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND)));

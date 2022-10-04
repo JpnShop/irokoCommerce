@@ -4,7 +4,7 @@ import finalproject.jpnshop.biz.domain.Answer;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
-import finalproject.jpnshop.biz.domain.Review;
+import finalproject.jpnshop.biz.domain.properties.QuestionType;
 import java.time.LocalDateTime;
 import lombok.Getter;
 
@@ -23,8 +23,11 @@ public class ReqQuestion {
 
     private int password;
 
+    private QuestionType type;
+
     public Question toEntity() {
-        return new Question(member, product, title, content, createdDate, privateYn, password);
+        return new Question(member, product, title, content, createdDate, privateYn, password,
+            type);
     }
 
     public void setMember(Member member) {
@@ -52,7 +55,8 @@ public class ReqQuestion {
             ", answerYn='" + answerYn + '\'' +
             ", privateYn='" + privateYn + '\'' +
             ", answer=" + answer +
-            ", password='" + password + '\'' +
+            ", password=" + password +
+            ", type=" + type +
             '}';
     }
 }

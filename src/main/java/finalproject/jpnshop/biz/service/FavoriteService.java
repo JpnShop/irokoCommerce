@@ -10,6 +10,7 @@ import finalproject.jpnshop.biz.repository.FavoriteItemRepository;
 import finalproject.jpnshop.biz.repository.FavoriteRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ResProduct;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,4 +84,16 @@ public class FavoriteService {
         favoriteItemRepository.deleteAll(favoriteItems);
     }
 
+    public void deleteFavoriteItems(List<Long> productId) {
+        long memberId = SecurityUtil.getCurrentMemberId();
+        Member member = memberRepository.findById(memberId).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
+        for(long id : productId){
+            Product product = productRepository.findById(id).orElseThrow(
+                () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
+            List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByProductAndFavorite(product,favorite);
+            favoriteItemRepository.deleteAll(favoriteItems);
+        }
+        }
 }

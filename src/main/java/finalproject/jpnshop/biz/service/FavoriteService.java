@@ -83,18 +83,5 @@ public class FavoriteService {
         List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByProductAndFavorite(product,favorite);
         favoriteItemRepository.deleteAll(favoriteItems);
     }
-
-    @Transactional
-    public void deleteFavoriteItems(List<Long> productId) {
-        long memberId = SecurityUtil.getCurrentMemberId();
-        Member member = memberRepository.findById(memberId).orElseThrow(
-            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
-        Favorite favorite = favoriteRepository.findByMember(Optional.ofNullable(member));
-        for(long id : productId){
-            Product product = productRepository.findById(id).orElseThrow(
-                () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
-            List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByProductAndFavorite(product,favorite);
-            favoriteItemRepository.deleteAll(favoriteItems);
-        }
-        }
+    
 }

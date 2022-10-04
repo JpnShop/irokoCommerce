@@ -84,6 +84,7 @@ public class FavoriteService {
         favoriteItemRepository.deleteAll(favoriteItems);
     }
 
+    @Transactional
     public void deleteFavoriteItems(List<Long> productId) {
         long memberId = SecurityUtil.getCurrentMemberId();
         Member member = memberRepository.findById(memberId).orElseThrow(

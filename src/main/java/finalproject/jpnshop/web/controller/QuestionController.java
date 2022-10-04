@@ -1,6 +1,7 @@
 package finalproject.jpnshop.web.controller;
 
 import finalproject.jpnshop.biz.service.QuestionService;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion.Response;
 import java.util.List;
@@ -34,8 +35,8 @@ public class QuestionController {
     }
 
     @GetMapping("/my")
-    public List<Response> getQuestionsByMember(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+    public List<Response> getQuestionsByMember(){
+        long memberId = SecurityUtil.getCurrentMemberId();
         return questionService.getQuestionsByMember(memberId);
     }
 

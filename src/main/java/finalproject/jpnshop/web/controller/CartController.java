@@ -1,6 +1,7 @@
 package finalproject.jpnshop.web.controller;
 
 import finalproject.jpnshop.biz.service.CartService;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ResCartItem.Response;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class CartController {
 
     @PostMapping
     public String insertCart(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+        long memberId = SecurityUtil.getCurrentMemberId();
         long productId = map.get("product_id");
         long countNum = map.get("count");
         cartService.insertCart(memberId, productId, (int) countNum);
@@ -37,7 +38,7 @@ public class CartController {
 
     @PutMapping
     public String updateCount(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+        long memberId = SecurityUtil.getCurrentMemberId();
         long productId = map.get("product_id");
         long countNum = map.get("count");
         cartService.updateCount(memberId, productId, (int) countNum);
@@ -45,8 +46,8 @@ public class CartController {
     }
 
     @DeleteMapping("/empty")
-    public String deleteAllCart(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+    public String deleteAllCart(){
+        long memberId = SecurityUtil.getCurrentMemberId();
         cartService.deleteAllCart(memberId);
         return "장바구니를 비웠습니다.";
     }

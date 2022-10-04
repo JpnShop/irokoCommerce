@@ -1,6 +1,7 @@
 package finalproject.jpnshop.web.controller;
 
 import finalproject.jpnshop.biz.service.ReviewService;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqReview;
 import finalproject.jpnshop.web.dto.ResReview;
 import finalproject.jpnshop.web.dto.ResReview.Response;
@@ -31,7 +32,8 @@ public class ReviewController {
     }
 
     @GetMapping("/customers/reviews/my")
-    public List<ResReview.Response> getReviewsByMember(long memberId){
+    public List<ResReview.Response> getReviewsByMember(){
+        long memberId = SecurityUtil.getCurrentMemberId();
         return reviewService.getReviewsByMember(memberId);
 
     }

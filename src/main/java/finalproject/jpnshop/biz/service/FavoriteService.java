@@ -10,6 +10,7 @@ import finalproject.jpnshop.biz.repository.FavoriteItemRepository;
 import finalproject.jpnshop.biz.repository.FavoriteRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ResProduct;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,5 +83,5 @@ public class FavoriteService {
         List<FavoriteItem> favoriteItems = favoriteItemRepository.findAllByProductAndFavorite(product,favorite);
         favoriteItemRepository.deleteAll(favoriteItems);
     }
-
+    
 }

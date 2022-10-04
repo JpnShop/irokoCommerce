@@ -17,7 +17,6 @@ public class ReqQuestion {
     private String title;
     private String content;
     private LocalDateTime createdDate;
-
     private String answerYn;
     private String privateYn;
     private Answer answer;

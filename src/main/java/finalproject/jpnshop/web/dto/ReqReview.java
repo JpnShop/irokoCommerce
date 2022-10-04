@@ -12,12 +12,13 @@ public class ReqReview {
     private Long id;
     private Member member;
     private Product product;
+    private double star;
     private String title;
     private String content;
     private LocalDateTime createdDate;
 
     public Review toEntity() {
-        return new Review(member, product, title, content, createdDate);
+        return new Review(member, product, title, content, createdDate, star);
     }
 
     public void setMember(Member member) {
@@ -34,6 +35,7 @@ public class ReqReview {
             "id=" + id +
             ", member=" + member +
             ", product=" + product +
+            ", star=" + star +
             ", title='" + title + '\'' +
             ", content='" + content + '\'' +
             ", createdDate=" + createdDate +

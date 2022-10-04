@@ -43,7 +43,7 @@ public class ReviewController {
         return reviewService.getReviewByProduct(productId);
     }
 
-    @PostMapping( "/customers/reviews/product_id={productId}")
+    @PostMapping( "/customers/reviews/{productId}")
     public String insertReview(@RequestBody ReqReview review,
         @PathVariable Long productId) {
         reviewService.insertReview(review, productId);

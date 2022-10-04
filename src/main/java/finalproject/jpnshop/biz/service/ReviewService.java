@@ -72,6 +72,7 @@ public class ReviewService {
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND));
         review.setTitle(reviewForm.getTitle());
         review.setContent(reviewForm.getContent());
+        review.setStar(reviewForm.getStar());
     }
 
     @Transactional

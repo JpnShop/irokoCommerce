@@ -51,5 +51,6 @@ public class FavoriteController {
     @DeleteMapping
     public String deleteFavoriteItems(List<Long> productId){
         favoriteService.deleteFavoriteItems(productId);
+        return "관심상품 목록에서 상품들을 삭제했습니다.";
     }
 }

@@ -8,6 +8,7 @@ import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.biz.repository.QuestionRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion.Response;
@@ -74,7 +75,8 @@ public class QuestionService {
         if(questionForm.getPrivateYn().equals("비공개") && questionForm.getPassword()==0){
         throw new CustomException(ErrorCode.PASSWORD_NOT_FOUND);
     }
-        questionForm.setMember(memberRepository.findById(1L).orElseThrow(
+        long memberId = SecurityUtil.getCurrentMemberId();
+        questionForm.setMember(memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         questionForm.setProduct(productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND)));

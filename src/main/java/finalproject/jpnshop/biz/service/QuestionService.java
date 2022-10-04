@@ -4,6 +4,7 @@ import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
 import finalproject.jpnshop.biz.domain.properties.ErrorCode;
+import finalproject.jpnshop.biz.domain.properties.Role;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
@@ -64,8 +65,14 @@ public class QuestionService {
     public ResQuestion.Response getQuestion(long questionId, int password){
         Question question = questionRepository.findById(questionId).orElseThrow(
             () -> new CustomException(ErrorCode.QUESTION_NOT_FOUND));
-        if(question.getPrivateYn().equals("비공개") && question.getPassword()!=password){
-            throw new CustomException(ErrorCode.PASSWORD_NOT_CORRECT);
+        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        if(question.getPrivateYn().equals("비공개")) {
+            if (member.getRole().equals(Role.ROLE_ADMIN)) {
+                return Response.of(question);
+            } else if (question.getPassword() != password) {
+                throw new CustomException(ErrorCode.PASSWORD_NOT_CORRECT);
+            }
         }
         return Response.of(question);
     }

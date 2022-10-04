@@ -41,15 +41,14 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}")
-    public Response getQuestion(@PathVariable long id, @RequestBody Map<String,Integer> map){
-        int password = map.get("password");
+    public Response getQuestion(@PathVariable long id, int password){
         return questionService.getQuestion(id,password);
     }
 
-    @PostMapping("/product_id={id}")
+    @PostMapping("/{productId}")
     public String insertQuestion(@RequestBody ReqQuestion questionForm,
-        @PathVariable long id){
-        questionService.insertQuestion(questionForm,id);
+        @PathVariable long productId){
+        questionService.insertQuestion(questionForm,productId);
         return "작성한 문의글이 게시되었습니다.";
     }
 

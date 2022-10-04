@@ -16,13 +16,14 @@ public class ResAnswer {
     @NoArgsConstructor
     @Builder
     public static class Response {
-
+        private long id;
         private Member member;
         private String content;
         private LocalDate createdDate;
 
         public static Response of(Answer answer) {
             return Response.builder()
+                .id(answer.getId())
                 .member(answer.getMember())
                 .content(answer.getContent())
                 .createdDate(answer.getCreatedDate())

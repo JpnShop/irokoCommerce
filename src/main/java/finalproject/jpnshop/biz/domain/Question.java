@@ -1,5 +1,6 @@
 package finalproject.jpnshop.biz.domain;
 
+import finalproject.jpnshop.biz.domain.properties.QuestionType;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,6 +44,8 @@ public class Question {
     @OneToOne
     private Answer answer;
 
+    private QuestionType type;
+
     @Column(name = "createdAt")
     @CreatedDate
     private LocalDateTime createdDate;
@@ -54,7 +57,7 @@ public class Question {
 
 
 
-    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, int password) {
+    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, int password, QuestionType type) {
         this.member = member;
         this.product = product;
         this.title = title;
@@ -63,7 +66,9 @@ public class Question {
         this.answerStatus = "미답변";
         this.privateYn = privateYn;
         this.password = password;
+        this.type = type;
     }
+
 
     public void setTitle(String title) {
         this.title = title;

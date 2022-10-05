@@ -7,6 +7,7 @@ import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.AnswerRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.QuestionRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqAnswer;
 import finalproject.jpnshop.web.dto.ResAnswer;
 import java.util.ArrayList;
@@ -43,7 +44,8 @@ public class AnswerService {
 
     @Transactional
     public void insertAnswer(ReqAnswer answerForm, Long questionId){
-        answerForm.setMember(memberRepository.findById(1L).orElseThrow(
+        Long memberId = SecurityUtil.getCurrentMemberId();
+        answerForm.setMember(memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         Question question = questionRepository.findById(questionId).orElseThrow(
             () -> new CustomException(ErrorCode.QUESTION_NOT_FOUND));

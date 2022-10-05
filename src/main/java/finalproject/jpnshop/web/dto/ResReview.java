@@ -16,19 +16,22 @@ public class ResReview {
     @NoArgsConstructor
     @Builder
     public static class Response {
-
+        private long id;
         private Member member;
         private Product product;
         private String title;
         private String content;
+        private double star;
         private LocalDateTime createdDate;
 
         public static Response of(Review review) {
             return Response.builder()
+                .id(review.getId())
                 .member(review.getMember())
                 .product(review.getProduct())
                 .title(review.getTitle())
                 .content(review.getContent())
+                .star(review.getStar())
                 .createdDate(review.getCreatedDate())
                 .build();
         }

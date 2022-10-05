@@ -1,6 +1,7 @@
 package finalproject.jpnshop.web.controller;
 
 import finalproject.jpnshop.biz.service.QuestionService;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion.Response;
 import java.util.List;
@@ -34,21 +35,20 @@ public class QuestionController {
     }
 
     @GetMapping("/my")
-    public List<Response> getQuestionsByMember(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+    public List<Response> getQuestionsByMember(){
+        long memberId = SecurityUtil.getCurrentMemberId();
         return questionService.getQuestionsByMember(memberId);
     }
 
     @GetMapping("/{id}")
-    public Response getQuestion(@PathVariable long id, @RequestBody Map<String,Integer> map){
-        int password = map.get("password");
+    public Response getQuestion(@PathVariable long id, int password){
         return questionService.getQuestion(id,password);
     }
 
-    @PostMapping("/product_id={id}")
+    @PostMapping("/{productId}")
     public String insertQuestion(@RequestBody ReqQuestion questionForm,
-        @PathVariable long id){
-        questionService.insertQuestion(questionForm,id);
+        @PathVariable long productId){
+        questionService.insertQuestion(questionForm,productId);
         return "작성한 문의글이 게시되었습니다.";
     }
 

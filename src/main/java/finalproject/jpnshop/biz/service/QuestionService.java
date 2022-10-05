@@ -4,10 +4,12 @@ import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Question;
 import finalproject.jpnshop.biz.domain.properties.ErrorCode;
+import finalproject.jpnshop.biz.domain.properties.Role;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.biz.repository.QuestionRepository;
+import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion;
 import finalproject.jpnshop.web.dto.ResQuestion.Response;
@@ -63,8 +65,14 @@ public class QuestionService {
     public ResQuestion.Response getQuestion(long questionId, int password){
         Question question = questionRepository.findById(questionId).orElseThrow(
             () -> new CustomException(ErrorCode.QUESTION_NOT_FOUND));
-        if(question.getPrivateYn().equals("비공개") && question.getPassword()!=password){
-            throw new CustomException(ErrorCode.PASSWORD_NOT_CORRECT);
+        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        if(question.getPrivateYn().equals("비공개")) {
+            if (member.getRole().equals(Role.ROLE_ADMIN)) {
+                return Response.of(question);
+            } else if (question.getPassword() != password) {
+                throw new CustomException(ErrorCode.PASSWORD_NOT_CORRECT);
+            }
         }
         return Response.of(question);
     }
@@ -74,7 +82,8 @@ public class QuestionService {
         if(questionForm.getPrivateYn().equals("비공개") && questionForm.getPassword()==0){
         throw new CustomException(ErrorCode.PASSWORD_NOT_FOUND);
     }
-        questionForm.setMember(memberRepository.findById(1L).orElseThrow(
+        long memberId = SecurityUtil.getCurrentMemberId();
+        questionForm.setMember(memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         questionForm.setProduct(productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND)));

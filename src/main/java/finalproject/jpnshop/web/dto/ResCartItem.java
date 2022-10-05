@@ -13,7 +13,7 @@ public class ResCartItem {
     @NoArgsConstructor
     @Builder
     public static class Response {
-
+        private long id;
         private String productName;
         private int price;
         private String brand;
@@ -22,6 +22,7 @@ public class ResCartItem {
 
         public static Response of(CartItem cartItem) {
             return Response.builder()
+                .id(cartItem.getId())
                 .productName(cartItem.getProduct().getProductName())
                 .price(cartItem.getProduct().getPrice())
                 .brand(cartItem.getProduct().getBrand())

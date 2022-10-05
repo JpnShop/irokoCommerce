@@ -19,7 +19,7 @@ public class ResMagazine {
     @NoArgsConstructor
     @Builder
     public static class Response {
-
+        private long id;
         private Member member;
         private List<MagazineItem> magazineItems;
         private String thumnail;
@@ -29,6 +29,7 @@ public class ResMagazine {
 
         public static Response of(Magazine magazine) {
             return Response.builder()
+                .id(magazine.getId())
                 .member(magazine.getMember())
                 .magazineItems(magazine.getMagazineItems())
                 .thumnail(magazine.getThumnail())

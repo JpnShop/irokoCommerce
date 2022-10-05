@@ -8,23 +8,21 @@ server:
       force: true
 
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://finalpjt.czw5l09fympo.ap-northeast-2.rds.amazonaws.com:3306/iroko?serverTimezone=Asia/Seoul
-#    url: jdbc:mysql://localhost:3306/iroko?serverTimezone=Asia/Seoul
-    username: root
-    password: root1234
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
   profiles:
     include: auth
-
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:sql/data.sql
+      schema-locations: classpath:sql/schema.sql
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
@@ -34,13 +32,12 @@ spring:
         show_sql: true
         format_sql: true
         highlight_sql: true
-
+    defer-datasource-initialization: true
 logging:
   level:
     org:
       hibernate:
         type: trace
-
 
 jwt:
   secret: c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWppd29vbi1zcHJpbmctYm9vdC1zZWN1cml0eS1qd3QtdHV0b3JpYWwK

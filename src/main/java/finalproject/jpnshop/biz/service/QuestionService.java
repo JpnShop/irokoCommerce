@@ -67,7 +67,7 @@ public class QuestionService {
             () -> new CustomException(ErrorCode.QUESTION_NOT_FOUND));
         Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
-        if(question.getPrivateYn().equals("비공개")) {
+        if(question.getPrivateYn().equals(true)) {
             if (member.getRole().equals(Role.ROLE_ADMIN)) {
                 return Response.of(question);
             } else if (question.getPassword() != password) {
@@ -79,7 +79,7 @@ public class QuestionService {
 
     @Transactional
     public void insertQuestion(ReqQuestion questionForm, Long productId){
-        if(questionForm.getPrivateYn().equals("비공개") && questionForm.getPassword()==0){
+        if(questionForm.getPrivateYn().equals(true) && questionForm.getPassword()==0){
         throw new CustomException(ErrorCode.PASSWORD_NOT_FOUND);
     }
         long memberId = SecurityUtil.getCurrentMemberId();

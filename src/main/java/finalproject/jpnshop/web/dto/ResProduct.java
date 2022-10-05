@@ -1,7 +1,6 @@
 package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Product;
-import finalproject.jpnshop.biz.domain.properties.Brand;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +16,7 @@ public class ResProduct {
 
         private String productName;
         private int price;
-        private Brand brand;
+        private String brand;
         private int stock;
         private String category;
 

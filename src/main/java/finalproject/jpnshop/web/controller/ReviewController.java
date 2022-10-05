@@ -53,7 +53,7 @@ public class ReviewController {
         @RequestPart(value = "ReqReview") ReqReview review,
         @PathVariable Long productId
     ) throws Exception {
-            reviewService.insertReview(review, productId);
+            reviewService.insertReview(review, productId, images);
             return "리뷰가 등록되었습니다.";
     }
 

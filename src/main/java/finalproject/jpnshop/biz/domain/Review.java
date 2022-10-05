@@ -76,4 +76,13 @@ public class Review {
     public void setStar(double star) {
         this.star = star;
     }
+
+    public void addImage(Image image) {
+        this.image.add(image);
+    }
+
+//
+//    public void addImage(Image image) {
+//        this.image.add(image);
+//    }
 }

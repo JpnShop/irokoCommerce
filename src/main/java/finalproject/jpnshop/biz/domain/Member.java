@@ -1,7 +1,6 @@
 package finalproject.jpnshop.biz.domain;
 
 import finalproject.jpnshop.biz.domain.properties.Role;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -26,10 +25,14 @@ public class Member extends BaseTime {
     @Column(name = "member_id")
     private Long id;
 
+    @Column(nullable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
-    @Email
+    @Column(nullable = false)
+    @Email(message = "이메일 형식에 맞지 않습니다.")
     private String email;
 
     @Enumerated(EnumType.STRING)
@@ -74,6 +77,10 @@ public class Member extends BaseTime {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void updateTmpPassword(String tmpPassword) {
+        this.password = tmpPassword;
     }
 
 }

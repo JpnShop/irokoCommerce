@@ -80,9 +80,4 @@ public class Review {
     public void addImage(Image image) {
         this.image.add(image);
     }
-
-//
-//    public void addImage(Image image) {
-//        this.image.add(image);
-//    }
 }

@@ -6,6 +6,7 @@ server:
       charset: UTF-8
       enabled: true
       force: true
+
   sql:
     init:
       mode: always
@@ -22,6 +23,10 @@ spring:
       matching-strategy: ant_path_matcher
   profiles:
     include: auth
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 20MB
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

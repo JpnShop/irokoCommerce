@@ -1,8 +1,6 @@
 package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.CartItem;
-import finalproject.jpnshop.biz.domain.Product;
-import finalproject.jpnshop.biz.domain.properties.Brand;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +16,7 @@ public class ResCartItem {
 
         private String productName;
         private int price;
-        private Brand brand;
+        private String brand;
         private String category;
         private int count;
 

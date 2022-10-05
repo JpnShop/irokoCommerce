@@ -51,13 +51,13 @@ public class Question {
     private LocalDateTime createdDate;
 
     private String answerStatus;
-    private String privateYn;
+    private Boolean privateYn;
 
     private int password;
 
 
 
-    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, String privateYn, int password, QuestionType type) {
+    public Question(Member member, Product product, String title, String content, LocalDateTime createdDate, boolean privateYn, int password, QuestionType type) {
         this.member = member;
         this.product = product;
         this.title = title;

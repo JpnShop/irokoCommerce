@@ -32,7 +32,7 @@ public class Product extends BaseTime {
     private String brandImg;
 
     private String brandKo;
-    private String category;
+    private String tags;
 
     private String detailList;
 
@@ -117,7 +117,7 @@ public class Product extends BaseTime {
             ", brand='" + brand + '\'' +
             ", brandImg='" + brandImg + '\'' +
             ", brandKo='" + brandKo + '\'' +
-            ", category='" + category + '\'' +
+            ", tags='" + tags + '\'' +
             ", detailList='" + detailList + '\'' +
             ", detailThumbList='" + detailThumbList + '\'' +
             ", price=" + price +

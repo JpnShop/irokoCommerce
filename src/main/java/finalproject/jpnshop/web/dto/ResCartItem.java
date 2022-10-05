@@ -26,7 +26,7 @@ public class ResCartItem {
                 .productName(cartItem.getProduct().getProductName())
                 .price(cartItem.getProduct().getPrice())
                 .brand(cartItem.getProduct().getBrand())
-                .category(cartItem.getProduct().getCategory())
+                .category(cartItem.getProduct().getTags())
                 .count(cartItem.getCount())
                 .build();
         }

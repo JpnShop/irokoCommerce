@@ -30,6 +30,7 @@ public class Answer {
     @Lob
     private String content;
 
+
     @Column(name = "createdAt")
     @CreatedDate
     private LocalDate createdDate;
@@ -53,4 +54,5 @@ public class Answer {
     public void setContent(String content) {
         this.content=content;
     }
+
 }

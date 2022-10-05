@@ -6,6 +6,7 @@ server:
       charset: UTF-8
       enabled: true
       force: true
+
   sql:
     init:
       mode: always
@@ -16,16 +17,16 @@ spring:
       matching-strategy: ant_path_matcher
   profiles:
     include: auth
-  sql:
-    init:
-      mode: always
-      data-locations: classpath:sql/data.sql
-      schema-locations: classpath:sql/schema.sql
+  servlet:
+    multipart:
+      maxFileSize: 10MB
+      maxRequestSize: 20MB
+
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
@@ -35,12 +36,13 @@ spring:
         show_sql: true
         format_sql: true
         highlight_sql: true
-    defer-datasource-initialization: true
+
 logging:
   level:
     org:
       hibernate:
         type: trace
+
 
 jwt:
   secret: c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWppd29vbi1zcHJpbmctYm9vdC1zZWN1cml0eS1qd3QtdHV0b3JpYWwK

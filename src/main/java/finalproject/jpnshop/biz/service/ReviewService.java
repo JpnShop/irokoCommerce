@@ -1,10 +1,13 @@
 package finalproject.jpnshop.biz.service;
 
+import finalproject.jpnshop.biz.component.FileHandler;
+import finalproject.jpnshop.biz.domain.Image;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
 import finalproject.jpnshop.biz.exception.CustomException;
+import finalproject.jpnshop.biz.repository.ImageRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.biz.repository.ReviewRepository;
@@ -18,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @Slf4j
@@ -28,6 +32,8 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final ProductRepository productRepository;
     private final MemberRepository memberRepository;
+    private final FileHandler fileHandler;
+    private final ImageRepository imageRepository;
 
 
     public List<ResReview.Response> getReviews() {
@@ -56,13 +62,21 @@ public class ReviewService {
 
     //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장, 로그인한 회원으로 멤버 저장
     @Transactional
-    public void insertReview(ReqReview reviewForm, Long productId) {
+    public void insertReview(ReqReview reviewForm, Long productId, List<MultipartFile> images)
+    throws Exception {
         long memberId = SecurityUtil.getCurrentMemberId();
         reviewForm.setMember(memberRepository.findById(memberId).orElseThrow(
         () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
         reviewForm.setProduct(productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND)));
         Review review = reviewForm.toEntity();
+        List<Image> imageList = fileHandler.parseFileInfo(images);
+
+        if(!imageList.isEmpty()){
+            for(Image image : imageList){
+                review.addImage(imageRepository.save(image));
+            }
+        }
         reviewRepository.save(review);
     }
 

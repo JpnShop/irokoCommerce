@@ -33,7 +33,7 @@ public class OrderService {
     private final DeliveryInfoRepository deliveryInfoRepository;
 
     @Transactional
-    public Long createOrder(Long memberId, Long productId, Long deliveryInfoId, int count) {
+    public Long createOrder(Long memberId, Long productId, Long deliveryInfoId, Integer count) {
 
         Member member = memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
@@ -51,6 +51,13 @@ public class OrderService {
 
         return order.getId();
 
+    }
+
+    public ResOrder.Response findOrder(Long orderId) {
+        Order order = orderRepository.findById(orderId).orElseThrow(
+            () -> new CustomException(ErrorCode.ORDER_NOT_FOUND)
+        );
+        return ResOrder.Response.of(order);
     }
 
     @Transactional

@@ -5,6 +5,7 @@ import finalproject.jpnshop.biz.domain.MagazineItem;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
+import finalproject.jpnshop.biz.domain.properties.Tag;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,8 +25,9 @@ public class ReqMagazine {
     private String content;
     private LocalDate createdDate;
 
+    private Tag tag;
     public Magazine toEntity() {
-        return new Magazine(member, magazineItems, thumnail, title, content, createdDate);
+        return new Magazine(member, magazineItems, thumnail, title, content, createdDate, tag);
     }
 
     public void setMember(Member member) {

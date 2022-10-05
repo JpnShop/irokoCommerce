@@ -1,9 +1,11 @@
 package finalproject.jpnshop.web.dto;
 
+import finalproject.jpnshop.biz.domain.Image;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Getter;
 
 @Getter
@@ -17,8 +19,11 @@ public class ReqReview {
     private String content;
     private LocalDateTime createdDate;
 
+    private List<Image> image;
+
+
     public Review toEntity() {
-        return new Review(member, product, title, content, createdDate, star);
+        return new Review(member, product, title, content, createdDate, star, image);
     }
 
     public void setMember(Member member) {

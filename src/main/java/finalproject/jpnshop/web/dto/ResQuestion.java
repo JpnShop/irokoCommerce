@@ -24,7 +24,7 @@ public class ResQuestion {
         private String title;
         private String content;
         private Answer answer;
-        private String privateYn;
+        private Boolean privateYn;
         private String answerYn;
         private int password;
         private LocalDateTime createdDate;

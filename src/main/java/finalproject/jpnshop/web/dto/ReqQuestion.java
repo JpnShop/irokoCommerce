@@ -18,7 +18,7 @@ public class ReqQuestion {
     private String content;
     private LocalDateTime createdDate;
     private String answerYn;
-    private String privateYn;
+    private Boolean privateYn;
     private Answer answer;
 
     private int password;

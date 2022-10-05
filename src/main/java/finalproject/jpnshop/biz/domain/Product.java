@@ -2,15 +2,12 @@ package finalproject.jpnshop.biz.domain;
 
 import static javax.persistence.CascadeType.ALL;
 
-import finalproject.jpnshop.biz.domain.properties.Brand;
 import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,31 +27,30 @@ public class Product extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long id;
+    private String brand;
+    @Column(name = "brandImg")
+    private String brandImg;
 
-    private String summary;
+    private String brandKo;
+    private String category;
+
+    private String detailList;
+
+    private String detailThumbList;
+
+    private int price;
 
     private String productName;
 
     private String productOption;
 
-    private int price;
-
-    private int point;
-
-    @Enumerated(EnumType.STRING)
-    private Brand brand;
+    private int sale;
 
     private int stock; //재고
 
-    private String category;
+    private String summary;
 
-    private String detailImage;
-
-    private String listImage;
-
-    private String smallListImage;
-
-    private String iconImage;
+    private String thumbnail;
 
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<CartItem> cartItems = new ArrayList<>();
@@ -118,18 +114,20 @@ public class Product extends BaseTime {
     public String toString() {
         return "Product{" +
             "id=" + id +
-            ", summary='" + summary + '\'' +
+            ", brand='" + brand + '\'' +
+            ", brandImg='" + brandImg + '\'' +
+            ", brandKo='" + brandKo + '\'' +
+            ", category='" + category + '\'' +
+            ", detailList='" + detailList + '\'' +
+            ", detailThumbList='" + detailThumbList + '\'' +
+            ", price=" + price +
             ", productName='" + productName + '\'' +
             ", productOption='" + productOption + '\'' +
-            ", price=" + price +
-            ", point=" + point +
-            ", brand=" + brand +
+            ", sale=" + sale +
             ", stock=" + stock +
-            ", category='" + category + '\'' +
-            ", detailImage='" + detailImage + '\'' +
-            ", listImage='" + listImage + '\'' +
-            ", smallListImage='" + smallListImage + '\'' +
-            ", iconImage='" + iconImage + '\'' +
+            ", summary='" + summary + '\'' +
+            ", thumbnail='" + thumbnail + '\'' +
+            ", cartItems=" + cartItems +
             '}';
     }
 }

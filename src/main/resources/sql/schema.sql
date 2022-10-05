@@ -6,6 +6,7 @@ drop table if exists Question cascade;
 drop table if exists Review cascade;
 drop table if exists Product cascade;
 
+
 create table Product
 (
     product_id      bigint  not null auto_increment,

@@ -26,7 +26,7 @@ public class ResProduct {
                 .price(product.getPrice())
                 .brand(product.getBrand())
                 .stock(product.getStock())
-                .category(product.getCategory())
+                .category(product.getTags())
                 .build();
         }
     }

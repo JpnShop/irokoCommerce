@@ -66,7 +66,6 @@ public class ReviewService {
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND)));
     }
 
-    //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장
     @Transactional
     public void insertReview(ReqReview reviewForm, Long productId, List<MultipartFile> images)
         throws Exception {

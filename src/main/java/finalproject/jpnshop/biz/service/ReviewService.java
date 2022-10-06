@@ -3,12 +3,16 @@ package finalproject.jpnshop.biz.service;
 import finalproject.jpnshop.biz.component.FileHandler;
 import finalproject.jpnshop.biz.domain.Image;
 import finalproject.jpnshop.biz.domain.Member;
-import finalproject.jpnshop.biz.domain.properties.ErrorCode;
+import finalproject.jpnshop.biz.domain.Order;
+import finalproject.jpnshop.biz.domain.OrderItem;
 import finalproject.jpnshop.biz.domain.Product;
 import finalproject.jpnshop.biz.domain.Review;
+import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.ImageRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
+import finalproject.jpnshop.biz.repository.OrderItemRepository;
+import finalproject.jpnshop.biz.repository.OrderRepository;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.biz.repository.ReviewRepository;
 import finalproject.jpnshop.util.SecurityUtil;
@@ -34,6 +38,8 @@ public class ReviewService {
     private final MemberRepository memberRepository;
     private final FileHandler fileHandler;
     private final ImageRepository imageRepository;
+    private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
 
 
     public List<ResReview.Response> getReviews() {
@@ -41,7 +47,7 @@ public class ReviewService {
         return getResponses(reviews);
     }
 
-    public List<ResReview.Response>  getReviewByProduct(Long productId) {
+    public List<ResReview.Response> getReviewByProduct(Long productId) {
         Product product = productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
         List<Review> reviewList = reviewRepository.findAllByProduct(product);
@@ -60,24 +66,43 @@ public class ReviewService {
             () -> new CustomException(ErrorCode.REVIEW_NOT_FOUND)));
     }
 
-    //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장, 로그인한 회원으로 멤버 저장
+    //todo : 상품 당 1건 리뷰 중복체크 및 사진 저장
     @Transactional
     public void insertReview(ReqReview reviewForm, Long productId, List<MultipartFile> images)
-    throws Exception {
+        throws Exception {
         long memberId = SecurityUtil.getCurrentMemberId();
-        reviewForm.setMember(memberRepository.findById(memberId).orElseThrow(
-        () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
-        reviewForm.setProduct(productRepository.findById(productId).orElseThrow(
-            () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND)));
-        Review review = reviewForm.toEntity();
-        List<Image> imageList = fileHandler.parseFileInfo(images);
+        Member member = memberRepository.findById(memberId).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+        reviewForm.setMember(member);
+        Product product = productRepository.findById(productId).orElseThrow(
+            () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
+        reviewForm.setProduct(product);
 
-        if(!imageList.isEmpty()){
-            for(Image image : imageList){
-                review.addImage(imageRepository.save(image));
-            }
+        OrderItem orderItem = orderItemRepository.findByProduct(product);
+
+        Order order = orderRepository.findByMemberAndOrderItems(member, orderItem);
+
+        if (!order.getMember().equals(member)) {
+            throw new CustomException(ErrorCode.ORDER_NOT_FOUND);
         }
-        reviewRepository.save(review);
+
+        Product newReviewProduct = reviewForm.getProduct();
+
+        try {
+            Review existReview = reviewRepository.findByMemberAndProduct(member, newReviewProduct);
+            throw new CustomException(ErrorCode.REVIEW_ALREADY_EXIST);
+        } catch (Exception e) {
+            Review review = reviewForm.toEntity();
+            List<Image> imageList = fileHandler.parseFileInfo(images);
+
+            if (!imageList.isEmpty()) {
+                for (Image image : imageList) {
+                    review.addImage(imageRepository.save(image));
+                }
+            }
+            reviewRepository.save(review);
+        }
+
     }
 
     @Transactional

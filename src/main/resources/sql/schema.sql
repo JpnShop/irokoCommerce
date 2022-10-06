@@ -3,6 +3,7 @@ drop table if exists FavoriteItem cascade;
 drop table if exists MagazineItem cascade;
 drop table if exists OrderItem cascade;
 drop table if exists Question cascade;
+drop table if exists Image cascade;
 drop table if exists Review cascade;
 drop table if exists Product cascade;
 
@@ -15,7 +16,7 @@ create table Product
     brand           varchar(255),
     brandImg        varchar(2000),
     brandKo         varchar(255),
-    tags        varchar(255),
+    tags            varchar(255),
     detailList      varchar(2000),
     detailThumbList varchar(2000),
     price           integer not null,
@@ -96,3 +97,12 @@ create table Review
     product_id  bigint,
     primary key (review_id)
 ) engine = InnoDB;
+
+create table Image (
+       id bigint not null auto_increment,
+        filePath varchar(255) not null,
+        fileSize bigint,
+        origFileName varchar(255) not null,
+        review_id bigint,
+        primary key (id)
+    ) engine=InnoDB;

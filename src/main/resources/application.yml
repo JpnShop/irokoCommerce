@@ -7,10 +7,6 @@ server:
       enabled: true
       force: true
 
-  sql:
-    init:
-      mode: always
-
 spring:
   mvc:
     pathmatch:
@@ -21,6 +17,11 @@ spring:
     multipart:
       maxFileSize: 10MB
       maxRequestSize: 20MB
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/data.sql
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -36,6 +37,7 @@ spring:
         show_sql: true
         format_sql: true
         highlight_sql: true
+    defer-datasource-initialization: true
 
 logging:
   level:

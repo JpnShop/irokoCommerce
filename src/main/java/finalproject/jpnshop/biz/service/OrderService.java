@@ -33,14 +33,13 @@ public class OrderService {
     private final DeliveryInfoRepository deliveryInfoRepository;
 
     @Transactional
-    public Long createOrder(Long memberId, Long productId, Long deliveryInfoId, Integer count) {
+    public Long createOrder(Long memberId, Long productId, Integer count) {
 
         Member member = memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
         Product product = productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
-        DeliveryInfo deliveryInfo = deliveryInfoRepository.findById(deliveryInfoId).orElseThrow(
-            () -> new CustomException(ErrorCode.DELIVERY_NOT_FOUND));
+        DeliveryInfo deliveryInfo = new DeliveryInfo();
         deliveryInfo.setAddress(deliveryInfo.getAddress());
 
         OrderItem orderItem = OrderItem.createOrderItem(product, product.getPrice(), count);

@@ -15,7 +15,7 @@ create table Product
     brand           varchar(255),
     brandImg        varchar(2000),
     brandKo         varchar(255),
-    category        varchar(255),
+    tags        varchar(255),
     detailList      varchar(2000),
     detailThumbList varchar(2000),
     price           integer not null,

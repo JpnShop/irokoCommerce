@@ -5,7 +5,6 @@ import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.ProductRepository;
 import finalproject.jpnshop.web.dto.ResProduct;
-import finalproject.jpnshop.web.dto.ResProduct.Response;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
@@ -21,7 +20,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public List<ResProduct.Response> findProducts() {
+    public List<ResProduct.Response> getProducts() {
         List<Product> products = productRepository.findAll();
         List<ResProduct.Response> productList = new ArrayList<>();
         for (Product product : products) {
@@ -30,28 +29,37 @@ public class ProductService {
         return productList;
     }
 
-    public Response findOne(Long productId) {
-        return Response.of(productRepository.findById(productId).orElseThrow(
+    public ResProduct.Response getProduct(Long productId) {
+        return ResProduct.Response.of(productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND)));
     }
 
     @Transactional
-    public void saveProduct(Product product, int stock) {
+    public ResProduct.Response saveProduct(Product product, Integer stock) {
         if (product.getId() == null) {
             productRepository.save(product);
         } else {
             product.addStock(stock);
         }
+        return ResProduct.Response.of(product);
     }
 
     @Transactional
-    public void updateProduct(Long productId, String productName, int price, int stock) {
+    public void updateProduct(Long productId, String productName, Integer price, Integer stock) {
         Product product = productRepository.findById(productId).orElseThrow(
             () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
         product.setProductName(productName);
         product.setPrice(price);
         product.setStock(stock);
         productRepository.save(product);
+    }
+
+    @Transactional
+    public void deleteProduct(Long productId) {
+        Product product = productRepository.findById(productId).orElseThrow(
+            () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
+        productRepository.delete(product);
+
     }
 
 }

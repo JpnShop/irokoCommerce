@@ -1,5 +1,6 @@
 package finalproject.jpnshop.biz.domain;
 
+import finalproject.jpnshop.biz.domain.properties.Tag;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,16 +40,19 @@ public class Magazine {
     private String title;
     private String content;
 
+    private Tag tag;
+
     @CreatedDate
     private LocalDate createdDate;
 
-    public Magazine(Member member, List<MagazineItem> magazineItems, String thumnail, String title, String content, LocalDate createdDate) {
+    public Magazine(Member member, List<MagazineItem> magazineItems, String thumnail, String title, String content, LocalDate createdDate, Tag tag) {
         this.member = member;
         this.magazineItems = magazineItems;
         this.thumnail = thumnail;
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
+        this.tag = tag;
     }
 
 

@@ -17,7 +17,6 @@ public class ResDeliveryInfo {
     @Builder
     public static class Response{
 
-        private Order order;
         private Address address;
         private String phoneNumber;
         private String receiverName;
@@ -25,7 +24,6 @@ public class ResDeliveryInfo {
 
         public static Response of(DeliveryInfo deliveryInfo) {
             return Response.builder()
-                .order(deliveryInfo.getOrder())
                 .address(deliveryInfo.getAddress())
                 .phoneNumber(deliveryInfo.getPhoneNumber())
                 .receiverName(deliveryInfo.getReceiverName())

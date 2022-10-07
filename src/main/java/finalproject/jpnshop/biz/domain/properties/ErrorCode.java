@@ -20,7 +20,8 @@ public enum ErrorCode {
     ORDER_COMP_ERROR(500, "배송이 완료된 상품은 취소할 수 없습니다." ),
     PASSWORD_NOT_FOUND(500, "비공개 글은 비밀번호를 필수로 입력해야합니다."),
     PASSWORD_NOT_CORRECT(500, "비밀번호가 올바르지 않습니다."),
-    MAGAZINE_NOT_FOUND(500, "매거진을 찾을 수 없습니다.");
+    MAGAZINE_NOT_FOUND(500, "매거진을 찾을 수 없습니다."),
+    REVIEW_ALREADY_EXIST(500, "이미 리뷰를 작성했습니다.");
 
     private final int status;
     private final String msg;

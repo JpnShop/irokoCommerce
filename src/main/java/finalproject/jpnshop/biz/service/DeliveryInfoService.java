@@ -5,8 +5,8 @@ import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.DeliveryInfoRepository;
 import finalproject.jpnshop.biz.repository.OrderRepository;
+import finalproject.jpnshop.web.dto.ReqDeliveryInfo;
 import finalproject.jpnshop.web.dto.ResDeliveryInfo;
-import java.util.Optional;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Getter
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class DeliveryInfoService {
 
     private final DeliveryInfoRepository deliveryInfoRepository;
@@ -27,6 +27,10 @@ public class DeliveryInfoService {
             () -> new CustomException(ErrorCode.DELIVERY_NOT_FOUND)
         );
         return ResDeliveryInfo.Response.of(deliveryInfo);
+    }
+
+    public DeliveryInfo createDeliveryInfo(ReqDeliveryInfo deliveryInfo) {
+        return deliveryInfoRepository.save(deliveryInfo.toEntity());
     }
 
 }

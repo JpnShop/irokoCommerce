@@ -6,6 +6,7 @@ import finalproject.jpnshop.biz.service.MailService;
 import finalproject.jpnshop.biz.service.MemberService;
 import finalproject.jpnshop.web.dto.MailDto;
 import finalproject.jpnshop.web.dto.ReqMember;
+import finalproject.jpnshop.web.dto.ReqPwd;
 import finalproject.jpnshop.web.dto.ResMember.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -34,11 +35,18 @@ public class MemberController {
     private final MailService mailService;
     private final PasswordEncoder passwordEncoder;
 
-    @PutMapping("/members")
-    @ApiOperation(value = "회원정보 수정", notes = "새로 정보를 입력하여 회원정보를 수정한다.")
-    @ApiImplicitParam(name="memberForm", value = "회원정보", dataType = "ReqMember", required = true)
-    public String updateMember(@RequestBody ReqMember memberForm) {
-        return memberService.updateMember(memberForm);
+    @PutMapping("/members/email")
+    @ApiOperation(value = "이메일 수정", notes = "새로운 이메일를 입력하여 회원정보를 수정한다.")
+    @ApiImplicitParam(name="email", value = "이메일", dataType = "String", required = true)
+    public String updateEmail(@RequestBody String email) {
+        return memberService.updateEmail(email);
+    }
+
+    @PutMapping("/members/pwd")
+    @ApiOperation(value = "비밀번호 수정", notes = "새로운 비밀번호를 입력하여 회원정보를 수정한다.")
+    @ApiImplicitParam(name="pwd", value = "비밀번호", dataType = "String", readOnly = true)
+    public String updatePwd(@RequestBody ReqPwd pwdForm) {
+        return memberService.updatePwd(pwdForm);
     }
 
     @ApiOperation(value = "멤버 상세 조회", notes = "회원을 조회해서 정보를 가져온다.")

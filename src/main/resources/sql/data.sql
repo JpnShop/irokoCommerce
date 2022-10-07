@@ -1,4 +1,4 @@
--- 어라운드앤 가방
+-- 어라운드앤
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
         '어라운드앤', 'women, 가방, aroundann, lena',
@@ -214,4 +214,55 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_black-3.jpg',
          3600, 'Sally bag black', 'black', 10, 100, null,
          'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_black-1.jpg'
+);
+-- kume
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.png',
+        '쿠메', '패션, 의류, 상의, women',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-3.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-4.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-5.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-6.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-7.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-8.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-9.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-10.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-2.jpg',
+         36000, 'TWEED BOMBER JACKET BLACK', 'BLACK', 10, 200, null,
+         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-1.jpg'
+);
+
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.png',
+        '쿠메', '패션, 의류, 하의, women',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+BLACK_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+BLACK_MODEL-2.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+BLACK-1.jpg',
+         19500, 'FRAYED SEMI-WIDE DENIM PANTS BLACK', 'BLACK', 10, 200, null,
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+BLACK-1.jpg'
+);
+
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.png',
+        '쿠메', '패션, 의류, 하의, women',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY_MODEL-2.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY-2.jpg',
+         21500, 'FRAYED SEMI-WIDE DENIM PANTS IVORY', 'IVORY', 10, 200, null,
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY-1'
+);
+
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.png',
+        '쿠메', '패션, 의류, 상의, women',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/DOUBLE+POCKET+DENIM+BLOUSE+MEDIUM+BLUE_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/DOUBLE+POCKET+DENIM+BLOUSE+MEDIUM+BLUE_MODEL-2.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/DOUBLE+POCKET+DENIM+BLOUSE+MEDIUM+BLUE-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/DOUBLE+POCKET+DENIM+BLOUSE+MEDIUM+BLUE-2.jpg',
+         19500, 'DOUBLE POCKET DENIM BLOUSE MEDIUM BLUE', 'MEDIUM BLUE', 0, 200, null,
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/DOUBLE+POCKET+DENIM+BLOUSE+MEDIUM+BLUE-1.jpg'
 );

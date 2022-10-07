@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +21,10 @@ public class Terms {
     @Column(name = "terms_id")
     private Long id;
 
+    @Lob
     private String ServiceContent;
+
+    @Lob
     private String PersonalContent;
 
     @Builder

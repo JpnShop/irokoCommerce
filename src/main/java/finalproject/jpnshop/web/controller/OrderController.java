@@ -5,6 +5,7 @@ import finalproject.jpnshop.biz.service.DeliveryInfoService;
 import finalproject.jpnshop.biz.service.MemberService;
 import finalproject.jpnshop.biz.service.OrderService;
 import finalproject.jpnshop.biz.service.ProductService;
+import finalproject.jpnshop.web.dto.ReqDeliveryInfo;
 import finalproject.jpnshop.web.dto.ResDeliveryInfo;
 import finalproject.jpnshop.web.dto.ResMember;
 import finalproject.jpnshop.web.dto.ResOrder;
@@ -18,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,10 +45,10 @@ public class OrderController {
     }
 
     @PostMapping("/{memberId}")
-    public ResponseEntity<ResOrder.Response> createOrder(@PathVariable Long memberId, @RequestParam Long productId, @RequestParam
-        DeliveryInfo deliveryInfo, @RequestParam Integer count)
+    public ResponseEntity<ResOrder.Response> createOrder(@PathVariable Long memberId, @RequestParam Long productId, @RequestBody
+    ReqDeliveryInfo deliveryInfo, @RequestParam Integer count)
     {
-
+        System.out.println("OrderController.createOrder");
         if (Objects.isNull(memberId)){
             deliveryInfoService.createDeliveryInfo(deliveryInfo);
         }

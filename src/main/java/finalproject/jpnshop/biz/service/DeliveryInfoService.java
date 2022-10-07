@@ -5,6 +5,7 @@ import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.DeliveryInfoRepository;
 import finalproject.jpnshop.biz.repository.OrderRepository;
+import finalproject.jpnshop.web.dto.ReqDeliveryInfo;
 import finalproject.jpnshop.web.dto.ResDeliveryInfo;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -28,8 +29,8 @@ public class DeliveryInfoService {
         return ResDeliveryInfo.Response.of(deliveryInfo);
     }
 
-    public DeliveryInfo createDeliveryInfo(DeliveryInfo deliveryInfo) {
-        return deliveryInfoRepository.save(deliveryInfo);
+    public DeliveryInfo createDeliveryInfo(ReqDeliveryInfo deliveryInfo) {
+        return deliveryInfoRepository.save(deliveryInfo.toEntity());
     }
 
 }

@@ -5,11 +5,11 @@ import finalproject.jpnshop.biz.domain.properties.ErrorCode;
 import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.util.SecurityUtil;
-import finalproject.jpnshop.web.dto.ReqMember;
+import finalproject.jpnshop.web.dto.ReqPwd;
 import finalproject.jpnshop.web.dto.ResMember.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,25 +19,43 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public String updateMember(ReqMember memberForm) {
+    public String updateEmail(String email) {
         Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow(
-            ()-> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
 
-        if(memberRepository.existsByEmail(memberForm.getEmail())
-            && !memberRepository.findByEmail(memberForm.getEmail()).getUsername().equals(member.getUsername())) {
-          return "이미 존재하는 이메일입니다.";
-        } else if(memberForm.getEmail().equals("")) {
+        if (memberRepository.existsByEmail(email)
+            && !memberRepository.findByEmail(email).getUsername().equals(member.getUsername())) {
+            return "이미 존재하는 이메일입니다.";
+        } else if(email.equals("")) {
             return "이메일을 입력하지 않았습니다.";
         } else {
-            member.setPassword(bCryptPasswordEncoder.encode(memberForm.getPassword()));
-            member.setEmail(memberForm.getEmail());
-            return "수정이 완료되었습니다.";
-
-            }
+            member.setEmail(email);
+            return "이메일 정보가 변경되었습니다.";
         }
+    }
+
+
+    @Transactional
+    public String updatePwd(ReqPwd pwd) {
+        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+
+        if(passwordEncoder.matches(pwd.getCurrentPwd(), member.getPassword())) {
+            if(pwd.getNewPwd().equals(pwd.getVerifyNewPwd())) {
+                member.setPassword(passwordEncoder.encode(pwd.getNewPwd()));
+                return "비밀번호가 변경되었습니다.";
+            } else {
+                log.info(pwd.getNewPwd());
+                log.info(pwd.getVerifyNewPwd());
+                return "새 비밀번호가 일치하지 않습니다.";
+            }
+        } else {
+            return "비밀번호가 일치하지 않습니다.";
+        }
+    }
 
     @Transactional(readOnly = true)
     public Response getMember(String username) {
@@ -84,7 +102,7 @@ public class MemberService {
 
     @Transactional
     public void updateTmpPassword(String tmpPassword, String email) {
-        String encryptPassword = bCryptPasswordEncoder.encode(tmpPassword);
+        String encryptPassword = passwordEncoder.encode(tmpPassword);
         Member member = memberRepository.findByEmail(email);
 
         member.updateTmpPassword(encryptPassword);

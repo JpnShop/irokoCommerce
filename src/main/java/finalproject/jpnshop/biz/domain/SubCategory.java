@@ -1,5 +1,7 @@
 package finalproject.jpnshop.biz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -20,20 +22,26 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class SubCategory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "subCategory_id")
+    private Long id;
+
     @Column(name = "subCategory_name")
     private String name;
 
+    @Column(name = "subCategory_imgSrc")
     private String imgSrc;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "topCategory_name")
+    @JoinColumn(name = "topCategory_id")
     private TopCategory topCategory;
 
     @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL)
-    private List<Type> types = new ArrayList<>();
+    private List<Sort> sortList = new ArrayList<>();
 
     public void setTopCategory(TopCategory topCategory) {
         if(this.topCategory != null) {
@@ -43,10 +51,10 @@ public class SubCategory {
         topCategory.getSubCategories().add(this);
     }
 
-    public void addType(Type type) {
-        this.getTypes().add(type);
-        if(type.getSubCategory() != this) {
-            type.setSubCategory(this);
+    public void addType(Sort sort) {
+        this.getSortList().add(sort);
+        if(sort.getSubCategory() != this) {
+            sort.setSubCategory(this);
         }
     }
 }

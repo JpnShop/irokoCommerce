@@ -1,14 +1,19 @@
 package finalproject.jpnshop.biz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,12 +22,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class Type {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+public class Sort {
 
     @Id
-    @Column(name = "type_name")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "sort_id")
+    private Long id;
+
+    @Column(name = "sort_name")
     private String name;
 
+    @Column(name = "sort_imgSrc")
     private String imgSrc;
 
     @ElementCollection(fetch = FetchType.LAZY)
@@ -34,15 +45,15 @@ public class Type {
     private Set<String> women = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "subCategory_name")
+    @JoinColumn(name = "subCategory_id")
     private SubCategory subCategory;
 
     public void setSubCategory(SubCategory subCategory) {
         if(this.getSubCategory() != null) {
-            this.subCategory.getTypes().remove(this);
+            this.subCategory.getSortList().remove(this);
         }
         this.subCategory = subCategory;
-        subCategory.getTypes().add(this);
+        subCategory.getSortList().add(this);
     }
 
 }

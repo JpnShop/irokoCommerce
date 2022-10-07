@@ -54,6 +54,12 @@ public class ReviewService {
         return getResponses(reviewList);
     }
 
+    public int getReviewCount(long productId) {
+        Product product = productRepository.findById(productId).orElseThrow(
+            () -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
+        List<Review> reviewList = reviewRepository.findAllByProduct(product);
+        return reviewList.size();
+    }
     public List<Response> getReviewsByMember(long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(
             () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
@@ -127,4 +133,5 @@ public class ReviewService {
         }
         return responseList;
     }
+
 }

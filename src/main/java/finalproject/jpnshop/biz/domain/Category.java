@@ -27,4 +27,10 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private final List<TopCategory> topCategories = new ArrayList<>();
 
+    public void addTopCategory(TopCategory topCategory) {
+        this.getTopCategories().add(topCategory);
+        if(topCategory.getCategory() != this) {
+            topCategory.setCategory(this);
+        }
+    }
 }

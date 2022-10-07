@@ -46,9 +46,15 @@ public class QuestionController {
     }
 
     @PostMapping("/{productId}")
-    public String insertQuestion(@RequestBody ReqQuestion questionForm,
+    public String insertProductQuestion(@RequestBody ReqQuestion questionForm,
         @PathVariable long productId){
-        questionService.insertQuestion(questionForm,productId);
+        questionService.insertProductQuestion(questionForm,productId);
+        return "작성한 문의글이 게시되었습니다.";
+    }
+
+    @PostMapping
+    public String insertQuestion(@RequestBody ReqQuestion questionForm){
+        questionService.insertQuestion(questionForm);
         return "작성한 문의글이 게시되었습니다.";
     }
 

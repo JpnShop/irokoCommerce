@@ -78,7 +78,7 @@ public class QuestionService {
     }
 
     @Transactional
-    public void insertQuestion(ReqQuestion questionForm, Long productId){
+    public void insertProductQuestion(ReqQuestion questionForm, Long productId){
         if(questionForm.getPrivateYn().equals(true) && questionForm.getPassword()==0){
         throw new CustomException(ErrorCode.PASSWORD_NOT_FOUND);
     }
@@ -107,4 +107,14 @@ public class QuestionService {
         questionRepository.delete(question);
     }
 
+    public void insertQuestion(ReqQuestion questionForm) {
+        if(questionForm.getPrivateYn().equals(true) && questionForm.getPassword()==0){
+            throw new CustomException(ErrorCode.PASSWORD_NOT_FOUND);
+        }
+        long memberId = SecurityUtil.getCurrentMemberId();
+        questionForm.setMember(memberRepository.findById(memberId).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)));
+        Question question = questionForm.toEntity();
+        questionRepository.save(question);
+    }
 }

@@ -266,3 +266,68 @@ VALUES ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.pn
          19500, 'DOUBLE POCKET DENIM BLOUSE MEDIUM BLUE', 'MEDIUM BLUE', 0, 200, null,
         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/DOUBLE+POCKET+DENIM+BLOUSE+MEDIUM+BLUE-1.jpg'
 );
+
+-- CITYBREEZE for MEN
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('CITYBREEZE for MEN', 'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/citybreezeformenbrand.png',
+        '시티브리즈 포 맨', '패션, 의류, 상의, men',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-3.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-3.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-4.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-5.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-6.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO_MODEL-7.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO-3.jpg',
+         7900, '스티치 포인트 데님 자켓 INDIGO', 'INDIGO', 5, 150, null,
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/INDIGO-1.jpg'
+);
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('CITYBREEZE for MEN', 'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/citybreezeformenbrand.png',
+        '시티브리즈 포 맨', '패션, 의류, 상의, men',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE_MODEL-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE_MODEL-3.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE_MODEL-4.jpg",
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE_MODEL-5.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE_MODEL-6.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE-3.jpg',
+         17900, '알파카 오버핏 카라 니트 BEIGE', 'BEIGE', 5, 150, null,
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BEIGE-1.jpg'
+);
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('CITYBREEZE for MEN', 'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/citybreezeformenbrand.png',
+        '시티브리즈 포 맨', '패션, 의류, 상의, men',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK_MODEL-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK_MODEL-3.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK_MODEL-4.jpg",
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK_MODEL-5.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK_MODEL-6.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK_MODEL-7.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK-3.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK-4.jpg',
+         17900, '알파카 오버핏 니트 가디건 BLACK', 'BLACK', 5, 150, null,
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/BLACK-1.jpg'
+);
+INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
+VALUES ('CITYBREEZE for MEN', 'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/citybreezeformenbrand.png',
+        '시티브리즈 포 맨', '패션, 의류, 상의, men',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY_MODEL-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY_MODEL-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY_MODEL-3.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY_MODEL-4.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY_MODEL-5.jpg',
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY-1.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY-2.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY-3.jpg',
+         8900, '로고 자수 베이직 후드 스웻 셔츠 MELANGE GREY', 'MELANGE GREY', 5, 150, null,
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/CITYBREEZE+for+MEN/MELANGE+GREY-1.jpg'
+);

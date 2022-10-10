@@ -118,6 +118,7 @@ public class SecurityConfig {
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://127.0.0.1:5173/");
         config.addAllowedOrigin("http://127.0.0.1:5174/");
+        config.addAllowedOrigin("https://finaloneul.netlify.app/");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.addExposedHeader("Authorization");

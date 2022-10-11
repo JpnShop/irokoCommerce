@@ -1,5 +1,6 @@
 package finalproject.jpnshop.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import finalproject.jpnshop.biz.domain.Product;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ public class ResProduct {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Response {
 
         private Long productId;
@@ -28,6 +30,16 @@ public class ResProduct {
         private String brand;
         private int stock;
         private String thumbnail;
+
+        public static Response simpleInfo(Product product) {
+            return Response.builder()
+                .productId(product.getId())
+                .thumbnail(product.getThumbnail())
+                .brand(product.getBrand())
+                .productName(product.getProductName())
+                .price(product.getPrice())
+                .build();
+        }
 
         public static Response of(Product product) {
             return Response.builder()

@@ -44,7 +44,7 @@ public class MemberController {
 
     @PutMapping("/members/pwd")
     @ApiOperation(value = "비밀번호 수정", notes = "새로운 비밀번호를 입력하여 회원정보를 수정한다.")
-    @ApiImplicitParam(name="pwd", value = "비밀번호", dataType = "String", readOnly = true)
+    @ApiImplicitParam(name="pwdForm", value = "비밀번호", dataType = "ReqPwd", readOnly = true)
     public String updatePwd(@RequestBody ReqPwd pwdForm) {
         return memberService.updatePwd(pwdForm);
     }

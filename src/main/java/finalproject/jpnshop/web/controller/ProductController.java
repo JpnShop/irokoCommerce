@@ -27,6 +27,11 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProduct(productId));
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<List<ResProduct.Response>> getSimpleInfo() {
+        return ResponseEntity.ok(productService.getSimpleInfo());
+    }
+
     @GetMapping
     public ResponseEntity<List<ResProduct.Response>> getProducts() {
         return ResponseEntity.ok(productService.getProducts());

@@ -47,6 +47,11 @@ public class ReviewController {
         return reviewService.getReviewByProduct(productId);
     }
 
+    @GetMapping("/products/{productId}/review-count")
+    public int getReviewCount(@PathVariable long productId){
+        return reviewService.getReviewCount(productId);
+    }
+
     @PostMapping( "/customers/reviews/{productId}")
     @ResponseStatus(HttpStatus.CREATED)
     public String insertReview(@RequestPart(value = "image",required = false) List<MultipartFile> images,

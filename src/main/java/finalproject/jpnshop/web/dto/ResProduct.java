@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import finalproject.jpnshop.biz.domain.Product;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class ResProduct {
 
         private Long productId;
         private String brandImg;
-        private String tags;
+        private List<String> tags;
         private List<String> detailList;
         private List<String> detailThumbList;
         private String productName;
@@ -45,9 +46,9 @@ public class ResProduct {
             return Response.builder()
                 .productId(product.getId())
                 .brandImg(product.getBrandImg())
-                .tags(product.getTags())
-                .detailList(Arrays.asList(product.getDetailList().split(",")))
-                .detailThumbList(Arrays.asList(product.getDetailThumbList().split(",")))
+                .tags(Arrays.stream(product.getTags().split(",")).map(String :: trim).collect(Collectors.toList()))
+                .detailList(Arrays.stream(product.getDetailList().split(",")).map(String :: trim).collect(Collectors.toList()))
+                .detailThumbList(Arrays.stream(product.getDetailThumbList().split(",")).map(String :: trim).collect(Collectors.toList()))
                 .productName(product.getProductName())
                 .price(product.getPrice())
                 .brand(product.getBrand())

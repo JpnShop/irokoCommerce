@@ -145,6 +145,7 @@ public class TokenProvider {
             .accessToken(accessToken)
             .refreshToken(refreshToken)
             .accessTokenExpiresIn(accessTokenExpireIn.getTime())
+            .username(oAuth2User.getAttribute("name"))
             .build();
     }
 

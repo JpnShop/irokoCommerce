@@ -80,7 +80,7 @@ create table Question
     createdAt    datetime,
     password     integer not null,
     privateYn    varchar(255),
-    itle         varchar(255),
+    title         varchar(255),
     answer_id    bigint,
     member_id    bigint,
     product_id   bigint,

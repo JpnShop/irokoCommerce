@@ -22,7 +22,7 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping
-    public List<Response> getFavorites(@RequestBody Map<String,Long> map){
+    public List<Response> getCarts(@RequestBody Map<String,Long> map){
         long memberId = map.get("member_id");
         return cartService.getCarts(memberId);
     }

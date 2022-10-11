@@ -11,7 +11,6 @@ import lombok.Getter;
 @Getter
 public class ReqQuestion {
 
-    private Long id;
     private Member member;
     private Product product;
     private String title;
@@ -46,7 +45,6 @@ public class ReqQuestion {
     @Override
     public String toString() {
         return "ReqQuestion{" +
-            "id=" + id +
             ", member=" + member +
             ", product=" + product +
             ", title='" + title + '\'' +

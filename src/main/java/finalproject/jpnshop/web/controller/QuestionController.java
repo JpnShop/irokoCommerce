@@ -1,5 +1,6 @@
 package finalproject.jpnshop.web.controller;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import finalproject.jpnshop.biz.service.QuestionService;
 import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqQuestion;
@@ -46,6 +47,7 @@ public class QuestionController {
     }
 
     @PostMapping("/{productId}")
+    @JsonProperty("questionForm")
     public String insertProductQuestion(@RequestBody ReqQuestion questionForm,
         @PathVariable long productId){
         questionService.insertProductQuestion(questionForm,productId);

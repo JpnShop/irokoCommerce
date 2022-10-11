@@ -28,8 +28,8 @@ public class ProductController {
     }
 
     @PostMapping("/list")
-    public ResponseEntity<List<ResProduct.Response>> getSimpleInfo() {
-        return ResponseEntity.ok(productService.getSimpleInfo());
+    public ResponseEntity<List<ResProduct.Response>> getSimpleInfo(@RequestParam List<Long> productId) {
+        return ResponseEntity.ok(productService.getSimpleInfo(productId));
     }
 
     @GetMapping

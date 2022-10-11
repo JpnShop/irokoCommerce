@@ -20,6 +20,15 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
+    public List<ResProduct.Response> getSimpleInfo() {
+        List<Product> products = productRepository.findAll();
+        List<ResProduct.Response> productList = new ArrayList<>();
+        for (Product product : products) {
+            productList.add(ResProduct.Response.simpleInfo(product));
+        }
+        return productList;
+    }
+
     public List<ResProduct.Response> getProducts() {
         List<Product> products = productRepository.findAll();
         List<ResProduct.Response> productList = new ArrayList<>();

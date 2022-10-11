@@ -8,10 +8,10 @@ drop table if exists Review cascade;
 drop table if exists Product cascade;
 drop table if exists Sort_men cascade;
 drop table if exists Sort_women cascade;
-drop table if exists Sort cascade;
-drop table if exists SubCategory cascade ;
-drop table if exists TopCategory cascade ;
-drop table if exists Category cascade ;
+--drop table if exists Sort cascade;
+--drop table if exists SubCategory cascade ;
+--drop table if exists TopCategory cascade ;
+--drop table if exists Categorys cascade ;
 
 
 
@@ -115,40 +115,40 @@ create table Image (
         primary key (id)
     ) engine=InnoDB;
 
-create table Category (
-                          category_id bigint not null auto_increment,
-                          primary key (category_id)
-) engine=InnoDB;
-
-create table TopCategory (
-                             topCategory_id bigint not null auto_increment,
-                             topCategory_name varchar(255),
-                             category_id bigint,
-                             primary key (topCategory_id)
-) engine=InnoDB;
-
-create table SubCategory (
-                             subCategory_id bigint not null auto_increment,
-                             subCategory_imgSrc varchar(255),
-                             subCategory_name varchar(255),
-                             topCategory_id bigint,
-                             primary key (subCategory_id)
-) engine=InnoDB;
-
-create table Sort (
-                      sort_id bigint not null auto_increment,
-                      sort_imgSrc varchar(255),
-                      sort_name varchar(255),
-                      subCategory_id bigint,
-                      primary key (sort_id)
-) engine=InnoDB;
-
-create table Sort_men (
-                          Sort_sort_id bigint not null,
-                          men_category varchar(255)
-) engine=InnoDB;
-
-create table Sort_women (
-                            Sort_sort_id bigint not null,
-                            women_category varchar(255)
-) engine=InnoDB;
+--create table Categorys (
+--                          category_id bigint not null auto_increment,
+--                          primary key (category_id)
+--) engine=InnoDB;
+--
+--create table TopCategory (
+--                             topCategory_id bigint not null auto_increment,
+--                             topCategory_name varchar(255),
+--                             category_id bigint,
+--                             primary key (topCategory_id)
+--) engine=InnoDB;
+--
+--create table SubCategory (
+--                             subCategory_id bigint not null auto_increment,
+--                             subCategory_imgSrc varchar(255),
+--                             subCategory_name varchar(255),
+--                             topCategory_id bigint,
+--                             primary key (subCategory_id)
+--) engine=InnoDB;
+--
+--create table Sort (
+--                      sort_id bigint not null auto_increment,
+--                      sort_imgSrc varchar(255),
+--                      sort_name varchar(255),
+--                      subCategory_id bigint,
+--                      primary key (sort_id)
+--) engine=InnoDB;
+--
+--create table Sort_men (
+--                          Sort_sort_id bigint not null,
+--                          men_category varchar(255)
+--) engine=InnoDB;
+--
+--create table Sort_women (
+--                            Sort_sort_id bigint not null,
+--                            women_category varchar(255)
+--) engine=InnoDB;

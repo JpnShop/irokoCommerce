@@ -1,7 +1,7 @@
 -- 어라운드앤 가방
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, lena',
+        '어라운드앤', '패션, women, 가방, aroundann, lena',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_ivory_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_ivory_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_ivory_model-3.jpg,
@@ -16,7 +16,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, lena',
+        '어라운드앤', '패션, women, 가방, aroundann, lena',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_black_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_black_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_black_model-3.jpg,
@@ -31,7 +31,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Samantha',
+        '어라운드앤', '패션, women, 가방, aroundann, Samantha',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Samantha+bag_grey_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Samantha+bag_grey_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Samantha+bag_grey_model-3.jpg,
@@ -47,7 +47,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Bella',
+        '어라운드앤', '패션, women, 가방, aroundann, Bella',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_pink_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_pink_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_pink_model-3.jpg,
@@ -59,7 +59,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Bella',
+        '어라운드앤', '패션, women, 가방, aroundann, Bella',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_black_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_black_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_black_model-3.jpg,
@@ -71,7 +71,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Kristin',
+        '어라운드앤', '패션, women, 가방, aroundann, Kristin',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_ivory_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_ivory_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_ivory_model-3.jpg,
@@ -84,7 +84,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Kristin',
+        '어라운드앤', '패션, women, 가방, aroundann, Kristin',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_black_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_black_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_black_model-3.jpg,
@@ -97,7 +97,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Ami',
+        '어라운드앤', '패션, women, 가방, 숄더백, aroundann, Ami',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Ami+bag_black_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Ami+bag_black_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Ami+bag_black_model-3.jpg,
@@ -109,7 +109,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Rinda',
+        '어라운드앤', '패션, women, 가방, aroundann, Rinda',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_pink_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_pink_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_pink_model-3.jpg,
@@ -122,7 +122,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Rinda',
+        '어라운드앤', '패션, women, 가방, aroundann, Rinda',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_ivory_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_ivory_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_ivory_model-3.jpg,
@@ -135,7 +135,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, troi',
+        '어라운드앤', '패션, women, 가방, 숄더백, aroundann, troi',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/troi+bag_black_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/troi+bag_black_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/troi+bag_black_model-3.jpg,
@@ -147,7 +147,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Wrinkle',
+        '어라운드앤', '패션, women, 가방, 숄더백, aroundann, Wrinkle',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Wrinkle+bag_ivory_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Wrinkle+bag_ivory_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Wrinkle+bag_ivory_model-3.jpg,
@@ -160,7 +160,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
 );
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
-        '어라운드앤', 'women, 가방, aroundann, Double',
+        '어라운드앤', '패션, women, 가방, 숄더백, aroundann, Double',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Double+bag_brown_model-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Double+bag_brown_model-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Double+bag_brown_model-3.jpg,

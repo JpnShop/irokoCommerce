@@ -105,6 +105,7 @@ create table Review
     title       varchar(255),
     member_id   bigint,
     product_id  bigint,
+    image_id    bigint,
     primary key (review_id)
 ) engine = InnoDB;
 

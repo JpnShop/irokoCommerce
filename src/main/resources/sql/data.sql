@@ -471,4 +471,4 @@ INSERT INTO Sort_women(Sort_Sort_id, women_category) values(4, '귀걸이');
 INSERT INTO Sort_women(Sort_Sort_id, women_category) values(4, '목걸이');
 INSERT INTO Sort_women(Sort_Sort_id, women_category) values(4, '반지');
 INSERT INTO Sort_women(Sort_Sort_id, women_category) values(4, '팔찌');
-INSERT INTO Sort_women(Sort_Sort_id, women_category) values(4, '발찌');
+

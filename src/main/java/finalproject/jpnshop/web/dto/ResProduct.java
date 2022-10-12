@@ -27,10 +27,10 @@ public class ResProduct {
         private List<String> detailThumbList;
         private String productName;
         private String productOption;
-        private int sale;
-        private int price;
+        private Integer sale;
+        private Integer price;
         private String brand;
-        private int stock;
+        private Integer stock;
         private String thumbnail;
 
         public static Response simpleInfo(Product product) {

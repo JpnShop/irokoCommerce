@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTime {
 
+    public static final int LAST_PHONE_NUM_POSITION = 4;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
@@ -81,6 +82,13 @@ public class Member extends BaseTime {
 
     public void updateTmpPassword(String tmpPassword) {
         this.password = tmpPassword;
+    }
+
+    public String lastPhoneNum() {
+        String phoneNum = getPhoneNumber();
+        int pos = phoneNum.length() - LAST_PHONE_NUM_POSITION;
+        return phoneNum.substring(pos);
+
     }
 
 }

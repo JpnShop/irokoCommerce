@@ -92,17 +92,20 @@ create table Question
     answer_id    bigint,
     member_id    bigint,
     product_id   bigint,
-    primary key (question_id)
+    primary key (question_id),
+    type        varchar(255)
 ) engine = InnoDB;
 
 create table Review
 (
     review_id   bigint not null auto_increment,
     content     longtext,
+    star        double,
     createdDate datetime,
     title       varchar(255),
     member_id   bigint,
     product_id  bigint,
+    image_id    bigint,
     primary key (review_id)
 ) engine = InnoDB;
 

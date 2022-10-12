@@ -21,6 +21,7 @@ public class ResProduct {
 
         private Long productId;
         private String brandImg;
+        private String brandKo;
         private List<String> tags;
         private List<String> detailList;
         private List<String> detailThumbList;
@@ -46,6 +47,9 @@ public class ResProduct {
             return Response.builder()
                 .productId(product.getId())
                 .brandImg(product.getBrandImg())
+                .brandKo(product.getBrandKo())
+                .thumbnail(product.getThumbnail())
+                .sale(product.getSale())
                 .tags(Arrays.stream(product.getTags().split(",")).map(String :: trim).collect(Collectors.toList()))
                 .detailList(Arrays.stream(product.getDetailList().split(",")).map(String :: trim).collect(Collectors.toList()))
                 .detailThumbList(Arrays.stream(product.getDetailThumbList().split(",")).map(String :: trim).collect(Collectors.toList()))

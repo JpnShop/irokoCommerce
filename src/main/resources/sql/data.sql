@@ -13,7 +13,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_ivory-3.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_ivory-4.jpg',
          5200, 'lena bag ivory', 'ivory', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_ivory.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_ivory.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -29,7 +29,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_black-3.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_black-4.jpg',
          5200, 'lena bag black', 'black', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_black-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/lena+bag_black-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -46,7 +46,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Samantha+bag_grey-4.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Samantha+bag_grey-5.jpg',
          5200, 'Samantha bag grey', 'grey', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Samantha+bag_grey-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Samantha+bag_grey-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -59,7 +59,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_pink-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_pink-2.jpg',
          6800, 'Bella bag pink', 'pink', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_pink-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_pink-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -72,7 +72,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_black-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_black-2.jpg',
          6900, 'Bella bag black', 'black', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_black-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Bella+bag_black-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -86,7 +86,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_ivory-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_ivory-3.jpg',
          3900, 'Kristin bag ivory', 'ivory', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_ivory-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_ivory-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -100,7 +100,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_black-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_black-3.jpg',
          3900, 'Kristin bag black', 'black', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_black-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Kristin+bag_black-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -113,7 +113,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Ami+bag_black-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Ami+bag_black-2.jpg',
          3900, 'Ami bag black', 'black', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Ami+bag_black-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Ami+bag_black-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -127,7 +127,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_pink-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_pink-3.jpg',
          4200, 'Rinda bag pink', 'pink', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_pink-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_pink-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -141,7 +141,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_ivory-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_ivory-3.jpg',
          4200, 'Rinda bag ivory', 'ivory', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_ivory-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Rinda+bag_ivory-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -154,7 +154,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/troi+bag_black-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/troi+bag_black-2.jpg',
          4300, 'troi bag black', 'black', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/troi+bag_black-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/troi+bag_black-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -168,7 +168,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Wrinkle+bag_ivory-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Wrinkle+bag_ivory-3.jpg',
          4500, 'Wrinkle bag ivory', 'ivory', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Wrinkle+bag_ivory-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Wrinkle+bag_ivory-1.jpg'
 );
 
 INSERT INTO Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -184,7 +184,7 @@ VALUES ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Double+bag_brown-3.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Double+bag_brown-4.jpg',
          3800, 'Double bag brown', 'brown', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Double+bag_brown-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Double+bag_brown-1.jpg'
 );
 insert into Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 values ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
@@ -198,7 +198,7 @@ values ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_ivory-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_ivory-3.jpg',
          3600, 'Sally bag ivory', 'ivory', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_ivory-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_ivory-1.jpg'
 );
 insert into Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 values ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
@@ -212,7 +212,7 @@ values ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_brown-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_brown-3.jpg',
          3600, 'Sally bag ivory', 'ivory', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_brown-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_brown-1.jpg'
 );
 insert into Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
 values ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/aroundannbrand.png',
@@ -226,7 +226,7 @@ values ('aroundAnn', 'https://fianl.s3.ap-northeast-2.amazonaws.com/final/around
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_black-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_black-3.jpg',
          3600, 'Sally bag black', 'black', 10, 100, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_black-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/final/Sally+bag_black-1.jpg'
 );
 -- kume
 insert into Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)
@@ -235,17 +235,17 @@ values ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.pn
         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-3.jpg,
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-4.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-5.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-6.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-7.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-8.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-9.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-4.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-5.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-6.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-7.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-8.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-9.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-10.jpg',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-2.jpg',
          36000, 'TWEED BOMBER JACKET BLACK', 'BLACK', 10, 200, null,
-         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-1.jpg'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-1.jpg'
 );
 
 insert into Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)

@@ -25,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Getter
 @Slf4j
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class QuestionService {
 
     private final QuestionRepository questionRepository;

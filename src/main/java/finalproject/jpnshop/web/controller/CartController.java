@@ -22,8 +22,8 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping
-    public List<Response> getCarts(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+    public List<Response> getCarts(){
+        long memberId = SecurityUtil.getCurrentMemberId();
         return cartService.getCarts(memberId);
     }
 

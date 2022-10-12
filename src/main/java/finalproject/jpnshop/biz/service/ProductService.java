@@ -20,8 +20,8 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public List<ResProduct.Response> getSimpleInfo() {
-        List<Product> products = productRepository.findAll();
+    public List<ResProduct.Response> getSimpleInfo(List<Long> ids) {
+        List<Product> products = productRepository.findByIds(ids);
         List<ResProduct.Response> productList = new ArrayList<>();
         for (Product product : products) {
             productList.add(ResProduct.Response.simpleInfo(product));

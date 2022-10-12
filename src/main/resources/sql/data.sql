@@ -235,12 +235,12 @@ values ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.pn
         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-2.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-3.jpg,
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-4.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-5.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-6.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-7.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-8.jpg
-         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-9.jpg
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-4.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-5.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-6.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-7.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-8.jpg,
+         https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-9.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK_MODEL-10.jpg',
         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/TWEED+BOMBER+JACKET+BLACK-2.jpg',

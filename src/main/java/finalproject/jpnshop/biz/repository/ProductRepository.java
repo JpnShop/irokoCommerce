@@ -10,4 +10,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query(" select p from Product p where p.id in :ids")
     List<Product> findByIds(@Param("ids") List<Long> ids);
+    List<Product> findByTagsContaining(String tag);
+
 }

@@ -100,6 +100,7 @@ create table Review
 (
     review_id   bigint not null auto_increment,
     content     longtext,
+    star        double,
     createdDate datetime,
     title       varchar(255),
     member_id   bigint,

@@ -54,8 +54,8 @@ public class ReviewController {
 
     @PostMapping( "/customers/reviews/{productId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public String insertReview(@RequestPart(value = "image",required = false) List<MultipartFile> images,
-        @RequestPart(value = "ReqReview") ReqReview review,
+    public String insertReview(@RequestPart(value = "images",required = false) List<MultipartFile> images,
+        @RequestPart(value = "review") ReqReview review,
         @PathVariable Long productId
     ) throws Exception {
             reviewService.insertReview(review, productId, images);

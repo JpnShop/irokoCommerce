@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -101,6 +102,14 @@ public class Order extends BaseTime {
             totalPrice += orderItem.getTotalPrice();
         }
         return totalPrice;
+    }
+
+    private String orderNum;
+
+    @PrePersist
+    void orderNum() {
+        orderNum =
+            getCreatedAt().toString() + member.getAddress().getZipcode() + member.lastPhoneNum();
     }
 
 }

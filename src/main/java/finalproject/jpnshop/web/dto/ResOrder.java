@@ -21,12 +21,14 @@ public class ResOrder {
         private Status status;
         private Member member;
         private DeliveryInfo deliveryInfo;
+        private String orderNum;
 
         public static Response of(Order order) {
             return Response.builder()
                 .status(order.getStatus())
                 .member(order.getMember())
                 .deliveryInfo(order.getDeliveryInfo())
+                .orderNum(order.getOrderNum())
                 .build();
         }
 

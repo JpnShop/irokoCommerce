@@ -27,7 +27,16 @@ public class ResMember {
         private String firstFurigana;
         private String lastFurigana;
 
-
+        public static Response from(Member member) {
+            return Response.builder()
+                .address(member.getAddress())
+                .firstName(member.getFirstName())
+                .lastName(member.getLastName())
+                .firstFurigana(member.getFirstFurigana())
+                .lastFurigana(member.getLastFurigana())
+                .phoneNumber(member.getPhoneNumber())
+                .build();
+        }
         public static Response of(Member member) {
             return Response.builder()
                 .username(member.getUsername())

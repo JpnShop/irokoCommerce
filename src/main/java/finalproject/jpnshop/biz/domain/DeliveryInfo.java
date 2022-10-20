@@ -31,10 +31,14 @@ public class DeliveryInfo {
 
     private String phoneNumber;
 
-    private String receiverName;
+    private String firstName;
 
-    @Enumerated(EnumType.STRING)
-    private DeliveryStatus status;
+    private String lastName;
+
+    private String firstFurigana;
+
+    private String lastFurigana;
+
 
     public void setAddress(Address address) {
         this.address = address;
@@ -42,13 +46,14 @@ public class DeliveryInfo {
 
     @Builder
     public DeliveryInfo(Long id, Order order, Address address, String phoneNumber,
-        String receiverName,
-        DeliveryStatus status) {
+        String firstName, String lastName, String firstFurigana, String lastFurigana) {
         this.id = id;
         this.order = order;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.receiverName = receiverName;
-        this.status = status;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.firstFurigana = firstFurigana;
+        this.lastFurigana = lastFurigana;
     }
 }

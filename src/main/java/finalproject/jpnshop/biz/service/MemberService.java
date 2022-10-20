@@ -6,6 +6,7 @@ import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ReqPwd;
+import finalproject.jpnshop.web.dto.ResMember;
 import finalproject.jpnshop.web.dto.ResMember.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -107,6 +108,15 @@ public class MemberService {
 
         member.updateTmpPassword(encryptPassword);
         log.info("임시 비밀번호 업데이트");
+    }
+
+    @Transactional
+    public ResMember.Response getOrdersMember() {
+        Member member = memberRepository.findById(SecurityUtil.getCurrentMemberId()).orElseThrow(
+            () -> new CustomException(ErrorCode.MEMBER_NOT_FOUND)
+        );
+
+        return ResMember.Response.from(member);
     }
 
 }

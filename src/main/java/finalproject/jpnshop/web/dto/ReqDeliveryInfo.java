@@ -2,7 +2,6 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.DeliveryInfo;
-import finalproject.jpnshop.biz.domain.properties.DeliveryStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,16 +12,24 @@ import lombok.NoArgsConstructor;
 public class ReqDeliveryInfo {
     private Address address;
     private String phoneNumber;
-    private String receiverName;
-    private DeliveryStatus status;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String firstFurigana;
+
+    private String lastFurigana;
 
 
     public DeliveryInfo toEntity() {
         return DeliveryInfo.builder()
             .address(address)
             .phoneNumber(phoneNumber)
-            .receiverName(receiverName)
-            .status(status)
+            .firstName(firstName)
+            .lastName(lastName)
+            .firstFurigana(firstFurigana)
+            .lastFurigana(lastFurigana)
             .build();
     }
 
@@ -31,8 +38,10 @@ public class ReqDeliveryInfo {
         return "ReqDeliveryInfo{" +
             "address=" + address +
             ", phoneNumber='" + phoneNumber + '\'' +
-            ", receiverName='" + receiverName + '\'' +
-            ", status=" + status +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", firstFurigana='" + firstFurigana + '\'' +
+            ", lastFurigana='" + lastFurigana + '\'' +
             '}';
     }
 }

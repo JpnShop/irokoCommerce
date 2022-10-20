@@ -74,27 +74,27 @@ public class Order extends BaseTime {
     private void setDeliveryInfo(DeliveryInfo deliveryInfo) {
     }
 
-    public static Order createOrder(Member member, DeliveryInfo deliveryInfo, OrderItem... orderItems) {
-        Order order = new Order();
-        order.setMember(member);
-        order.setDeliveryInfo(deliveryInfo);
-        for (OrderItem orderItem : orderItems) {
-            order.addOrderItem(orderItem);
-        }
-        order.setStatus(Status.ORDER);
-        order.setCreatedAt(LocalDateTime.now());
-        return order;
-    }
+//    public static Order createOrder(Member member, DeliveryInfo deliveryInfo, OrderItem... orderItems) {
+//        Order order = new Order();
+//        order.setMember(member);
+//        order.setDeliveryInfo(deliveryInfo);
+//        for (OrderItem orderItem : orderItems) {
+//            order.addOrderItem(orderItem);
+//        }
+//        order.setStatus(Status.ORDER);
+//        order.setCreatedAt(LocalDateTime.now());
+//        return order;
+//    }
 
-    public void cancel(OrderItem... orderItems) {
-        if (deliveryInfo.getStatus() == DeliveryStatus.COMPLETE) {
-            throw new CustomException(ErrorCode.ORDER_COMP_ERROR);
-        }
-        this.setStatus(Status.CANCEL);
-        for (OrderItem orderItem : orderItems) {
-            orderItem.cancel();
-        }
-    }
+//    public void cancel(OrderItem... orderItems) {
+//        if (deliveryInfo.getStatus() == DeliveryStatus.COMPLETE) {
+//            throw new CustomException(ErrorCode.ORDER_COMP_ERROR);
+//        }
+//        this.setStatus(Status.CANCEL);
+//        for (OrderItem orderItem : orderItems) {
+//            orderItem.cancel();
+//        }
+//    }
 
     public int getTotalPrice() {
         int totalPrice = 0;

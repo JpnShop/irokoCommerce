@@ -61,10 +61,15 @@ public class MemberController {
         return ResponseEntity.ok(memberService.getMyInfo());
     }
 
-    @GetMapping("/checkEmail")
-    public String checkEmail(@RequestBody String email) {
+    @GetMapping("/checkEmail/{email}")
+    public String checkEmail(@PathVariable String email) {
         log.info("checkEmail 진입");
         return memberService.checkEmail(email);
+    }
+
+    @GetMapping("/checkUsername/{username}")
+    public String checkUsername(@PathVariable String username) {
+        return memberService.checkUsername(username);
     }
 
     @PostMapping("/newPwd")

@@ -1,8 +1,12 @@
 package finalproject.jpnshop.biz.service;
 
+import finalproject.jpnshop.biz.domain.Cart;
+import finalproject.jpnshop.biz.domain.Favorite;
 import finalproject.jpnshop.biz.domain.Member;
 import finalproject.jpnshop.biz.domain.RefreshToken;
 import finalproject.jpnshop.biz.domain.properties.Role;
+import finalproject.jpnshop.biz.repository.CartRepository;
+import finalproject.jpnshop.biz.repository.FavoriteRepository;
 import finalproject.jpnshop.biz.repository.MemberRepository;
 import finalproject.jpnshop.biz.repository.RefreshTokenRepository;
 import finalproject.jpnshop.jwt.TokenProvider;
@@ -26,6 +30,8 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final CartRepository cartRepository;
+    private final FavoriteRepository favoriteRepository;
 
     @Transactional
     public void signup(ReqMember reqMember) {
@@ -35,8 +41,13 @@ public class AuthService {
             throw new RuntimeException("이미 존재하는 이메일입니다.");
         }
         Member member = reqMember.toEntity(passwordEncoder);
+        Cart cart = new Cart(member);
+        cartRepository.save(cart);
+        Favorite favorite = new Favorite(member);
+        favoriteRepository.save(favorite);
         memberRepository.save(member);
     }
+
 
     @Transactional
     public TokenDto login(ReqMember reqMember) {

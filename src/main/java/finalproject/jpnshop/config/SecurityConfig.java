@@ -120,6 +120,7 @@ public class SecurityConfig {
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.addExposedHeader("Authorization");
+        config.addExposedHeader("refreshToken");
         source.registerCorsConfiguration("/**",config);
         return source;
     }

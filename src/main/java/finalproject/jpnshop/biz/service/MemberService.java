@@ -76,9 +76,19 @@ public class MemberService {
     @Transactional(readOnly = true)
     public String checkEmail(String email) {
         if(memberRepository.existsByEmail(email)) {
-            return "이메일이 존재합니다.";
+           throw new CustomException(ErrorCode.EMAIL_ALREADY_EXIST);
+        } else {
+            return "사용 가능한 이메일입니다.";
         }
-        return "이메일이 존재하지 않습니다.";
+    }
+
+    @Transactional(readOnly = true)
+    public String checkUsername(String username) {
+        if(memberRepository.existsByUsername(username)) {
+            throw new CustomException(ErrorCode.USERNAME_ALREADY_EXIST);
+        } else {
+            return "사용 가능한 아이디입니다.";
+        }
     }
 
 

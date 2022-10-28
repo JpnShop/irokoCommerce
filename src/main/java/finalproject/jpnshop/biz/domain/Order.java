@@ -48,10 +48,8 @@ public class Order extends BaseTime {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private final List<OrderItem> orderItems = new ArrayList<>();
 
-    public Order(Status status, Member member, DeliveryInfo deliveryInfo, List<OrderItem> orderItems) {
-        super();
-    }
-
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private final List<Payment> payments = new ArrayList<>();
 
     public void addOrderItem(OrderItem orderItem) {
         this.orderItems.add(orderItem);
@@ -86,17 +84,17 @@ public class Order extends BaseTime {
 //        return order;
 //    }
 
-//    public void cancel(OrderItem... orderItems) {
-//        if (deliveryInfo.getStatus() == DeliveryStatus.COMPLETE) {
-//            throw new CustomException(ErrorCode.ORDER_COMP_ERROR);
-//        }
-//        this.setStatus(Status.CANCEL);
-//        for (OrderItem orderItem : orderItems) {
-//            orderItem.cancel();
-//        }
-//    }
+    public void cancel(OrderItem... orderItems) {
+        if (deliveryInfo.getStatus() == DeliveryStatus.COMPLETE) {
+            throw new CustomException(ErrorCode.ORDER_COMP_ERROR);
+        }
+        this.setStatus(Status.CANCEL);
+        for (OrderItem orderItem : orderItems) {
+            orderItem.addStock();
+        }
+    }
 
-    public int getTotalPrice() {
+    public Integer getTotalPrice() {
         int totalPrice = 0;
         for (OrderItem orderItem : orderItems) {
             totalPrice += orderItem.getTotalPrice();

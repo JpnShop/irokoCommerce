@@ -62,13 +62,13 @@ public class MemberController {
     }
 
     @GetMapping("/checkEmail/{email}")
-    public String checkEmail(@PathVariable String email) {
+    public ResponseEntity checkEmail(@PathVariable String email) {
         log.info("checkEmail 진입");
         return memberService.checkEmail(email);
     }
 
     @GetMapping("/checkUsername/{username}")
-    public String checkUsername(@PathVariable String username) {
+    public ResponseEntity checkUsername(@PathVariable String username) {
         return memberService.checkUsername(username);
     }
 
@@ -109,5 +109,4 @@ public class MemberController {
         }
 
     }
-
 }

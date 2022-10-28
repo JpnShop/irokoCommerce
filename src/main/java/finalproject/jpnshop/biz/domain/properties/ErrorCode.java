@@ -24,7 +24,8 @@ public enum ErrorCode {
     REVIEW_ALREADY_EXIST(500, "이미 리뷰를 작성했습니다."),
     PAYMENT_NOT_FOUND(404, "결제 정보를 찾을 수 없습니다."),
     USERNAME_ALREADY_EXIST(500, "이미 존재하는 아이디입니다."),
-    EMAIL_ALREADY_EXIST(500, "이미 존재하는 이메일입니다.");
+    EMAIL_ALREADY_EXIST(500, "이미 존재하는 이메일입니다."),
+    JWT_ERROR(401,"JWT 토큰이 만료되었습니다.");
 
     private final int status;
     private final String msg;

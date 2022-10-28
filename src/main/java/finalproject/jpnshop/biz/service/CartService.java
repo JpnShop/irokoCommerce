@@ -44,6 +44,8 @@ public class CartService {
     @Transactional
     public void insertCart(long memberId, long productId, int num) {
         Cart cart = getCart(memberId);
+        log.info("cart : " + cart);
+
         Product product = getProduct(productId);
 
         CartItem cartItem = CartItem.builder()
@@ -52,6 +54,8 @@ public class CartService {
             .count(num)
             .build();
 
+        log.info("cart.getCartItems().size(): " + cart.getCartItems().size());
+
         for(int i=0; i<cart.getCartItems().size(); i++){
             CartItem target = cart.getCartItems().get(i);
             if(cartItem.getProduct().equals(target.getProduct())){
@@ -59,6 +63,7 @@ public class CartService {
                 return;
             }
         }
+
         cart.addCartItem(cartItem);
         product.addCartItem(cartItem);
         cartItemRepository.save(cartItem);

@@ -53,23 +53,11 @@ public class OrderItem extends BaseTime {
         }
     }
 
-    private void setOrderPrice(int orderPrice) {
-    }
+//    public void removeStock(Product product, Integer count) {
+//        product.removeStock(count);
+//    }
 
-    private void setOrderCount(int orderCount) {
-    }
-
-    public static OrderItem createOrderItem(Product product, int orderPrice, int orderCount) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setProduct(product);
-        orderItem.setOrderPrice(orderPrice);
-        orderItem.setOrderCount(orderCount);
-
-        product.removeStock(orderCount);
-        return orderItem;
-    }
-
-    public void cancel() {
+    public void addStock() {
         getProduct().addStock(orderCount);
     }
 

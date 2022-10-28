@@ -53,6 +53,8 @@ public class Product extends BaseTime {
     private String thumbnail;
 
     @OneToMany(mappedBy = "product", cascade = ALL)
+    private List<Payment> payments = new ArrayList<>();
+    @OneToMany(mappedBy = "product", cascade = ALL)
     private List<CartItem> cartItems = new ArrayList<>();
     @OneToMany(mappedBy = "product", cascade = ALL)
     private List<FavoriteItem> favoriteItems = new ArrayList<>();

@@ -54,7 +54,7 @@ public class CartController {
 
     @DeleteMapping
     public String deleteCartItem(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+        long memberId = SecurityUtil.getCurrentMemberId();
         long productId = map.get("product_id");
         cartService.deleteCartItem(memberId, productId);
         return "장바구니에서 상품을 삭제했습니다.";

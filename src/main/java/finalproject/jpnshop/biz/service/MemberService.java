@@ -10,6 +10,8 @@ import finalproject.jpnshop.web.dto.ResMember;
 import finalproject.jpnshop.web.dto.ResMember.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -74,20 +76,20 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public String checkEmail(String email) {
+    public ResponseEntity<String> checkEmail(String email) {
         if(memberRepository.existsByEmail(email)) {
            throw new CustomException(ErrorCode.EMAIL_ALREADY_EXIST);
         } else {
-            return "사용 가능한 이메일입니다.";
+            return ResponseEntity.ok("사용 가능한 이메일입니다.");
         }
     }
 
     @Transactional(readOnly = true)
-    public String checkUsername(String username) {
+    public ResponseEntity<String> checkUsername(String username) {
         if(memberRepository.existsByUsername(username)) {
             throw new CustomException(ErrorCode.USERNAME_ALREADY_EXIST);
         } else {
-            return "사용 가능한 아이디입니다.";
+            return ResponseEntity.ok("사용 가능한 아이디입니다.");
         }
     }
 

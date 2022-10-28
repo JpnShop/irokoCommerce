@@ -46,12 +46,4 @@ public class Cart extends BaseTime {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Cart{" +
-            "id=" + id +
-            ", member=" + member +
-            ", cartItems=" + cartItems +
-            '}';
-    }
 }

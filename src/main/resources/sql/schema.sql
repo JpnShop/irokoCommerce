@@ -5,6 +5,7 @@ drop table if exists OrderItem cascade;
 drop table if exists Question cascade;
 drop table if exists Image cascade;
 drop table if exists Review cascade;
+drop table if exists Payment cascade;
 drop table if exists Product cascade;
 drop table if exists Sort_men cascade;
 drop table if exists Sort_women cascade;
@@ -116,6 +117,17 @@ create table Image (
         origFileName varchar(255) not null,
         review_id bigint,
         primary key (id)
+    ) engine=InnoDB;
+
+ create table Payment (
+       payment_id bigint not null auto_increment,
+        createdAt date,
+        modifiedAt date,
+        count integer,
+        payMethod integer,
+        order_order_id bigint,
+        product_product_id bigint,
+        primary key (payment_id)
     ) engine=InnoDB;
 
 create table Category (

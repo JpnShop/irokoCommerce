@@ -22,6 +22,7 @@ public enum ErrorCode {
     PASSWORD_NOT_CORRECT(500, "비밀번호가 올바르지 않습니다."),
     MAGAZINE_NOT_FOUND(500, "매거진을 찾을 수 없습니다."),
     REVIEW_ALREADY_EXIST(500, "이미 리뷰를 작성했습니다."),
+    PAYMENT_NOT_FOUND(404, "결제 정보를 찾을 수 없습니다."),
     USERNAME_ALREADY_EXIST(500, "이미 존재하는 아이디입니다."),
     EMAIL_ALREADY_EXIST(500, "이미 존재하는 이메일입니다.");
 

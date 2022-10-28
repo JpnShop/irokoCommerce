@@ -266,7 +266,7 @@ values ('KUME', 'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/kumebrand.pn
         'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY-1.jpg,
          https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY-2.jpg',
          21500, 'FRAYED SEMI-WIDE DENIM PANTS IVORY', 'IVORY', 10, 200, null,
-        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY-1'
+        'https://fianl.s3.ap-northeast-2.amazonaws.com/kume/FRAYED+SEMI-WIDE+DENIM+PANTS+IVORY-1.jpg'
 );
 
 insert into Product (brand, brandImg, brandKo, tags, detailList, detailThumbList, price, productName ,productOption, sale, stock, summary, thumbnail)

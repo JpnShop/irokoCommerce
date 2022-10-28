@@ -39,10 +39,8 @@ public class DeliveryInfo {
 
     private String lastFurigana;
 
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus status;
 
     @Builder
     public DeliveryInfo(Long id, Order order, Address address, String phoneNumber,

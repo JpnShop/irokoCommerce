@@ -42,8 +42,9 @@ public class FavoriteController {
     }
 
     @DeleteMapping
-    public String deleteFavoriteItem(long productId){
+    public String deleteFavoriteItem(@RequestBody Map<String,Long> map){
         long memberId = SecurityUtil.getCurrentMemberId();
+        long productId = map.get("product_id");
         favoriteService.deleteFavoriteItem(memberId, productId);
         return "관심상품 목록에서 상품을 삭제했습니다.";
     }

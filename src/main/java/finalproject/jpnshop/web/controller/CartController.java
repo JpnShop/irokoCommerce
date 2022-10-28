@@ -1,5 +1,7 @@
 package finalproject.jpnshop.web.controller;
 
+import finalproject.jpnshop.biz.domain.properties.ErrorCode;
+import finalproject.jpnshop.biz.exception.CustomException;
 import finalproject.jpnshop.biz.service.CartService;
 import finalproject.jpnshop.util.SecurityUtil;
 import finalproject.jpnshop.web.dto.ResCartItem.Response;
@@ -23,8 +25,12 @@ public class CartController {
 
     @GetMapping
     public List<Response> getCarts(){
-        long memberId = SecurityUtil.getCurrentMemberId();
-        return cartService.getCarts(memberId);
+        try{
+            long memberId = SecurityUtil.getCurrentMemberId();
+            return cartService.getCarts(memberId);
+        } catch (Exception e){
+            throw new CustomException(ErrorCode.JWT_ERROR);
+        }
     }
 
     @PostMapping
@@ -54,7 +60,7 @@ public class CartController {
 
     @DeleteMapping
     public String deleteCartItem(@RequestBody Map<String,Long> map){
-        long memberId = map.get("member_id");
+        long memberId = SecurityUtil.getCurrentMemberId();
         long productId = map.get("product_id");
         cartService.deleteCartItem(memberId, productId);
         return "장바구니에서 상품을 삭제했습니다.";

@@ -40,6 +40,7 @@ public class ResProduct {
                 .brand(product.getBrand())
                 .productName(product.getProductName())
                 .price(product.getPrice())
+                .sale(product.getSale())
                 .build();
         }
 

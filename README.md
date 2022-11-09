@@ -28,7 +28,7 @@
 
 ### 👉 미리보기 이미지 및 요청 URL  
 - Cleint : https://finaloneul.netlify.app/
-- Server : http://43.200.38.47:9090
+- Server : https://final.oneulistore.click/swagger-ui/
 <br><br>
 ![스크린샷 2022-10-21 오후 5 13 59](https://user-images.githubusercontent.com/57162810/197147285-04d0e8d4-715e-4237-bc98-1e3536765237.png)
 

@@ -62,45 +62,6 @@ public class Order extends BaseTime {
         this.member = member;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public void setCreatedAt(LocalDateTime now) {
-    }
-
-    private void setDeliveryInfo(DeliveryInfo deliveryInfo) {
-    }
-
-//    public static Order createOrder(Member member, DeliveryInfo deliveryInfo, OrderItem... orderItems) {
-//        Order order = new Order();
-//        order.setMember(member);
-//        order.setDeliveryInfo(deliveryInfo);
-//        for (OrderItem orderItem : orderItems) {
-//            order.addOrderItem(orderItem);
-//        }
-//        order.setStatus(Status.ORDER);
-//        order.setCreatedAt(LocalDateTime.now());
-//        return order;
-//    }
-
-    public void cancel(OrderItem... orderItems) {
-        if (deliveryInfo.getStatus() == DeliveryStatus.COMPLETE) {
-            throw new CustomException(ErrorCode.ORDER_COMP_ERROR);
-        }
-        this.setStatus(Status.CANCEL);
-        for (OrderItem orderItem : orderItems) {
-            orderItem.addStock();
-        }
-    }
-
-    public Integer getTotalPrice() {
-        int totalPrice = 0;
-        for (OrderItem orderItem : orderItems) {
-            totalPrice += orderItem.getTotalPrice();
-        }
-        return totalPrice;
-    }
 
     private String orderNum;
 

@@ -2,6 +2,7 @@ package finalproject.jpnshop.web.dto;
 
 import finalproject.jpnshop.biz.domain.Address;
 import finalproject.jpnshop.biz.domain.DeliveryInfo;
+import finalproject.jpnshop.biz.domain.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class ResDeliveryInfo {
         private String lastName;
         private String firstFurigana;
         private String lastFurigana;
+        private String orderNum;
 
         public static Response of(DeliveryInfo deliveryInfo) {
             return Response.builder()
@@ -30,6 +32,7 @@ public class ResDeliveryInfo {
                 .lastName(deliveryInfo.getLastName())
                 .firstFurigana(deliveryInfo.getFirstFurigana())
                 .lastFurigana(deliveryInfo.getLastFurigana())
+                .orderNum(deliveryInfo.getOrder().getOrderNum())
                 .build();
         }
     }

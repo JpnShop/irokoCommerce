@@ -90,8 +90,8 @@
         - controller
         - dto : Request, Response 객체
 
-## 📡 API 명세서
-- https://www.notion.so/API-5982ec0967a945a1bdeb30c8e2636bf3
+## 📡 API 명세서 & 프로젝트 진행
+- https://neat-flight-054.notion.site/PDF-47c49b5fee7c4963bb62c711a0ed6fee
 ### ✅ 로그인/회원가입
 - `GET` /auth/Glogin
 - `POST` /auth/login

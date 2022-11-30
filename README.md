@@ -91,7 +91,7 @@
         - dto : Request, Response 객체
 
 ## 📡 API 명세서
-- http://43.200.38.47:9090/swagger-ui/#/question-controller/insertQuestionUsingPOST
+- https://www.notion.so/API-5982ec0967a945a1bdeb30c8e2636bf3
 ### ✅ 로그인/회원가입
 - `GET` /auth/Glogin
 - `POST` /auth/login
